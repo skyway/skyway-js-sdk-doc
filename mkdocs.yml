@@ -1,0 +1,31 @@
+site_name: SkyWay JS SDK API Reference
+site_description: Document for SkyWay JavaScript SDK
+site_author: NTT Communications
+copyright: '© NTT Communications Corporation All Rights Reserved.'
+pages:
+    - Introduction: index.md
+    - 日本語:
+        - Peer: ja/peer.md
+        - MediaConnection: ja/mediaconnection.md
+        - DataConnection: ja/dataconnection.md
+        - MeshRoom: ja/meshroom.md
+        - SFURoom: ja/sfuroom.md
+    - English:
+        - Peer: en/peer.md
+        - MediaConnection: en/mediaconnection.md
+        - DataConnection: en/dataconnection.md
+        - MeshRoom: en/meshroom.md
+        - SFURoom: en/sfuroom.md
+theme:
+    name: 'material'
+    language: 'en'
+    logo: 'images/skyway-symbol.svg'
+extra:
+    search:
+        language: 'jp'
+extra_css:
+    - 'css/custom.css'
+markdown_extensions:
+    - codehilite
+    - toc:
+        permalink: true
