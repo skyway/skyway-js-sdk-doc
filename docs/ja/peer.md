@@ -75,7 +75,7 @@ const peer = new Peer({
 
 ### call
 
-指定したPeerにメディアチャネル(音声・映像)で接続して、MediaConnectionを作成します。 オプションを指定することで、帯域幅・コーデックを指定できます。
+指定したPeerにメディアチャネル(音声・映像)で接続して、MediaConnectionを作成します。 オプションを指定することで、帯域幅・コーデックなどを指定できます。
 
 #### Parameters
 
@@ -83,7 +83,7 @@ const peer = new Peer({
 | --- | --- | --- | --- | --- |
 | peerId | string | ✔ | | 接続先のPeer IDです。 |
 | stream | MediaStream | | | 接続先のPeerへ送るメディアストリームです。 設定されていない場合は、受信のみモードで発信します。 |
-| options | [call options object](#call-options-object) | | |発信時に付与するオプションです。帯域幅・コーデックを指定します。 |
+| options | [call options object](#call-options-object) | | |発信時に付与するオプションです。帯域幅・コーデックなどを指定します。 |
 
 ##### call options object
 
@@ -220,16 +220,16 @@ peer.disconnect();
 
 ### joinRoom
 
-メッシュ接続のルーム、またはSFU接続のルームに参加します。
+メッシュ接続のルーム、またはSFU接続のルームに参加します。メッシュ接続およびSFU接続については[コチラ](https://webrtc.ecl.ntt.com/sfu.html)を確認ください。
 
 #### Parameters
 
 | Name | Type | Rquired| Default | Description |
 | --- | --- | --- | --- | --- |
 | roomName | string | ✔ | | 参加先のルームの名前です。|
-| roomOptions | [roomOptions object](#roomoptions-object) | | 接続時に選択・付与するオプションです。|
+| roomOptions | [room options object](#room-options-object) | | 接続時に選択・付与するオプションです。|
 
-##### roomOptions object
+##### room options object
 
 | Name | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
@@ -287,7 +287,7 @@ peer.listAllPeers(peers => {
 
 ### updateCredential
 
-TTLを延長するための更新リクエストの送付します。
+Peer認証のクレデンシャルのTTLを延長するための更新リクエストの送付します。
 
 #### Parameters
 
@@ -295,7 +295,7 @@ TTLを延長するための更新リクエストの送付します。
 | --- | --- | --- | --- | --- |
 | mode | [credential object](#credential-object)| ✔ | |   ユーザー側で作成する新しいクレデンシャルです。 |
 
-##### newCredential object
+##### credential object
 
 |Name|Type|Optional|Default|Description|
 |----|----|----|----|----|
