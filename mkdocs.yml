@@ -1,6 +1,7 @@
-site_name: SkyWay JS SDK API Reference
-site_description: Document for SkyWay JavaScript SDK
+site_name: JS SDK API Reference
+site_description: Document for SkyWay/ECLWebRTC JavaScript SDK
 site_author: NTT Communications
+site_url: 'https://webrtc.ecl.ntt.com/'
 copyright: '© NTT Communications Corporation All Rights Reserved.'
 pages:
     - Introduction: index.md
@@ -29,3 +30,7 @@ markdown_extensions:
     - codehilite
     - toc:
         permalink: true
+extra:
+  social:
+    - type: home
+      link: https://webrtc.ecl.ntt.com/
