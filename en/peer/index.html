@@ -10,8 +10,10 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
-        <meta name="description" content="Document for SkyWay JavaScript SDK">
+        <meta name="description" content="Document for SkyWay/ECLWebRTC JavaScript SDK">
       
+      
+        <link rel="canonical" href="https://webrtc.ecl.ntt.com/en/peer/">
       
       
         <meta name="author" content="NTT Communications">
@@ -21,7 +23,7 @@
       
         <meta name="lang:clipboard.copied" content="Copied to clipboard">
       
-        <meta name="lang:search.language" content="jp">
+        <meta name="lang:search.language" content="en">
       
         <meta name="lang:search.result.none" content="No matching documents">
       
@@ -36,7 +38,7 @@
     
     
       
-        <title>Peer - SkyWay JS SDK API Reference</title>
+        <title>Peer - JS SDK API Reference</title>
       
     
     
@@ -75,7 +77,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="SkyWay JS SDK API Reference" class="md-header-nav__button md-logo">
+        <a href="https://webrtc.ecl.ntt.com/" title="JS SDK API Reference" class="md-header-nav__button md-logo">
           
             <img src="../../images/skyway-symbol.svg" width="24" height="24">
           
@@ -89,7 +91,7 @@
           
             
               <span class="md-header-nav__topic">
-                SkyWay JS SDK API Reference
+                JS SDK API Reference
               </span>
               <span class="md-header-nav__topic">
                 Peer
@@ -150,7 +152,7 @@
         <img src="../../images/skyway-symbol.svg" width="24" height="24">
       
     </span>
-    SkyWay JS SDK API Reference
+    JS SDK API Reference
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -629,8 +631,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#newcredential-object" title="newCredential object" class="md-nav__link">
-    newCredential object
+  <a href="#credential-object_1" title="credential object" class="md-nav__link">
+    credential object
   </a>
   
 </li>
@@ -1180,8 +1182,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#newcredential-object" title="newCredential object" class="md-nav__link">
-    newCredential object
+  <a href="#credential-object_1" title="credential object" class="md-nav__link">
+    credential object
   </a>
   
 </li>
@@ -1339,7 +1341,7 @@
                 
                   <h1>Peer</h1>
                 
-                <p>Class that manages all p2p connections and rooms. Peer instance must be generated when using SkyWay.</p>
+                <p>Class that manages all p2p connections and rooms. Peer instance must be generated when using ECLWebRTC.</p>
 <h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
 <p><code>new Peer</code> creates new Peer instance and connects to the signaling server.</p>
 <h3 id="parameter">Parameter<a class="headerlink" href="#parameter" title="Permanent link">&para;</a></h3>
@@ -1466,7 +1468,7 @@
 
 
 <h3 id="sample">Sample<a class="headerlink" href="#sample" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><span class="c1">// Connect SkyWay signaling server with full debug option.</span>
+<div class="codehilite"><pre><span></span><span class="c1">// Connect ECLWebRTC signaling server with full debug option.</span>
 <span class="kr">const</span> <span class="nx">peer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Peer</span><span class="p">({</span>
   <span class="nx">key</span><span class="o">:</span>   <span class="s2">&quot;&lt;YOUR-API-KEY&gt;&quot;</span>
   <span class="nx">debug</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
@@ -1520,7 +1522,7 @@
 <h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
 <h3 id="call">call<a class="headerlink" href="#call" title="Permanent link">&para;</a></h3>
 <p>Calls the designated Peer and creates new MediaConnection.
-With options, the bandwidth or/and codec can be specified.</p>
+With option, bandwidth or/and codec can be specified.</p>
 <h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -1778,7 +1780,7 @@ With options, the bandwidth or/and codec can be specified.</p>
 
 
 <h3 id="joinroom">joinRoom<a class="headerlink" href="#joinroom" title="Permanent link">&para;</a></h3>
-<p>Join fullmesh type or SFU type room that two or more users can join.</p>
+<p>Join fullmesh type or SFU type room that two or more users can join. See explanation of fullmesh and SFU type from <a href="https://webrtc.ecl.ntt.com/sfu.html">here</a>.</p>
 <h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -1909,7 +1911,7 @@ With options, the bandwidth or/and codec can be specified.</p>
 
 
 <h3 id="updatecredential">updateCredential<a class="headerlink" href="#updatecredential" title="Permanent link">&para;</a></h3>
-<p>Update server-side credential by sending a request in order to extend TTL.</p>
+<p>Update server-side credential by sending a request in order to extend TTL of authenticaion.</p>
 <h4 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -1931,7 +1933,7 @@ With options, the bandwidth or/and codec can be specified.</p>
 </tr>
 </tbody>
 </table>
-<h5 id="newcredential-object">newCredential object<a class="headerlink" href="#newcredential-object" title="Permanent link">&para;</a></h5>
+<h5 id="credential-object_1">credential object<a class="headerlink" href="#credential-object_1" title="Permanent link">&para;</a></h5>
 <table>
 <thead>
 <tr>
@@ -2113,11 +2115,11 @@ With options, the bandwidth or/and codec can be specified.</p>
 </tr>
 <tr>
 <td>list-error</td>
-<td>Look like you have permission to list peers IDs. Please enable the SkyWay REST API on dashboard.</td>
+<td>Look like you have permission to list peers IDs. Please enable the ECLWebRTC REST API on dashboard.</td>
 </tr>
 <tr>
 <td>disconnected</td>
-<td>Cannot connect to new Peer before connecting to SkyWay server or after disconnecting from the server.</td>
+<td>Cannot connect to new Peer before connecting to ECLWebRTC server or after disconnecting from the server.</td>
 </tr>
 <tr>
 <td>socket-error</td>
@@ -2210,6 +2212,14 @@ With options, the bandwidth or/and codec can be specified.</p>
       </div>
       
         
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://webrtc.ecl.ntt.com/" class="md-footer-social__link fa fa-home"></a>
+    
+  </div>
+
       
     </div>
   </div>
@@ -2218,21 +2228,6 @@ With options, the bandwidth or/and codec can be specified.</p>
     </div>
     
       <script src="../../assets/javascripts/application.6cdc17f0.js"></script>
-      
-        
-        
-          
-          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              <script src="../../assets/javascripts/lunr/lunr.jp.js"></script>
-            
-          
-          
-        
       
       <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       

@@ -10,8 +10,10 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
-        <meta name="description" content="Document for SkyWay JavaScript SDK">
+        <meta name="description" content="Document for SkyWay/ECLWebRTC JavaScript SDK">
       
+      
+        <link rel="canonical" href="https://webrtc.ecl.ntt.com/ja/peer/">
       
       
         <meta name="author" content="NTT Communications">
@@ -21,7 +23,7 @@
       
         <meta name="lang:clipboard.copied" content="Copied to clipboard">
       
-        <meta name="lang:search.language" content="jp">
+        <meta name="lang:search.language" content="en">
       
         <meta name="lang:search.result.none" content="No matching documents">
       
@@ -36,7 +38,7 @@
     
     
       
-        <title>Peer - SkyWay JS SDK API Reference</title>
+        <title>Peer - JS SDK API Reference</title>
       
     
     
@@ -75,7 +77,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="SkyWay JS SDK API Reference" class="md-header-nav__button md-logo">
+        <a href="https://webrtc.ecl.ntt.com/" title="JS SDK API Reference" class="md-header-nav__button md-logo">
           
             <img src="../../images/skyway-symbol.svg" width="24" height="24">
           
@@ -89,7 +91,7 @@
           
             
               <span class="md-header-nav__topic">
-                SkyWay JS SDK API Reference
+                JS SDK API Reference
               </span>
               <span class="md-header-nav__topic">
                 Peer
@@ -150,7 +152,7 @@
         <img src="../../images/skyway-symbol.svg" width="24" height="24">
       
     </span>
-    SkyWay JS SDK API Reference
+    JS SDK API Reference
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -464,8 +466,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#roomoptions-object" title="roomOptions object" class="md-nav__link">
-    roomOptions object
+  <a href="#room-options-object" title="room options object" class="md-nav__link">
+    room options object
   </a>
   
 </li>
@@ -545,8 +547,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#newcredential-object" title="newCredential object" class="md-nav__link">
-    newCredential object
+  <a href="#credential-object_1" title="credential object" class="md-nav__link">
+    credential object
   </a>
   
 </li>
@@ -1099,8 +1101,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#roomoptions-object" title="roomOptions object" class="md-nav__link">
-    roomOptions object
+  <a href="#room-options-object" title="room options object" class="md-nav__link">
+    room options object
   </a>
   
 </li>
@@ -1180,8 +1182,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#newcredential-object" title="newCredential object" class="md-nav__link">
-    newCredential object
+  <a href="#credential-object_1" title="credential object" class="md-nav__link">
+    credential object
   </a>
   
 </li>
@@ -1520,7 +1522,7 @@
 </table>
 <h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
 <h3 id="call">call<a class="headerlink" href="#call" title="Permanent link">&para;</a></h3>
-<p>指定したPeerにメディアチャネル(音声・映像)で接続して、MediaConnectionを作成します。 オプションを指定することで、帯域幅・コーデックを指定できます。</p>
+<p>指定したPeerにメディアチャネル(音声・映像)で接続して、MediaConnectionを作成します。 オプションを指定することで、帯域幅・コーデックなどを指定できます。</p>
 <h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -1552,7 +1554,7 @@
 <td><a href="#call-options-object">call options object</a></td>
 <td></td>
 <td></td>
-<td>発信時に付与するオプションです。帯域幅・コーデックを指定します。</td>
+<td>発信時に付与するオプションです。帯域幅・コーデックなどを指定します。</td>
 </tr>
 </tbody>
 </table>
@@ -1779,7 +1781,7 @@
 
 
 <h3 id="joinroom">joinRoom<a class="headerlink" href="#joinroom" title="Permanent link">&para;</a></h3>
-<p>メッシュ接続のルーム、またはSFU接続のルームに参加します。</p>
+<p>メッシュ接続のルーム、またはSFU接続のルームに参加します。メッシュ接続およびSFU接続については<a href="https://webrtc.ecl.ntt.com/sfu.html">コチラ</a>を確認ください。</p>
 <h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -1801,14 +1803,14 @@
 </tr>
 <tr>
 <td>roomOptions</td>
-<td><a href="#roomoptions-object">roomOptions object</a></td>
+<td><a href="#room-options-object">room options object</a></td>
 <td></td>
 <td>接続時に選択・付与するオプションです。</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h5 id="roomoptions-object">roomOptions object<a class="headerlink" href="#roomoptions-object" title="Permanent link">&para;</a></h5>
+<h5 id="room-options-object">room options object<a class="headerlink" href="#room-options-object" title="Permanent link">&para;</a></h5>
 <table>
 <thead>
 <tr>
@@ -1912,7 +1914,7 @@
 
 
 <h3 id="updatecredential">updateCredential<a class="headerlink" href="#updatecredential" title="Permanent link">&para;</a></h3>
-<p>TTLを延長するための更新リクエストの送付します。</p>
+<p>Peer認証のクレデンシャルのTTLを延長するための更新リクエストの送付します。</p>
 <h4 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -1934,7 +1936,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="newcredential-object">newCredential object<a class="headerlink" href="#newcredential-object" title="Permanent link">&para;</a></h5>
+<h5 id="credential-object_1">credential object<a class="headerlink" href="#credential-object_1" title="Permanent link">&para;</a></h5>
 <table>
 <thead>
 <tr>
@@ -2213,6 +2215,14 @@
       </div>
       
         
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://webrtc.ecl.ntt.com/" class="md-footer-social__link fa fa-home"></a>
+    
+  </div>
+
       
     </div>
   </div>
@@ -2221,21 +2231,6 @@
     </div>
     
       <script src="../../assets/javascripts/application.6cdc17f0.js"></script>
-      
-        
-        
-          
-          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              <script src="../../assets/javascripts/lunr/lunr.jp.js"></script>
-            
-          
-          
-        
       
       <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       
