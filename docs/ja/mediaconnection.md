@@ -1,4 +1,4 @@
-Class that manages fullmesh type room.
+接続先Peerへのメディアチャネル接続を管理するクラスです。
 
 ## Constructor
 

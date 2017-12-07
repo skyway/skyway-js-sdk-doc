@@ -47,7 +47,7 @@ None
 #### Sample
 
 ```js
-call.close();
+room.getLog();
 ```
 
 ### replaceStream
