@@ -288,6 +288,7 @@ peer.listAllPeers(peers => {
 ### updateCredential
 
 Peer認証のクレデンシャルのTTLを延長するための更新リクエストの送付します。
+Peer認証については、[コチラ](https://github.com/skyway/skyway-peer-authentication-samples)をご確認ください。
 
 #### Parameters
 

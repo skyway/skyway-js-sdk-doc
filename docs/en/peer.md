@@ -382,17 +382,17 @@ Events when error occur.
 |Type|Description|
 |----|----|
 |room-error|Room name must be defined.|
-||ルームタイプが異なります。(メッシュルームとして作成した部屋に、SFUルーム指定で参加した場合)|
-||SFU機能が該当のAPIキーでDisabledです。利用するには、Dashboardからenableにしてください。|
-||不明なエラーが発生しました。少し待って、リトライしてください。|
-||ルームログ取得時にエラーが発生しました。少し待って、リトライしてください。|
-|authentication|指定されたクレデンシャルを用いた認証に失敗しました。|
-|permission|該当のルームの利用が許可されてません。|
+||Room type is different (e.g. On the condition that the mesh room was created, that another user tries to create SFU room with same room name of Mesh cause this error)|
+||SFU usage is disabled. Please enable SFU usage on dashboard.|
+||Unknown-error. Please wait for a while and connect again.|
+||Failed to fetch the room log. Please wait for a while and connect again|
+|authentication|Failed to authenticate|
+|permission|The room usage is not permitted|
 |list-error|Look like you have permission to list peers IDs. Please enable the ECLWebRTC REST API on dashboard.|
 |disconnected|Cannot connect to new Peer before connecting to ECLWebRTC server or after disconnecting from the server.|
 |socket-error|Lost connection to server|
-|invalid-id|IDが不正です。|
-|invalid-key|APIキーが無効です。|
+|invalid-id|ID is invalid.|
+|invalid-key|API is invalid|
 |server-error|Could not get peers from the server.|
 
 #### Sample
