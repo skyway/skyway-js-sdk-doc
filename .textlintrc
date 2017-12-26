@@ -1,0 +1,26 @@
+{
+    "rules": {
+        "no-todo": true,
+        "web-plus-db": true,
+        "max-ten": {
+      		"max": 3
+    	},
+        "no-mix-dearu-desumasu": true,
+        "ja-no-redundant-expression": true,
+        "no-double-negative-ja": true,
+        "sentence-length": {
+            "max": 100
+        },
+        "prefer-tari-tari": true,
+        "ja-no-weak-phrase": true,
+        "ja-no-abusage": true,
+        "no-doubled-joshi": {
+            "min_interval" : 1,
+            "strict": false,
+            "allow": []
+        }
+    },
+    "filters": {
+        "comments": true
+    }
+}

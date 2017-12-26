@@ -3,4 +3,3 @@ SkyWayを使った開発が初めての場合は、SkyWayの[通信モデル](ht
 
 This document is ECLWebRTC JavaScript SDK API Reference. See English version from [here](en/peer.md).
 See [Communication model of ECLWebRTC](https://webrtc.ecl.ntt.com/en/communication-model.html) if this is the first time for you to develop applciation with ECLWebRTC.
-

@@ -1,0 +1,39 @@
+{
+  "name": "skyway-js-sdk-doc",
+  "version": "1.0.0",
+  "description": "Just for testlint",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "textlint": "^10.1.0",
+    "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-rule-ja-no-abusage": "^1.2.1",
+    "textlint-rule-ja-no-redundant-expression": "^1.0.3",
+    "textlint-rule-ja-no-weak-phrase": "^1.0.4",
+    "textlint-rule-max-ten": "^2.0.3",
+    "textlint-rule-no-double-negative-ja": "^1.0.5",
+    "textlint-rule-no-doubled-conjunctive-particle-ga": "^1.0.2",
+    "textlint-rule-no-doubled-joshi": "^3.5.1",
+    "textlint-rule-no-mix-dearu-desumasu": "^3.0.3",
+    "textlint-rule-no-todo": "^2.0.0",
+    "textlint-rule-prefer-tari-tari": "^1.0.2",
+    "textlint-rule-sentence-length": "^1.1.3",
+    "textlint-rule-web-plus-db": "^1.1.5"
+  },
+  "scripts": {
+    "test": "textlint docs/ja/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iwashi/skyway-js-sdk-doc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iwashi/skyway-js-sdk-doc/issues"
+  },
+  "homepage": "https://github.com/iwashi/skyway-js-sdk-doc#readme"
+}
