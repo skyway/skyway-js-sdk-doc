@@ -25,14 +25,16 @@ theme:
     logo: 'images/skyway-symbol.svg'
 extra:
     search:
-        language: 'jp'
+        language: 'ja'
 extra_css:
     - 'css/custom.css'
+extra_javascript:
+    - 'javascript/custom.js'
 markdown_extensions:
     - codehilite
     - toc:
         permalink: true
 extra:
-  social:
-    - type: home
-      link: https://webrtc.ecl.ntt.com/
+    social:
+        - type: home
+          link: https://webrtc.ecl.ntt.com/
