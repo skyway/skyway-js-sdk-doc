@@ -1,5 +1,4 @@
-window.onload = () => {
-
+document.addEventListener('DOMContentLoaded', function(){
   // Identifies the language from URL.
   let langInURL = location.href.match(/(skyway-js-sdk-doc|127\.0\.0\.1:8000)\/(\w{2})\//);
   langInURL = langInURL && langInURL[2];
@@ -29,5 +28,5 @@ window.onload = () => {
   if(html.classList.contains('en')){
     baseHTML.href = "https://webrtc.ecl.ntt.com/en/";
   }
-
-};
+  
+});
