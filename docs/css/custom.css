@@ -4,6 +4,9 @@
 .en .ja-item, .ja .en-item {
   display: none;
 }
+.root .hidden-root-item {
+  display: none;
+}
 .md-nav__list hr {
   border-top: 1px solid #8a8a8a;
   margin: 1.2rem;

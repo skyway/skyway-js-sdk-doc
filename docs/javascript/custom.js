@@ -12,6 +12,11 @@ document.addEventListener('DOMContentLoaded', function(){
       break;
   }
 
+  let isRoot = !langInURL;
+  if (isRoot) {
+    html.classList.add('root');
+  }
+
   let baseHtml = '';
   let customHtml = '';
 
