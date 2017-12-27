@@ -38,3 +38,5 @@ extra:
     social:
         - type: home
           link: https://webrtc.ecl.ntt.com/
+
+google_analytics: ['UA-46095916-2', 'webrtc.ecl.ntt.com']
