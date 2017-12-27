@@ -4,3 +4,11 @@
 .en .ja-item, .ja .en-item {
   display: none;
 }
+.md-nav__list hr {
+  border-top: 1px solid #8a8a8a;
+  margin: 1.2rem;
+  height: 0px;
+}
+.md-footer-nav__inner {
+  display: none;
+}
