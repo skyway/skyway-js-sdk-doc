@@ -12,3 +12,6 @@
 .md-footer-nav__inner {
   display: none;
 }
+.md-nav__link.backlink {
+  color: rgba(0,0,0,0.54);
+}
