@@ -83,6 +83,41 @@ Send data to all participants in the room with WebSocket. It emits broadcast eve
 | --- | --- | --- | --- | --- |
 | data | * | ✔ | | The data to send. |
 
+
+### getRTCPeerConnections
+
+Gets the RTCPeerConnections object used by Connections in this room. Modifying the RTCPeerConnection can cause unexpected errors. 
+Suggested for advanced users only.
+
+#### Parameters
+
+None
+
+#### Return value 
+
+Object containing the [RTCPeerConnection](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection) of each connection, using the peerID as the key.
+
+e.g.
+```json
+{
+  peerId1: rtcPeerConnection1,
+  peerId2: rtcPeerConnection2,
+  peerId3: rtcPeerConnection3
+}
+```
+
+#### Sample
+
+```js
+// Get the RTCPeerConnection instances
+const pcs = room.getRTCPeerConnections();
+
+// Call getStats to collect stats about the session with peerId1
+pcs.peerId1.getStats(stats => {
+  ...
+});
+```
+
 ## Events
 
 ### open

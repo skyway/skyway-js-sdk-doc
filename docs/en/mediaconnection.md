@@ -111,6 +111,32 @@ The new one can be audio only stream, or both audio and video stream.
 call.replaceStream(newStream);
 ```
 
+
+### getRTCPeerConnection
+
+Gets the RTCPeerConnection object used by this connection. Modifying the RTCPeerConnection can cause unexpected errors. 
+Suggested for advanced users only.
+
+#### Parameters
+
+None
+
+#### Return value 
+
+Instance of [RTCPeerConnection](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection)
+
+#### Sample
+
+```js
+// Get the RTCPeerConnection instance
+const pc = call.getRTCPeerConnection();
+
+// Call getStats to collect stats about the session
+pc.getStats(stats => {
+  ...
+});
+```
+
 ## Events
 
 ### stream 

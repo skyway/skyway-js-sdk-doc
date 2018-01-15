@@ -82,6 +82,40 @@ WebSocketを使用してルーム内の全てのユーザーにデータを送�
 | --- | --- | --- | --- | --- |
 | data | * | ✔ | | 送信するデータです。|
 
+### getRTCPeerConnections
+
+このMeshRoomが利用してるRTCPeerConnectionを取得します。
+上級ユーザのみご利用ください。RTCPeerConnectionを変更した場合の動作は保証できません。
+
+#### Parameters
+
+None
+
+#### Return value 
+
+ルーム内の各コネクションのキーがPeerIDで値が[RTCPeerConnection](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection)になっているオブジェクト。
+
+例：
+```json
+{
+  peerId1: rtcPeerConnection1,
+  peerId2: rtcPeerConnection2,
+  peerId3: rtcPeerConnection3
+}
+```
+
+#### Sample
+
+```js
+// RTCPeerConnectionのインスタンスを取得
+const pcs = room.getRTCPeerConnections();
+
+// getStatsでpeerId1とのセッションの統計データを取得
+pcs.peerId1.getStats(stats => {
+  ...
+});
+```
+
 ## Events
 
 ### open

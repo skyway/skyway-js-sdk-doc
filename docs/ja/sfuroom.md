@@ -82,6 +82,31 @@ WebSocketを使用してルーム内の全てのユーザーにデータを送�
 | --- | --- | --- | --- | --- |
 | data | * | ✔ | | 送信するデータです。|
 
+### getRTCPeerConnection
+
+このSFURoomが利用してるRTCPeerConnectionを取得します。
+上級ユーザのみご利用ください。RTCPeerConnectionを変更した場合の動作は保証できません。
+
+#### Parameters
+
+None
+
+#### Return value 
+
+[RTCPeerConnection](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection)のインスタンス
+
+#### Sample
+
+```js
+// RTCPeerConnectionのインスタンスを取得
+const pc = room.getRTCPeerConnection();
+
+// getStatsでセッションの統計データを取得
+pc.getStats(stats => {
+  ...
+});
+```
+
 ## Events
 
 ### open
