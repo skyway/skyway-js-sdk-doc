@@ -3,7 +3,7 @@ Class that manages data connections to other peers.
 ## Constructor
 
 Constructor should not be used. Instead, it is used used in only SDK.
-MediaConnection instance can be created `connect` and `peer.on('connection')`.
+DataConnection instance can be created `connect` and `peer.on('connection')`.
 
 ### Sample
 
@@ -79,7 +79,7 @@ None
 #### Sample
 
 ```js
-call.close();
+dataConnection.close();
 ```
 
 ## Events

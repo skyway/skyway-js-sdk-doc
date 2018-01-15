@@ -67,7 +67,7 @@ dataConnection.on('data', data => {
 
 ### close
 
-接続先PeerとのMediaConnectionを接続を切断します。
+接続先PeerとのDataConnectionを接続を切断します。
 
 #### Parameters
 
@@ -80,7 +80,7 @@ None
 #### Sample
 
 ```js
-call.close();
+dataConnection.close();
 ```
 
 ## Events
