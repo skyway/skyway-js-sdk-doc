@@ -84,8 +84,9 @@ WebSocketを使用してルーム内の全てのユーザーにデータを送�
 
 ### getRTCPeerConnections
 
-このMeshRoomが利用してるRTCPeerConnectionを取得します。
-上級ユーザのみご利用ください。RTCPeerConnectionを変更した場合の動作は保証できません。
+このMeshRoomが利用しているRTCPeerConnectionを取得します。
+本機能はアドバンスユーザ向け機能です。詳細はWebRTCのRTCPeerConnectionの仕様をご確認下さい。
+RTCPeerConnectionを変更した場合の動作は保証できません。
 
 #### Parameters
 
