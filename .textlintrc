@@ -18,6 +18,14 @@
             "min_interval" : 1,
             "strict": false,
             "allow": []
+        },
+        "no-mixed-zenkaku-and-hankaku-alphabet": {
+            "prefer": "半角"
+        },
+        "no-dropping-the-ra": true,
+        "ja-unnatural-alphabet": {
+            "allowCommonCase": true,
+            "allow": []
         }
     },
     "filters": {
