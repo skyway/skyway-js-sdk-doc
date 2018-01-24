@@ -24,11 +24,15 @@ P2P接続およびルーム接続機能を操作するためのクラスです�
 
 #### credential object
 
+<!-- textlint-disable -->
+
 |Name|Type|Required|Default|Description|
 |----|----|----|----|----|
 |timestamp|number|||現在のUNIXタイムスタンプです。|
 |ttl|number|||Time to live(ttl)。タイムスタンプ + ttl の時間でクレデンシャルが失効します。|
 |authToken|string||Default|HMACを利用して生成する認証用トークンです。|
+
+<!-- textlint-enable -->
 
 #### Default RTCConfiguration object
 
@@ -298,11 +302,15 @@ Peer認証については、[コチラ](https://github.com/skyway/skyway-peer-au
 
 ##### credential object
 
+<!-- textlint-disable -->
+
 |Name|Type|Optional|Default|Description|
 |----|----|----|----|----|
 |timestamp|number|✔||現在のUNIXタイムスタンプです。|
 |ttl|number|✔||Time to live(ttl)。タイムスタンプ + ttl の時間でクレデンシャルが失効します。|
 |authToken|string|✔|Default|HMACを利用して生成する認証用トークンです。|
+
+<!-- textlint-enable -->
 
 #### Return value 
 
