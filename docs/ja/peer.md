@@ -131,7 +131,7 @@ const call = peer.call('peerID', localStream, {
 
 ```js
 // 音声のみ接続先から受信する設定で、相手に発信する場合
-const call = peer.call('peerID', {
+const call = peer.call('peerID', null, {
   audioReceiveEnabled: true,
 });
 ```

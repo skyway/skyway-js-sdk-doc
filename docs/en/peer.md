@@ -127,7 +127,7 @@ const call = peer.call('peerID', localStream, {
 
 ```js
 // Call a peer, and just want to receive audio
-const call = peer.call('peerID', {
+const call = peer.call('peerID', null, {
   audioReceiveEnabled: true,
 });
 ```
