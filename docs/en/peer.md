@@ -100,7 +100,7 @@ With option, bandwidth or/and codec can be specified.
 
 #### Return value 
 
-[MediaConnection](mediaconnection) instance
+[MediaConnection](../mediaconnection) instance
 
 #### Sample
 
@@ -154,7 +154,7 @@ Connects to the designated Peer and creates new DataConnection.
 
 #### Return value 
 
-[DataConnection](dataconnection) instance
+[DataConnection](../dataconnection) instance
 
 #### Sample
 
@@ -243,7 +243,7 @@ Join fullmesh type or SFU type room that two or more users can join. See explana
 
 #### Return value 
 
-Instance of [SFURoom](sfuroom) or [MeshRoom](meshroom)
+Instance of [SFURoom](../sfuroom) or [MeshRoom](../meshroom)
 
 #### Sample
 
@@ -328,7 +328,7 @@ Received a call with Media channel(audio and/or video) from peer.
 
 |Type|Description|
 |----|----|
-|[MediaConnection](mediaconnection)|MediaConnection instance.|
+|[MediaConnection](../mediaconnection)|MediaConnection instance.|
 
 #### Sample
 
@@ -349,7 +349,7 @@ Received a connection from peer.
 
 |Type|Description|
 |----|----|
-|[DataConnection](dataconnection)|DataConnection instance.|
+|[DataConnection](../dataconnection)|DataConnection instance.|
 
 #### sample
 

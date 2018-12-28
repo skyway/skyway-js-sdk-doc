@@ -104,7 +104,7 @@ const peer = new Peer({
 
 #### Return value 
 
-[MediaConnection](mediaconnection)のインスタンス
+[MediaConnection](../mediaconnection)のインスタンス
 
 #### Sample
 
@@ -158,7 +158,7 @@ const call = peer.call('peerID', null, {
 
 #### Return value 
 
-[DataConnection](dataconnection)のインスタンス
+[DataConnection](../dataconnection)のインスタンス
 
 #### Sample
 
@@ -248,7 +248,7 @@ peer.disconnect();
 
 #### Return value 
 
-[SFURoom](sfuroom) または [MeshRoom](meshroom) のインスタンス
+[SFURoom](../sfuroom) または [MeshRoom](../meshroom) のインスタンス
 
 #### Sample
 
@@ -340,7 +340,7 @@ peer.on('open', id => {
 
 |Type|Description|
 |----|----|
-|[MediaConnection](mediaconnection)|MediaConnectionのインスタンスです。|
+|[MediaConnection](../mediaconnection)|MediaConnectionのインスタンスです。|
 
 #### Sample
 
@@ -361,7 +361,7 @@ Peerに対する全ての接続を終了したときのイベントです。
 
 |Type|Description|
 |----|----|
-|[DataConnection](dataconnection)|DataConnectionのインスタンスです。|
+|[DataConnection](../dataconnection)|DataConnectionのインスタンスです。|
 
 #### sample
 
