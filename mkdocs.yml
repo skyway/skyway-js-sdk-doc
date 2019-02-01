@@ -23,6 +23,7 @@ theme:
     name: 'material'
     language: 'en'
     logo: 'images/skyway-symbol.svg'
+    favicon: 'images/favicon.png'
 extra:
     search:
         language: 'ja'
