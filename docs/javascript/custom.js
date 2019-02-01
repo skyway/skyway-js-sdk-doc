@@ -64,22 +64,22 @@ function appendSideBarLink(lang, isRoot) {
     };
   });
 
-  const dest = document.querySelector('.md-nav__list');
-  const frag = document.createElement('div');
-  // hr between original nav and our custom nav
-  frag.innerHTML = `<li><hr class="${SKYWAY_MODIFIER}"></li>`;
+  const sideNav = document.querySelector('.md-nav.md-nav--primary');
+  // need to create another ul to avoid conflict with material's list toggler
+  const dest = document.createElement('ul');
+  dest.classList.add('md-nav__list', SKYWAY_MODIFIER);
 
   // root only needs home
   if (isRoot) {
     const link = links.pop();
-    frag.innerHTML += createLinkHtml(link);
+    dest.innerHTML += createLinkHtml(link);
   } else {
     for (const link of links) {
-      frag.innerHTML += createLinkHtml(link);
+      dest.innerHTML += createLinkHtml(link);
     }
   }
 
-  dest.innerHTML += frag.innerHTML;
+  sideNav.append(dest);
 
   function createLinkHtml({ href, text, icon }) {
     return `<li class="md-nav__item">

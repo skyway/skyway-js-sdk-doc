@@ -9,10 +9,8 @@
 }
 
 /* サイドバーの独自追加リンクへのスタイル */
-.md-nav__list hr.-skyway {
+.md-nav__list.-skyway {
   border-top: 1px solid #8a8a8a;
-  margin: 1.2rem;
-  height: 0px;
 }
 .md-nav__link.-skyway {
   color: rgba(0, 0, 0, .5);
