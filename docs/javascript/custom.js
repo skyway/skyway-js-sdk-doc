@@ -13,8 +13,8 @@
  */
 
 const SKYWAY_MODIFIER = '-skyway';
+const SITE_URL = 'https://webrtc.ecl.ntt.com/';
 document.addEventListener('DOMContentLoaded', function() {
-  const siteUrl = 'https://webrtc.ecl.ntt.com/';
   // find /en/ or /ja/ or...
   const langInPathname = /\/([a-z]{2})\//.exec(location.pathname);
   // default is ja
@@ -22,16 +22,20 @@ document.addEventListener('DOMContentLoaded', function() {
   const isRoot = langInPathname === null;
 
   fixHeaderStyle();
-  appendSideBarLink(lang, isRoot, siteUrl);
-  disableFooterNavigation();
-  fixFooterNavigationSocialHomeLink(lang, siteUrl);
+  fixFooterNavigationStyle();
+  appendSideBarLink(lang, isRoot);
+  fixFooterNavigationSocialHomeLink(lang);
 });
 
 function fixHeaderStyle() {
   document.querySelector('.md-header').classList.add(SKYWAY_MODIFIER);
 }
 
-function appendSideBarLink(lang, isRoot, siteUrl) {
+function fixFooterNavigationStyle() {
+  document.querySelector('.md-footer-nav').classList.add(SKYWAY_MODIFIER);
+}
+
+function appendSideBarLink(lang, isRoot) {
   const langData = {
     ja: {
       sdk: 'JavaScript SDKに戻る',
@@ -56,7 +60,7 @@ function appendSideBarLink(lang, isRoot, siteUrl) {
     return {
       icon: nav.icon,
       text: langData[lang][nav.key],
-      href: siteUrl + path,
+      href: SITE_URL + path,
     };
   });
 
@@ -87,14 +91,10 @@ function appendSideBarLink(lang, isRoot, siteUrl) {
   }
 }
 
-function disableFooterNavigation() {
-  document.querySelector('.md-footer-nav').classList.add(SKYWAY_MODIFIER);
-}
-
-function fixFooterNavigationSocialHomeLink(lang, siteUrl) {
+function fixFooterNavigationSocialHomeLink(lang) {
   // default
   if (lang === 'ja') { return; }
 
   const link = document.querySelector('.md-footer-social__link.fa.fa-home');
-  link.href = `${siteUrl}${lang}`;
+  link.href = `${SITE_URL}${lang}`;
 }
