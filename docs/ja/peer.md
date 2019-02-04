@@ -102,6 +102,7 @@ const peer = new Peer({
 | audioCodec          | string  |          |         | 'PCMU'などの音声コーデックです。                                           |
 | videoReceiveEnabled | boolean |          |         | 映像を受信のみで使う場合のフラグです。                                     |
 | audioReceiveEnabled | boolean |          |         | 音声を受信のみで使う場合のフラグです。                                     |
+| connectionId        | string  |          |         | コネクションを識別するIDです。                                             |
 | label               | string  |          |         | **Deprecated!** 接続先のPeer IDを識別するのに利用するラベルです。          |
 
 #### Return value
@@ -156,6 +157,7 @@ const call = peer.call('peerID', null, {
 | metadata      | Object                                                                            |          |          | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。                                                                                                            |
 | serialization | string                                                                            |          | 'binary' | 送信時のシリアライズ方法を指定します。'binary'、'json'、'none'のいずれか、となります。                                                                                                |
 | dcInit        | [RTCDataChannelInit Object](https://www.w3.org/TR/webrtc/#dom-rtcdatachannelinit) |          | {}       | DataChannel利用時に信頼性の有無を指定するためのオプションです。デフォルトでは信頼性有で動作します。なお、chromeは、`maxPacketLifetime` の代わりに、`maxRetransmitTime` を利用します。 |
+| connectionId        | string  |          |         | コネクションを識別するIDです。                                             |
 | label         | string                                                                            |          |          | **Deprecated!** 接続先のPeer IDを識別するのに利用するラベルです。                                                                                                                     |
 
 #### Return value
@@ -309,6 +311,21 @@ peer.listAllPeers(peers => {
 });
 ```
 
+### getConnection
+
+作成したMediaConnectionおよびDataConnectionを取得します。
+
+#### Parameters
+
+| Name         | Type   | Required | Default | Description            |
+| ------------ | ------ | -------- | ------- | ---------------------- |
+| peerId       | string | ✔        |         | Peer IDです。          |
+| connectionId | string | ✔        |         | コネクションのIDです。 |
+
+#### Return value
+
+[MediaConnection](../mediaconnection)のインスタンス、または[DataConnection](../dataconnection)のインスタンス、または`null`
+
 ### updateCredential
 
 Peer認証のクレデンシャルのTTLを延長するための更新リクエストの送付します。
@@ -316,9 +333,9 @@ Peer認証については、[コチラ](https://github.com/skyway/skyway-peer-au
 
 #### Parameters
 
-| Name | Type | Required | Default | Description |
-| --- | --- | --- | --- | --- |
-| mode | [credential object](#credential-object)| ✔ | |   ユーザー側で作成する新しいクレデンシャルです。 |
+| Name | Type                                    | Required | Default | Description                                    |
+| ---- | --------------------------------------- | -------- | ------- | ---------------------------------------------- |
+| mode | [credential object](#credential-object) | ✔        |         | ユーザー側で作成する新しいクレデンシャルです。 |
 
 #### Return value
 
