@@ -224,6 +224,24 @@ None
 peer.disconnect();
 ```
 
+### reconnect
+
+シグナリングサーバへ再接続をします。
+
+#### Parameters
+
+None
+
+#### Return value
+
+`undefined`
+
+#### Sample
+
+```js
+peer.reconnect();
+```
+
 ### joinRoom
 
 メッシュ接続のルーム、またはSFU接続のルームに参加します。メッシュ接続およびSFU接続については[コチラ](https://webrtc.ecl.ntt.com/sfu.html)を確認ください。
