@@ -5,6 +5,8 @@ P2P接続およびルーム接続機能を操作するためのクラスです�
 新規にPeerインスタンスを生成します。
 `new Peer()` により、SkyWayのシグナリングサーバと接続します。
 
+`Peer`は、[EventEmitter](https://nodejs.org/api/events.html)を継承しているため、`on`や`off`、`once`などのメソッドも利用できます。
+
 ### Parameter
 
 | Name    | Type                              | Required | Default | Description                                      |
@@ -343,29 +345,37 @@ Peer認証については、[コチラ](https://github.com/skyway/skyway-peer-au
 
 ## Events
 
+イベント名の一覧は、`Peer`クラスの`EVENTS`からも参照できます。
+
+```js
+// これらは同じ意味
+peer.on('open', () => {});
+peer.on(Peer.EVENTS.open, () => {});
+```
+
 ### open
 
 シグナリングサーバへ正常に接続できたときのイベントです。
 
-|Type|Description|
-|----|----|
-|string|Peer ID|
+| Type   | Description |
+| ------ | ----------- |
+| string | Peer ID     |
 
 #### Sample
 
 ```js
 peer.on('open', id => {
   console.log(id);
-})
+});
 ```
 
 ### call
 
 接続先のPeerからメディアチャネル(音声・映像)の接続を受信したときのイベントです。
 
-|Type|Description|
-|----|----|
-|[MediaConnection](../mediaconnection)|MediaConnectionのインスタンスです。|
+| Type                                  | Description                         |
+| ------------------------------------- | ----------------------------------- |
+| [MediaConnection](../mediaconnection) | MediaConnectionのインスタンスです。 |
 
 #### Sample
 
@@ -384,9 +394,9 @@ Peerに対する全ての接続を終了したときのイベントです。
 
 接続先のPeerからDataChannelの接続を受信したときのイベントです。
 
-|Type|Description|
-|----|----|
-|[DataConnection](../dataconnection)|DataConnectionのインスタンスです。|
+| Type                                | Description                        |
+| ----------------------------------- | ---------------------------------- |
+| [DataConnection](../dataconnection) | DataConnectionのインスタンスです。 |
 
 #### sample
 
@@ -400,37 +410,37 @@ peer.on('connection', connection => {
 
 シグナリングサーバから切断したときのイベントです。
 
-|Type|Description|
-|----|----|
-|string|Peer ID|
+| Type   | Description |
+| ------ | ----------- |
+| string | Peer ID     |
 
 ### expiresin
 
 クレデンシャルが失効する前に発生するイベントです。
 
-|Type|Description|
-|----|----|
-|number|クレデンシャルが失効するまでの時間(秒)です。|
+| Type   | Description                                  |
+| ------ | -------------------------------------------- |
+| number | クレデンシャルが失効するまでの時間(秒)です。 |
 
 ### error
 
 エラーが発生した場合のイベントです。
 
-|Type|Description|
-|----|----|
-|room-error|ルーム名が指定されていません|
-||ルームタイプが異なります。(メッシュルームとして作成した部屋に、SFUルーム指定で参加した場合)|
-||SFU機能が該当のAPIキーでDisabledです。利用するには、Dashboardからenableにしてください。|
-||不明なエラーが発生しました。少し待って、リトライしてください。|
-||ルームログ取得時にエラーが発生しました。少し待って、リトライしてください。|
-|authentication|指定されたクレデンシャルを用いた認証に失敗しました。|
-|permission|該当のルームの利用が許可されてません。|
-|list-error|APIキーのREST APIが許可されてません。|
-|disconnected|SkyWayのシグナリングサーバに接続されていません。|
-|socket-error|SkyWayのシグナリングサーバとの接続が失われました。|
-|invalid-id|IDが不正です。|
-|invalid-key|APIキーが無効です。|
-|server-error|SkyWayのシグナリングサーバからPeer一覧を取得できませんでした。|
+| Type           | Description                                                                                 |
+| -------------- | ------------------------------------------------------------------------------------------- |
+| room-error     | ルーム名が指定されていません                                                                |
+|                | ルームタイプが異なります。(メッシュルームとして作成した部屋に、SFUルーム指定で参加した場合) |
+|                | SFU機能が該当のAPIキーでDisabledです。利用するには、Dashboardからenableにしてください。     |
+|                | 不明なエラーが発生しました。少し待って、リトライしてください。                              |
+|                | ルームログ取得時にエラーが発生しました。少し待って、リトライしてください。                  |
+| authentication | 指定されたクレデンシャルを用いた認証に失敗しました。                                        |
+| permission     | 該当のルームの利用が許可されてません。                                                      |
+| list-error     | APIキーのREST APIが許可されてません。                                                       |
+| disconnected   | SkyWayのシグナリングサーバに接続されていません。                                            |
+| socket-error   | SkyWayのシグナリングサーバとの接続が失われました。                                          |
+| invalid-id     | IDが不正です。                                                                              |
+| invalid-key    | APIキーが無効です。                                                                         |
+| server-error   | SkyWayのシグナリングサーバからPeer一覧を取得できませんでした。                              |
 
 #### Sample
 
