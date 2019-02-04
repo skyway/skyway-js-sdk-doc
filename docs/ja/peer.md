@@ -85,24 +85,24 @@ const peer = new Peer({
 
 #### Parameters
 
-| Name | Type | Required | Default | Description |
-| --- | --- | --- | --- | --- |
-| peerId | string | ✔ | | 接続先のPeer IDです。 |
-| stream | MediaStream | | | 接続先のPeerへ送るメディアストリームです。 設定されていない場合は、受信のみモードで発信します。 |
-| options | [call options object](#call-options-object) | | |発信時に付与するオプションです。帯域幅・コーデックなどを指定します。 |
+| Name    | Type                                        | Required | Default | Description                                                                                     |
+| ------- | ------------------------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------- |
+| peerId  | string                                      | ✔        |         | 接続先のPeer IDです。                                                                           |
+| stream  | MediaStream                                 |          |         | 接続先のPeerへ送るメディアストリームです。 設定されていない場合は、受信のみモードで発信します。 |
+| options | [call options object](#call-options-object) |          |         | 発信時に付与するオプションです。帯域幅・コーデックなどを指定します。                            |
 
 ##### call options object
 
-| Name | Type | Required | Default | Description |
-| --- | --- | --- | --- | --- |
-| metadata | object | | | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。 |
-| videoBandwidth | number | | | 接続先から受信する映像の最大帯域幅(kbps)です。|
-| audioBandwidth | number | | | 接続先から受信する音声の最大帯域幅(kbps)です。|
-| videoCodec | string | | | 'H264'などの映像コーデックです。 |
-| audioCodec | string | | | 'PCMU'などの音声コーデックです。 |
-| videoReceiveEnabled | boolean | | | 映像を受信のみで使う場合のフラグです。|
-| audioReceiveEnabled | boolean | | | 音声を受信のみで使う場合のフラグです。|
-| label | string | | | **Deprecated!** 接続先のPeer IDを識別するのに利用するラベルです。 |
+| Name                | Type    | Required | Default | Description                                                                |
+| ------------------- | ------- | -------- | ------- | -------------------------------------------------------------------------- |
+| metadata            | Object  |          |         | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。 |
+| videoBandwidth      | number  |          |         | 接続先から受信する映像の最大帯域幅(kbps)です。                             |
+| audioBandwidth      | number  |          |         | 接続先から受信する音声の最大帯域幅(kbps)です。                             |
+| videoCodec          | string  |          |         | 'H264'などの映像コーデックです。                                           |
+| audioCodec          | string  |          |         | 'PCMU'などの音声コーデックです。                                           |
+| videoReceiveEnabled | boolean |          |         | 映像を受信のみで使う場合のフラグです。                                     |
+| audioReceiveEnabled | boolean |          |         | 音声を受信のみで使う場合のフラグです。                                     |
+| label               | string  |          |         | **Deprecated!** 接続先のPeer IDを識別するのに利用するラベルです。          |
 
 #### Return value
 
@@ -153,7 +153,7 @@ const call = peer.call('peerID', null, {
 
 | Name | Type | Required | Default |  Description |
 | --- | --- | --- | --- | --- |
-| metadata | object | | | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。 |
+| metadata | Object | | | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。 |
 | serialization | string | | | 送信時のシリアライズ方法を指定します。'binary'、'json'、'none'のいずれか、となります。 |
 | dcInit | [RTCDataChannelInit Object](https://www.w3.org/TR/webrtc/#dom-rtcdatachannelinit) | | |DataChannel利用時に信頼性の有無を指定するためのオプションです。デフォルトでは信頼性有で動作します。なお、chromeは、`maxPacketLifetime` の代わりに、`maxRetransmitTime` を利用します。 |
 | label | string | | | **Deprecated!** 接続先のPeer IDを識別するのに利用するラベルです。 |
