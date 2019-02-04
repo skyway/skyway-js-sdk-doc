@@ -1,20 +1,17 @@
-.md-header {
-  background-color: #004386 !important
+/* ヘッダの帯色をテーマカラーに */
+.md-header.-skyway {
+  background-color: #004386;
 }
-.en .ja-item, .ja .en-item {
+
+/* フッタナビは不要 */
+.md-footer-nav.-skyway {
   display: none;
 }
-.root .hidden-root-item {
-  display: none;
-}
-.md-nav__list hr {
+
+/* サイドバーの独自追加リンクへのスタイル */
+.md-nav__list.-skyway {
   border-top: 1px solid #8a8a8a;
-  margin: 1.2rem;
-  height: 0px;
 }
-.md-footer-nav__inner {
-  display: none;
-}
-.md-nav__link.backlink {
-  color: rgba(0,0,0,0.54);
+.md-nav__link.-skyway {
+  color: rgba(0, 0, 0, .5);
 }
