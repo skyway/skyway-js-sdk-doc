@@ -1,18 +1,10 @@
 # How to serve this on localhost
 
-We recommend to use [pipenv](https://github.com/pypa/pipenv).
+We require [pipenv](https://github.com/pypa/pipenv) to serve this documentaiton.
 
-1. Run `pipenv install` to resolve dependencies
-2. Run `pipenv run python -m mkdocs serve`, then access to http://localhost:8000
-
-# Install modules without pipenv
-
-If you're not using `pipenv` to manage packages, generate requirements.txt and use it.
-
-```
-pipenv lock -r > requirements.txt
-pip install -r requirements.txt
-```
+1. (If you do not have `pipenv` yet) Run `pip install pipenv` to install `pipenv`.
+2. Run `pipenv install` to resolve dependencies.
+3. Run `pipenv run python -m mkdocs serve`, then access to http://localhost:8000
 
 # How to deploy
 
