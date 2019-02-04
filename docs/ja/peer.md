@@ -298,7 +298,7 @@ REST APIを利用して、APIキーに紐づくPeerID一覧を取得します。
 
 #### Parameters
 
-None
+Peer ID一覧を受け取る関数を指定します。
 
 #### Return value
 
