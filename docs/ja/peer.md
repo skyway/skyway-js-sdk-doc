@@ -144,19 +144,19 @@ const call = peer.call('peerID', null, {
 
 #### Parameters
 
-| Name | Type | Required | Default | Description |
-| --- | --- | --- | --- |  --- |
-| peerId | string | ✔ | |  接続先のPeer IDです。|
-| options | [connect options object](#connect-options-object) | | | 接続時に付与するオプションです。 |
+| Name    | Type                                              | Required | Default | Description                      |
+| ------- | ------------------------------------------------- | -------- | ------- | -------------------------------- |
+| peerId  | string                                            | ✔        |         | 接続先のPeer IDです。            |
+| options | [connect options object](#connect-options-object) |          |         | 接続時に付与するオプションです。 |
 
 ##### connect options object
 
-| Name | Type | Required | Default |  Description |
-| --- | --- | --- | --- | --- |
-| metadata | Object | | | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。 |
-| serialization | string | | | 送信時のシリアライズ方法を指定します。'binary'、'json'、'none'のいずれか、となります。 |
-| dcInit | [RTCDataChannelInit Object](https://www.w3.org/TR/webrtc/#dom-rtcdatachannelinit) | | |DataChannel利用時に信頼性の有無を指定するためのオプションです。デフォルトでは信頼性有で動作します。なお、chromeは、`maxPacketLifetime` の代わりに、`maxRetransmitTime` を利用します。 |
-| label | string | | | **Deprecated!** 接続先のPeer IDを識別するのに利用するラベルです。 |
+| Name          | Type                                                                              | Required | Default  | Description                                                                                                                                                                           |
+| ------------- | --------------------------------------------------------------------------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| metadata      | Object                                                                            |          |          | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。                                                                                                            |
+| serialization | string                                                                            |          | 'binary' | 送信時のシリアライズ方法を指定します。'binary'、'json'、'none'のいずれか、となります。                                                                                                |
+| dcInit        | [RTCDataChannelInit Object](https://www.w3.org/TR/webrtc/#dom-rtcdatachannelinit) |          | {}       | DataChannel利用時に信頼性の有無を指定するためのオプションです。デフォルトでは信頼性有で動作します。なお、chromeは、`maxPacketLifetime` の代わりに、`maxRetransmitTime` を利用します。 |
+| label         | string                                                                            |          |          | **Deprecated!** 接続先のPeer IDを識別するのに利用するラベルです。                                                                                                                     |
 
 #### Return value
 
