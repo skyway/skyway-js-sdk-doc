@@ -3,14 +3,15 @@
 ## Constructor
 
 SDK内部の利用のみで、コンストラクタは通常利用しません。
-MeshRoomのインスタンスは、`joinRoom()` で生成されます。
-
-`MeshRoom`は、[EventEmitter](https://nodejs.org/api/events.html)を継承しているため、`on`や`off`、`once`などのメソッドも利用できます。
+MeshRoomのインスタンスは、[`Peer#joinRoom()`](../peer#joinroom) で生成されます。
 
 ### Sample
 
 ```js
-const meshRoom = peer.joinRoom('roomName');
+const meshRoom = peer.joinRoom('roomName', {
+  mode: 'mesh',
+  stream: localStream,
+});
 meshRoom.on('open', () => {});
 ```
 
@@ -19,11 +20,11 @@ meshRoom.on('open', () => {});
 | Name        | Type   | Description                                        |
 | ----------- | ------ | -------------------------------------------------- |
 | name        | string | ルーム名です。                                     |
-| connections | Object | ルーム内のコネクションを保持するオブジェクトです。 |
+| connections | Object | Peer IDをキーに、ルーム内のコネクションを保持するオブジェクトです。 |
 
 ## Methods
 
-### close
+### close()
 
 ルームを退出し、ルーム内のすべてのユーザーとのコネクションをcloseします。
 
@@ -35,13 +36,7 @@ None
 
 `undefined`
 
-#### Sample
-
-```js
-room.close();
-```
-
-### getLog
+### getLog()
 
 シグナリングサーバにルームのログ取得を要求します。
 シグナリングサーバからログを受信すると、`log`イベントが発火します。
@@ -57,10 +52,13 @@ None
 #### Sample
 
 ```js
+room.once('log', log => {
+  // ...
+});
 room.getLog();
 ```
 
-### replaceStream
+### replaceStream()
 
 送信しているMediaStreamを更新します。受信のみモードから双方向に切り替えできます。
 また、音声のみのストリームから、音声＋映像のストリームへの変更もできます。
@@ -75,14 +73,7 @@ room.getLog();
 
 `undefined`
 
-#### Sample
-
-```js
-// newStream
-meshRoom.replaceStream(newStream);
-```
-
-### send
+### send()
 
 WebSocketを使用してルーム内の全てのユーザーにデータを送信します。
 
@@ -98,35 +89,52 @@ WebSocketを使用してルーム内の全てのユーザーにデータを送�
 
 ## Events
 
-### open
+### Event: `'open'`
 
 新規にPeerがルームへ入室したときに発生します。
 
-### peerJoin
+```js
+room.on('open', () => {
+  // ...
+});
+```
+
+### Event: `'peerJoin'`
 
 ルームに新しいPeerが参加したときに発生します。
 
-| Type   | Description    |
-| ------ | -------------- |
-| string | 参加したPeerID |
+| Name   | Type   | Description    |
+| ------ | ------ | -------------- |
+| peerId | string | 参加したPeerのIDです。 |
 
-### peerLeave
+```js
+room.on('peerJoin', peerId => {
+  // ...
+});
+```
+
+### Event: `'peerLeave'`
 
 新規にPeerがルームを退出したときに発生します。
 
-| Type   | Description    |
-| ------ | -------------- |
-| string | 退出したPeerID |
+| Name   | Type   | Description    |
+| ------ | ------ | -------------- |
+| peerId | string | 退出したPeerのIDです。 |
 
-### log
+```js
+room.on('peerLeave', peerId => {
+  // ...
+});
+```
+
+### Event: `'log'`
 
 ルームのログを受信したときに発生します。
 
-| Type     | Description                  |
-| -------- | ---------------------------- |
-| string[] | ログ（JSON文字列）の配列です |
+| Name | Type     | Description                  |
+| ---- | -------- | ---------------------------- |
+| logs | string[] | ログ（JSON文字列）の配列です。 |
 
-#### Sample
 ```js
 room.once('log', logs => {
   for (const logStr of logs) {
@@ -136,29 +144,28 @@ room.once('log', logs => {
 });
 ```
 
-### stream
+### Event: `'stream'`
 
 ルームにJoinしている他のユーザのストリームを受信した時に発生します。ストリーム送信元のpeerIdは stream.peerId で取得できます。
 
-| Type        | Description                     |
-| ----------- | ------------------------------- |
-| MediaStream | MediaStreamのインスタンスです。 |
-
-#### Sample
+| Name   | Type        | Description                     |
+| ------ | ----------- | ------------------------------- |
+| stream | MediaStream | MediaStreamのインスタンスです。 |
 
 ```js
 room.on('stream', stream => {
-  // Streamをvideoタグに設定など
+  // ...
 });
 ```
 
-### data
+### Event: `'data'`
 
 他のユーザーから送信されたデータを受信した時に発生します。
 
-| Type   | Description                                         |
-| ------ | --------------------------------------------------- |
-| object | [data object](#data-object)形式のオブジェクトです。 |
+| Name | Type   | Description                                         |
+| ---- | ------ | --------------------------------------------------- |
+| data | object | [data object](#data-object)形式のオブジェクトです。 |
+
 
 #### data object
 
@@ -167,23 +174,34 @@ room.on('stream', stream => {
 | src  | string | データを送信したPeerのIDです。 |
 | data | *      | 受信したデータです。           |
 
-### close
+```js
+room.on('data', ({ src, data }) => {
+  // ...
+});
+```
+
+### Event: `'close'`
 
 ルームをcloseしたときに発生します。
 
-### removeStream
-
-ルームから[MediaStream](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream)が削除されたときに発生します。
-
-| Type        | Description                     |
-| ----------- | ------------------------------- |
-| MediaStream | MediaStreamのインスタンスです。 |
-
-#### Sample
-
 ```js
-meshRoom.on('removeStream', stream => {
-  // 削除されたストリームを持つPeerIDを取得
-  const peerId = stream.peerId;
+room.on('close', () => {
+  // ...
 });
 ```
+
+### Event: `'removeStream'`
+
+ルームから[MediaStream]が削除されたときに発生します。
+
+| Name   | Type        | Description                     |
+| ------ | ----------- | ------------------------------- |
+| stream | [MediaStream] | [MediaStream]のインスタンスです。 |
+
+```js
+room.on('removeStream', stream => {
+  // ...
+});
+```
+
+[MediaStream]: https://w3c.github.io/mediacapture-main/#mediastream
