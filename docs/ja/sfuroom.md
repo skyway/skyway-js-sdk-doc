@@ -37,7 +37,6 @@ None
 
 `undefined`
 
-
 ### getLog()
 
 シグナリングサーバにルームのログ取得を要求します。
@@ -169,7 +168,6 @@ room.on('stream', stream => {
 | ---- | ------ | --------------------------------------------------- |
 | data | object | [data object](#data-object)形式のオブジェクトです。 |
 
-
 #### data object
 
 | Name | Type   | Description                    |
@@ -195,7 +193,7 @@ room.on('close', () => {
 
 ### Event: `'removeStream'` **Deprecated!**
 
-*このイベントは現在非推奨です。*
+*!!! このイベントは現在非推奨です。 !!!*
 
 MediaStreamがルーム内のMediaConnectionから削除されたときに発生します。
 

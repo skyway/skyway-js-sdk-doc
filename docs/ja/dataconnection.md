@@ -38,7 +38,7 @@ peer.on('connection', dataConnection => {
 |------|------|----------|---------|--------------------------------|
 | data | *    | ✔        |         | 接続先のPeerへ送るデータです。 |
 
-#### Return value 
+#### Return value
 
 `undefined`
 
@@ -64,11 +64,12 @@ dataConnection.on('data', { name, msg } => {
 接続先PeerとのDataConnectionの接続を切断します。
 
 #### Parameters
+
 None
 
 #### Return value
-`undefined`
 
+`undefined`
 
 ## Events
 

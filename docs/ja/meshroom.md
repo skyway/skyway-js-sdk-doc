@@ -167,7 +167,6 @@ room.on('stream', stream => {
 | ---- | ------ | --------------------------------------------------- |
 | data | object | [data object](#data-object)形式のオブジェクトです。 |
 
-
 #### data object
 
 | Name | Type   | Description                    |
@@ -193,7 +192,7 @@ room.on('close', () => {
 
 ### Event: `'removeStream'` **Deprecated!**
 
-*このイベントは現在非推奨です。*
+*!!! このイベントは現在非推奨です。 !!!*
 
 MediaStreamがルーム内の接続中のMediaConnectionから削除されたときに発生します。
 
