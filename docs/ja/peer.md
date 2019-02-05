@@ -5,8 +5,6 @@ P2P接続およびルーム接続機能を操作するためのクラスです�
 新規にPeerインスタンスを生成します。
 `new Peer()` により、SkyWayのシグナリングサーバと接続します。
 
-`Peer`は、[EventEmitter](https://nodejs.org/api/events.html)を継承しているため、`on`や`off`、`once`などのメソッドも利用できます。
-
 ### Parameter
 
 | Name    | Type                              | Required | Default | Description                                      |
@@ -22,7 +20,7 @@ P2P接続およびルーム接続機能を操作するためのクラスです�
 | debug      | number                                                                                  |          | NONE: 0                                                                    | ログレベル： NONE:0、 ERROR:1、 WARN:2、 FULL:3 から選択できます。                                                                                                                |
 | turn       | boolean                                                                                 |          | true                                                                    | SkyWayで提供するTURNを使うかどうかのフラグです。                                                                                                                                  |
 | credential | [credential object](#credential-object)                                                 |          |                                                                     | Peerを認証するためのクレデンシャルです。認証機能が有効の場合のみ使えます。詳細は[認証リポジトリ](https://github.com/skyway/skyway-peer-authentication-samples)をご確認ください。  |
-| config     | [RTCConfiguration object](https://w3c.github.io/webrtc-pc/#rtcconfiguration-dictionary) |          | [Default RTCConfiguration object](#default-rtcconfiguration-object) | [RTCPeerConnectionに渡されるオブジェクト](https://w3c.github.io/webrtc-pc/#rtcconfiguration-dictionary)です。発展的なオプションのため、内容を理解している場合のみご利用ください。 |
+| config     | [RTCConfiguration] |          | [Default RTCConfiguration object](#default-rtcconfiguration-object) | RTCPeerConnectionに渡される[RTCConfiguration]です。発展的なオプションのため、内容を理解している場合のみご利用ください。 |
 
 #### credential object
 
@@ -77,11 +75,11 @@ const peer = new Peer({
 | open        | boolean | シグナリングサーバへの接続状況を保持します。                     |
 | connections | Object  | 全てのコネクションを保持するオブジェクトです。                   |
 | rooms       | Object  | 全てのルームを保持するオブジェクトです。                         |
-| options     | Object  | Constructor()での指定と、SDKのデフォルト設定を反映したオブジェクトです。                                                                 |
+| options     | Object  | [Constructor()](#constructor)での指定と、SDKのデフォルト設定を反映したオブジェクトです。                                                                 |
 
 ## Methods
 
-### call
+### call()
 
 指定したPeerにメディアチャネル(音声・映像)で接続して、MediaConnectionを作成します。 オプションを指定することで、帯域幅・コーデックなどを指定できます。
 
@@ -90,7 +88,7 @@ const peer = new Peer({
 | Name    | Type                                        | Required | Default | Description                                                                                     |
 | ------- | ------------------------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------- |
 | peerId  | string                                      | ✔        |         | 接続先のPeer IDです。                                                                           |
-| stream  | MediaStream                                 |          |         | 接続先のPeerへ送るメディアストリームです。 設定されていない場合は、受信のみモードで発信します。 |
+| stream  | [MediaStream]                                 |          |         | 接続先のPeerへ送るメディアストリームです。 設定されていない場合は、受信のみモードで発信します。 |
 | options | [call options object](#call-options-object) |          |         | 発信時に付与するオプションです。帯域幅・コーデックなどを指定します。                            |
 
 ##### call options object
@@ -141,7 +139,7 @@ const call = peer.call('peerID', null, {
 });
 ```
 
-### connect
+### connect()
 
 指定したPeerにデータチャネルで接続して、DataConnectionインスタンスを生成します。
 
@@ -158,7 +156,7 @@ const call = peer.call('peerID', null, {
 | ------------- | --------------------------------------------------------------------------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | metadata      | Object                                                                            |          |          | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。                                                                                                            |
 | serialization | string                                                                            |          | 'binary' | 送信時のシリアライズ方法を指定します。'binary'、'json'、'none'のいずれか、となります。                                                                                                |
-| dcInit        | [RTCDataChannelInit Object](https://www.w3.org/TR/webrtc/#dom-rtcdatachannelinit) |          | {}       | DataChannel利用時に信頼性の有無を指定するためのオプションです。デフォルトでは信頼性有で動作します。なお、chromeは、`maxPacketLifetime` の代わりに、`maxRetransmitTime` を利用します。 |
+| dcInit        | [RTCDataChannelInit] |          | {}       | DataChannel利用時に信頼性の有無を指定するためのオプションです。デフォルトでは信頼性有で動作します。なお、chromeは、`maxPacketLifetime` の代わりに、`maxRetransmitTime` を利用します。 |
 | connectionId        | string  |          |         | コネクションを識別するIDです。                                             |
 | label         | string                                                                            |          |          | **Deprecated!** 接続先のPeer IDを識別するのに利用するラベルです。                                                                                                                     |
 
@@ -192,7 +190,7 @@ peer.connect('peerId', {
 });
 ```
 
-### destroy
+### destroy()
 
 全てのコネクションを閉じ、シグナリングサーバへの接続を切断します。
 
@@ -204,13 +202,7 @@ None
 
 `undefined`
 
-#### Sample
-
-```js
-peer.destroy();
-```
-
-### disconnect
+### disconnect()
 
 シグナリングサーバへの接続を閉じ、disconnectedイベントを送出します。
 
@@ -222,13 +214,7 @@ None
 
 `undefined`
 
-#### Sample
-
-```js
-peer.disconnect();
-```
-
-### reconnect
+### reconnect()
 
 シグナリングサーバへ再接続をします。
 
@@ -240,13 +226,7 @@ None
 
 `undefined`
 
-#### Sample
-
-```js
-peer.reconnect();
-```
-
-### joinRoom
+### joinRoom()
 
 メッシュ接続のルーム、またはSFU接続のルームに参加します。メッシュ接続およびSFU接続については[コチラ](https://webrtc.ecl.ntt.com/sfu.html)を確認ください。
 
@@ -278,7 +258,7 @@ peer.reconnect();
 
 ```js
 // Mesh接続を利用する場合
-const room = peer.joinRoom("roomName", {
+const room = peer.joinRoom('roomName', {
   mode: 'mesh',
   stream: localStream,
 });
@@ -286,13 +266,13 @@ const room = peer.joinRoom("roomName", {
 
 ```js
 // SFU接続を利用する場合
-const room = peer.joinRoom("roomName", {
+const room = peer.joinRoom('roomName', {
   mode: 'sfu',
   stream: localStream,
 });
 ```
 
-### listAllPeers
+### listAllPeers()
 
 REST APIを利用して、APIキーに紐づくPeerID一覧を取得します。
 
@@ -313,7 +293,7 @@ peer.listAllPeers(peers => {
 });
 ```
 
-### getConnection
+### getConnection()
 
 作成したMediaConnectionおよびDataConnectionを取得します。
 
@@ -328,7 +308,7 @@ peer.listAllPeers(peers => {
 
 [MediaConnection](../mediaconnection)のインスタンス、または[DataConnection](../dataconnection)のインスタンス、または`null`
 
-### updateCredential
+### updateCredential()
 
 Peer認証のクレデンシャルのTTLを延長するための更新リクエストの送付します。
 Peer認証については、[コチラ](https://github.com/skyway/skyway-peer-authentication-samples)をご確認ください。
@@ -345,7 +325,7 @@ Peer認証については、[コチラ](https://github.com/skyway/skyway-peer-au
 
 ## Events
 
-イベント名の一覧は、`Peer`クラスの`EVENTS`からも参照できます。
+それぞれのイベント名は、`Peer`クラスの`EVENTS`プロパティからも参照できます。
 
 ```js
 // これらは同じ意味
@@ -353,78 +333,96 @@ peer.on('open', () => {});
 peer.on(Peer.EVENTS.open, () => {});
 ```
 
-### open
+### Event: open
 
 シグナリングサーバへ正常に接続できたときのイベントです。
 
-| Type   | Description |
-| ------ | ----------- |
-| string | Peer ID     |
-
-#### Sample
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| id   | string | Peer ID     |
 
 ```js
 peer.on('open', id => {
-  console.log(id);
+  // ...
 });
 ```
 
-### call
+### Event: call
 
 接続先のPeerからメディアチャネル(音声・映像)の接続を受信したときのイベントです。
 
-| Type                                  | Description                         |
-| ------------------------------------- | ----------------------------------- |
-| [MediaConnection](../mediaconnection) | MediaConnectionのインスタンスです。 |
-
-#### Sample
+| Name | Type                                  | Description                           |
+| ---- | ------------------------------------- | ------------------------------------- |
+| call | [MediaConnection](../mediaconnection) | [MediaConnection](../mediaconnection)のインスタンスです。 |
 
 ```js
 peer.on('call', call => {
-  // 着信側のメディアストリームを設定して応答
-  call.answer(mediaStream);
+  // ...
 });
 ```
 
-### close
+### Event: close
 
 Peerに対する全ての接続を終了したときのイベントです。
 
-### connection
-
-接続先のPeerからDataChannelの接続を受信したときのイベントです。
-
-| Type                                | Description                        |
-| ----------------------------------- | ---------------------------------- |
-| [DataConnection](../dataconnection) | DataConnectionのインスタンスです。 |
-
-#### sample
-
 ```js
-peer.on('connection', connection => {
-  console.log(connection);
+peer.on('close', () => {
+  // ...
 });
 ```
 
-### disconnected
+### Event: connection
+
+接続先のPeerからDataChannelの接続を受信したときのイベントです。
+
+| Name | Type                                | Description                        |
+| ---- | ----------------------------------- | ---------------------------------- |
+| conn | [DataConnection](../dataconnection) | [DataConnection](../dataconnection)のインスタンスです。 |
+
+
+```js
+peer.on('connection', conn => {
+  // ...
+});
+```
+
+### Event: disconnected
 
 シグナリングサーバから切断したときのイベントです。
 
-| Type   | Description |
-| ------ | ----------- |
-| string | Peer ID     |
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| id   | string | Peer ID     |
 
-### expiresin
+```js
+peer.on('disconnected', id => {
+  // ...
+});
+```
+
+### Event: expiresin
 
 クレデンシャルが失効する前に発生するイベントです。
 
-| Type   | Description                                  |
-| ------ | -------------------------------------------- |
-| number | クレデンシャルが失効するまでの時間(秒)です。 |
+| Name | Type   | Description                                  |
+| ---- | ------ | -------------------------------------------- |
+| sec  | number | クレデンシャルが失効するまでの時間(秒)です。 |
 
-### error
+```js
+peer.on('expiresin', sec => {
+  // ...
+});
+```
+
+### Event: error
 
 エラーが発生した場合のイベントです。
+
+| Name  | Type  | Description              |
+| ----- | ----- | ------------------------ |
+| error | Error | エラーオブジェクトです。 |
+
+`type`プロパティから以下を判別できます。
 
 | Type           | Description                                                                                 |
 | -------------- | ------------------------------------------------------------------------------------------- |
@@ -442,8 +440,6 @@ peer.on('connection', connection => {
 | invalid-key    | APIキーが無効です。                                                                         |
 | server-error   | SkyWayのシグナリングサーバからPeer一覧を取得できませんでした。                              |
 
-#### Sample
-
 ```js
 // 仮にRoom名を指定せずにjoinRoomを呼んだ場合
 peer.on('error', error => {
@@ -451,3 +447,7 @@ peer.on('error', error => {
   // => room-error: Room name must be defined.
 });
 ```
+
+[RTCConfiguration]: https://w3c.github.io/webrtc-pc/#rtcconfiguration-dictionary
+[MediaStream]: https://w3c.github.io/mediacapture-main/#mediastream
+[RTCDataChannelInit]: https://w3c.github.io/webrtc-pc/#dom-rtcdatachannelinit
