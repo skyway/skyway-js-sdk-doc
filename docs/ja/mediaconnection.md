@@ -51,7 +51,7 @@ peer.on('call', mediaConnection => {
 | videoReceiveEnabled | boolean |          | `true`  | 映像を受信のみで使う場合のフラグです。この値が`true`かつ応答する`stream`に映像トラックが含まれない場合、受信のみで映像の通信を行います。   |
 | audioReceiveEnabled | boolean |          | `true`  | 音声を受信のみで使う場合のフラグです。この値が`true`かつ応答する`stream`に音声トラックが含まれない場合、受信のみで音声の通信を行います。   |
 
-#### Return value 
+#### Return value
 
 `undefined`
 
@@ -75,7 +75,7 @@ peer.on('call', mediaConnection => {
 
 None
 
-#### Return value 
+#### Return value
 
 `undefined`
 
@@ -91,7 +91,7 @@ None
 |--------|---------------|----------|---------|-----------------------------------------|
 | stream | [MediaStream] | ✔        |         | 更新対象となる新しいMediaStreamです。 |
 
-#### Return value 
+#### Return value
 
 `undefined`
 
@@ -113,7 +113,7 @@ mediaConnection.on('stream', stream => {
 
 ### Event: `'removeStream'` **Deprecated!**
 
-*このイベントは現在非推奨です。*
+*!!! このイベントは現在非推奨です。 !!!*
 
 相手のMediaStreamが接続中のMediaConnectionから削除されたときに発生します。
 
@@ -136,6 +136,5 @@ mediaConnection.on('close', () => {
   // ...
 });
 ```
-
 
 [MediaStream]: https://w3c.github.io/mediacapture-main/#mediastream

@@ -383,7 +383,6 @@ peer.on('close', () => {
 | ---- | ----------------------------------- | ---------------------------------- |
 | conn | [DataConnection](../dataconnection) | [DataConnection](../dataconnection)のインスタンスです。 |
 
-
 ```js
 peer.on('connection', conn => {
   // ...
