@@ -2,51 +2,41 @@
 
 ## Constructor
 
-SDK内部の利用のみで、コンストラクタは通常利用しません。 
-DataConnectionは、`connect()` および `peer.on('connection')` で生成されます。
+SDK内部の利用のみで、コンストラクタは通常利用しません。
+`DataConnection`インスタンスは、[`Peer#connect()`](../peer/#connect) および[`Peer`](../peer/)の[`connection`イベント](../peer/#connection) で生成されます。
 
 ### Sample
 
 ```js
 // 発信側
-dataConnection = peer.connect('peerID');
+const dataConnection = peer.connect('peerID');
 
 // 着信側
-peer.on('connection', connection => {
-  console.log(connection);
+peer.on('connection', dataConnection => {
+  // ...
 });
 ```
 
 ## Members
 
-|Name|Type|Description|
-|----|----|----|
-|metadata|object|任意の情報を格納するオブジェクトです。|
-|open|boolean|コネクションがオープンしているかどうかを示します。|
-|remoteId|string|接続先のPeerIDです。|
-|peer|string|*Deprecated* 接続先のPeerIDです。remoteIdを使ってください。|
-
-#### Sample
-
-```js
-peer.on('connection', connection => {
-  // metadataが付与されていた場合
-  console.log(connection.metadata);
-  // => connect時に付与した、metadataを参照する
-});
-```
+| Name     | Type    | Description                                                                                                                                                                                                                   |
+|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| metadata | Object  | [`Peer#connect()`](../peer/#connect) で指定した `metadata` です。着信側には、シグナリングサーバを経由して送信されます。                                                                                                       |
+| open     | boolean | コネクションがオープンしているかどうかを示します。[`Peer#connect()`](#../peer/#connect)が呼び出された際にオープンし、[`DataConnection#close()`](#close)が呼び出されたまたはデータチャネル接続が切断された際にクローズします。 |
+| remoteId | string  | 接続先PeerのPeerIDです。                                                                                                                                                                                                      |
+| peer     | string  | *(deprecated)* 接続先PeerのPeerIDです。remoteIdを使ってください。                                                                                                                                                             |
 
 ## Methods
 
-### send
+### send()
 
-接続先のPeerにデータを送信します。シリアライズ方法が'binary'である場合は、送信前に分割します。
+接続先Peerにデータを送信します。シリアライズ方法が`'binary'`である場合は、送信前に分割します。
 
 #### Parameters
 
-| Name | Type | Required | Default | Description |
-| --- | --- | --- | --- | --- |
-| data | * | ✔ | | 接続先のPeerに送るデータです。|
+| Name | Type | Required | Default | Description                    |
+|------|------|----------|---------|--------------------------------|
+| data | *    | ✔        |         | 接続先のPeerへ送るデータです。 |
 
 #### Return value 
 
@@ -55,53 +45,54 @@ peer.on('connection', connection => {
 #### Sample
 
 ```js
-// 'hello world'という文字列を送付します。 
-dataConnection.send('hello world');
+// データを送信する
+const data = {
+  name: 'SkyWay',
+  msg: 'Hello, World!'
+};
+dataConnection.send(data);
 
-// 受信側では、次のように発火します。
-dataConnection.on('data', data => {
-  console.log('hello world');
-  // => 'hello world'
+// データを受信する
+dataConnection.on('data', { name, msg } => {
+  console.log(`${name}: ${msg}`);
+  // => 'SkyWay: Hello, World!'
 });
 ```
 
-### close
+### close()
 
-接続先PeerとのMediaConnectionを接続を切断します。
+接続先PeerとのDataConnectionの接続を切断します。
 
 #### Parameters
-
 None
 
-#### Return value 
-
+#### Return value
 `undefined`
 
-#### Sample
-
-```js
-call.close();
-```
 
 ## Events
 
-### data
+### Event: `'data'`
 
-データを受信したときに発生します。
+接続先のPeerからデータを受信したときに発生します。
+シリアライズ方法が`'binary'`である場合は、分割されたデータすべてを受信し、再結合が完了したときに発生します。
 
-| Type | Description |
-| --- | --- | 
-| * | 受信したデータです。|
-
-#### Sample
+| Name | Type | Description          |
+|------|------|----------------------|
+| data | *    | 受信したデータです。 |
 
 ```js
 dataConnection.on('data', data => {
-  console.log('hello world');
-  // => 'hello world'
+  // ...
 });
 ```
 
-### close
+### Event: `'close'`
 
-DataConnectionが切断されたときに発生します。
+[`DataConnection#close()`](#close)が呼ばれたとき、または接続先Peerとのデータチャネル接続が切断されたときに発生します。
+
+```js
+dataConnection.on('close', () => {
+  // ...
+});
+```
