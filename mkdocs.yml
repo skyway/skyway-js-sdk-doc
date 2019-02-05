@@ -35,7 +35,6 @@ markdown_extensions:
     - codehilite
     - toc:
         permalink: true
-        toc_depth: 3
 extra:
     social:
         - type: home

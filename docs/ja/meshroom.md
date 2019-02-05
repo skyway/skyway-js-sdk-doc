@@ -39,7 +39,7 @@ None
 ### getLog()
 
 シグナリングサーバにルームのログ取得を要求します。
-シグナリングサーバからログを受信すると、`log`イベントが発火します。
+シグナリングサーバからログを受信すると、[`log`イベント](#log)が発火します。
 
 #### Parameters
 
@@ -60,14 +60,15 @@ room.getLog();
 
 ### replaceStream()
 
-送信しているMediaStreamを更新します。受信のみモードから双方向に切り替えできます。
-また、音声のみのストリームから、音声＋映像のストリームへの変更もできます。
+送信しているMediaStreamを更新します。
+受信のみモードでメディアチャネル接続を行なっている状態で、
+新しいMediaStreamがメディアトラックを持つ場合、自動的に送受信モードに切り替わります。
 
 #### Parameters
 
-| Name   | Type        | Required | Default | Description                           |
-| ------ | ----------- | -------- | ------- | ------------------------------------- |
-| stream | MediaStream | ✔         |         | 新しいMediaStreamです。 |
+| Name   | Type          | Required | Default | Description                             |
+|--------|---------------|----------|---------|-----------------------------------------|
+| stream | [MediaStream] | ✔        |         | 更新対象となる新しいMediaStreamです。 |
 
 #### Return value
 
@@ -150,7 +151,7 @@ room.once('log', logs => {
 
 | Name   | Type        | Description                     |
 | ------ | ----------- | ------------------------------- |
-| stream | MediaStream | MediaStreamのインスタンスです。 |
+| stream | [MediaStream] | MediaStreamのインスタンスです。 |
 
 ```js
 room.on('stream', stream => {
@@ -190,13 +191,15 @@ room.on('close', () => {
 });
 ```
 
-### Event: `'removeStream'`
+### Event: `'removeStream'` **Deprecated!**
 
-ルームから[MediaStream]が削除されたときに発生します。
+*このイベントは現在非推奨です。*
+
+MediaStreamがルーム内の接続中のMediaConnectionから削除されたときに発生します。
 
 | Name   | Type        | Description                     |
 | ------ | ----------- | ------------------------------- |
-| stream | [MediaStream] | [MediaStream]のインスタンスです。 |
+| stream | [MediaStream] | MediaStreamのインスタンスです。 |
 
 ```js
 room.on('removeStream', stream => {

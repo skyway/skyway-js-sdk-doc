@@ -1,28 +1,51 @@
-P2P接続およびルーム接続機能を操作するためのクラスです。SkyWayを利用するために、最初にPeerインスタンス生成が必要です。
+P2P接続およびルーム接続機能を操作するためのクラスです。
+SkyWayを利用するために、最初にPeerインスタンス生成が必要です。
 
 ## Constructor
 
 新規にPeerインスタンスを生成します。
 `new Peer()` により、SkyWayのシグナリングサーバと接続します。
 
+### Sample
+
+```js
+// デバッグ情報を最大(3)にして接続する場合
+const peer = new Peer('some-peer-name', {
+  key:   "<YOUR-API-KEY>"
+  debug: 3,
+});
+```
+
+```js
+// TURNサーバを強制利用する場合
+const peer = new Peer({
+  key:   "<YOUR-API-KEY>"
+  config: {
+    iceTransportPolicy: 'relay',
+  },
+});
+```
+
 ### Parameter
 
-| Name    | Type                              | Required | Default | Description                                      |
-| ------- | --------------------------------- | -------- | ------- | ------------------------------------------------ |
-| id      | string                            |          |         | ユーザのPeer IDです。                            |
-| options | [options object](#options-object) | ✔        |         | 接続に関するパラメータを指定するオプションです。 |
+| Name    | Type                              | Required | Default | Description                                                                              |
+| ------- | --------------------------------- | -------- | ------- | ---------------------------------------------------------------------------------------- |
+| id      | string                            |          |         | ユーザのPeer IDです。値を与えなかった場合、Peer IDはシグナリングサーバから与えられます。 |
+| options | [options object](#options-object) | ✔        |         | 接続に関するパラメータを指定するオプションです。                                         |
 
 #### options object
 
-| Name       | Type                                                                                    | Required | Default                                                             | Description                                                                                                                                                                       |
-| ---------- | --------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| key        | string                                                                                  | ✔        |                                                                     | SkyWayのAPIキーです。                                                                                                                                                             |
-| debug      | number                                                                                  |          | NONE: 0                                                                    | ログレベル： NONE:0、 ERROR:1、 WARN:2、 FULL:3 から選択できます。                                                                                                                |
-| turn       | boolean                                                                                 |          | true                                                                    | SkyWayで提供するTURNを使うかどうかのフラグです。                                                                                                                                  |
-| credential | [credential object](#credential-object)                                                 |          |                                                                     | Peerを認証するためのクレデンシャルです。認証機能が有効の場合のみ使えます。詳細は[認証リポジトリ](https://github.com/skyway/skyway-peer-authentication-samples)をご確認ください。  |
-| config     | [RTCConfiguration] |          | [Default RTCConfiguration object](#default-rtcconfiguration-object) | RTCPeerConnectionに渡される[RTCConfiguration]です。発展的なオプションのため、内容を理解している場合のみご利用ください。 |
+| Name       | Type                                    | Required | Default                                                             | Description                                                                                                               |
+| ---------- | --------------------------------------- | -------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| key        | string                                  | ✔        |                                                                     | SkyWayのAPIキーです。                                                                                                     |
+| debug      | number                                  |          | `0`                                                                 | ログレベルは NONE: `0`, ERROR: `1`, WARN: `2`, FULL: `3` から選択できます。                                               |
+| turn       | boolean                                 |          | `true`                                                              | SkyWayで提供するTURNを使うかどうかのフラグです。TURN利用が有効の場合のみ使えます。                                        |
+| credential | [credential object](#credential-object) |          |                                                                     | Peerを認証するためのクレデンシャルです。認証機能が有効の場合のみ使えます。                                                |
+| config     | [RTCConfiguration]                      |          | [Default RTCConfiguration object](#default-rtcconfiguration-object) | `RTCPeerConnection`に渡される[RTCConfiguration]です。発展的なオプションのため、内容を理解している場合のみご利用ください。 |
 
 #### credential object
+
+Peer認証機能の詳細は[Peer認証のサンプル](https://github.com/skyway/skyway-peer-authentication-samples)をご確認ください。
 
 <!-- textlint-disable -->
 
@@ -46,64 +69,44 @@ const defaultConfig = {
   sdpSemantics: 'plan-b',
 };
 ```
-### Sample
-
-```js
-// デバッグ情報を最大(3)にして接続する場合
-const peer = new Peer({
-  key:   "<YOUR-API-KEY>"
-  debug: 3,
-});
-```
-
-```js
-// TURNサーバを強制利用する場合
-const peer = new Peer({
-  key:   "<YOUR-API-KEY>"
-  debug: 3,
-  config: {
-    iceTransportPolicy: 'relay',
-  },
-});
-```
 
 ## Members
 
-| Name        | Type    | Description                                                      |
-| ----------- | ------- | ---------------------------------------------------------------- |
-| id          | string  | ユーザーが指定したPeer ID、もしくはサーバが生成したPeer IDです。 |
-| open        | boolean | シグナリングサーバへの接続状況を保持します。                     |
-| connections | Object  | 全てのコネクションを保持するオブジェクトです。                   |
-| rooms       | Object  | 全てのルームを保持するオブジェクトです。                         |
-| options     | Object  | [Constructor()](#constructor)での指定と、SDKのデフォルト設定を反映したオブジェクトです。                                                                 |
+| Name        | Type    | Description                                                                                |
+| ----------- | ------- | ------------------------------------------------------------------------------------------ |
+| id          | string  | ユーザーが指定したPeer ID、もしくはサーバが生成したPeer IDです。                           |
+| open        | boolean | シグナリングサーバへの接続状況を保持します。                                               |
+| connections | Object  | 全てのコネクションを保持するオブジェクトです。                                             |
+| rooms       | Object  | 全てのルームを保持するオブジェクトです。                                                   |
+| options     | Object  | [`Constructor()`](#constructor)での指定と、SDKのデフォルト設定を反映したオブジェクトです。 |
 
 ## Methods
 
 ### call()
 
-指定したPeerにメディアチャネル(音声・映像)で接続して、MediaConnectionを作成します。 オプションを指定することで、帯域幅・コーデックなどを指定できます。
+指定したPeerにメディアチャネル(音声・映像)で接続して、[MediaConnection](../mediaconnection)を作成します。 オプションを指定することで、帯域幅・コーデックなどを指定できます。
 
 #### Parameters
 
 | Name    | Type                                        | Required | Default | Description                                                                                     |
 | ------- | ------------------------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------- |
 | peerId  | string                                      | ✔        |         | 接続先のPeer IDです。                                                                           |
-| stream  | [MediaStream]                                 |          |         | 接続先のPeerへ送るメディアストリームです。 設定されていない場合は、受信のみモードで発信します。 |
+| stream  | [MediaStream]                               |          |         | 接続先のPeerへ送るメディアストリームです。 設定されていない場合は、受信のみモードで発信します。 |
 | options | [call options object](#call-options-object) |          |         | 発信時に付与するオプションです。帯域幅・コーデックなどを指定します。                            |
 
 ##### call options object
 
-| Name                | Type    | Required | Default | Description                                                                |
-| ------------------- | ------- | -------- | ------- | -------------------------------------------------------------------------- |
-| metadata            | Object  |          |         | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。 |
-| videoBandwidth      | number  |          |         | 接続先から受信する映像の最大帯域幅(kbps)です。                             |
-| audioBandwidth      | number  |          |         | 接続先から受信する音声の最大帯域幅(kbps)です。                             |
-| videoCodec          | string  |          |         | 'H264'などの映像コーデックです。                                           |
-| audioCodec          | string  |          |         | 'PCMU'などの音声コーデックです。                                           |
-| videoReceiveEnabled | boolean |          |         | 映像を受信のみで使う場合のフラグです。                                     |
-| audioReceiveEnabled | boolean |          |         | 音声を受信のみで使う場合のフラグです。                                     |
-| connectionId        | string  |          |         | コネクションを識別するIDです。                                             |
-| label               | string  |          |         | **Deprecated!** 接続先のPeer IDを識別するのに利用するラベルです。          |
+| Name                | Type    | Required | Default | Description                                                                                                                      |
+| ------------------- | ------- | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| metadata            | Object  |          |         | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。                                                       |
+| videoBandwidth      | number  |          |         | 接続先から受信する映像の最大帯域幅(kbps)です。                                                                                   |
+| audioBandwidth      | number  |          |         | 接続先から受信する音声の最大帯域幅(kbps)です。                                                                                   |
+| videoCodec          | string  |          |         | `'H264'`などの映像コーデックです。                                                                                               |
+| audioCodec          | string  |          |         | `'PCMU'`などの音声コーデックです。                                                                                               |
+| videoReceiveEnabled | boolean |          | `true`  | 映像を受信のみで使う場合のフラグです。この値が`true`かつ`stream`に映像トラックが含まれない場合、受信のみで映像の通信を行います。 |
+| audioReceiveEnabled | boolean |          | `true`  | 音声を受信のみで使う場合のフラグです。この値が`true`かつ`stream`に音声トラックが含まれない場合、受信のみで音声の通信を行います。 |
+| connectionId        | string  |          |         | コネクションを識別するIDです。                                                                                                   |
+| label               | string  |          |         | **Deprecated!** 接続先のPeer IDを識別するのに利用するラベルです。                                                                |
 
 #### Return value
 
@@ -141,7 +144,7 @@ const call = peer.call('peerID', null, {
 
 ### connect()
 
-指定したPeerにデータチャネルで接続して、DataConnectionインスタンスを生成します。
+指定したPeerにデータチャネルで接続して、[DataConnection](../dataconnection)インスタンスを生成します。
 
 #### Parameters
 
@@ -152,13 +155,13 @@ const call = peer.call('peerID', null, {
 
 ##### connect options object
 
-| Name          | Type                                                                              | Required | Default  | Description                                                                                                                                                                           |
-| ------------- | --------------------------------------------------------------------------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| metadata      | Object                                                                            |          |          | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。                                                                                                            |
-| serialization | string                                                                            |          | 'binary' | 送信時のシリアライズ方法を指定します。'binary'、'json'、'none'のいずれか、となります。                                                                                                |
-| dcInit        | [RTCDataChannelInit] |          | {}       | DataChannel利用時に信頼性の有無を指定するためのオプションです。デフォルトでは信頼性有で動作します。なお、chromeは、`maxPacketLifetime` の代わりに、`maxRetransmitTime` を利用します。 |
-| connectionId        | string  |          |         | コネクションを識別するIDです。                                             |
-| label         | string                                                                            |          |          | **Deprecated!** 接続先のPeer IDを識別するのに利用するラベルです。                                                                                                                     |
+| Name          | Type                 | Required | Default    | Description                                                                                                                                                                           |
+| ------------- | -------------------- | -------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| metadata      | Object               |          |            | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。                                                                                                            |
+| serialization | string               |          | `'binary'` | 送信時のシリアライズ方法を指定します。`'binary'`, `'json'`, `'none'`のいずれかとなります。                                                                                            |
+| dcInit        | [RTCDataChannelInit] |          | `{}`       | DataChannel利用時に信頼性の有無を指定するためのオプションです。デフォルトでは信頼性有で動作します。なお、Chromeは、`maxPacketLifetime`の代わりに、`maxRetransmitTime`を利用します。   |
+| connectionId  | string               |          |            | コネクションを識別するIDです。                                                                                                                                                        |
+| label         | string               |          |            | **Deprecated!** 接続先のPeer IDを識別するのに利用するラベルです。                                                                                                                     |
 
 #### Return value
 
@@ -228,27 +231,28 @@ None
 
 ### joinRoom()
 
-メッシュ接続のルーム、またはSFU接続のルームに参加します。メッシュ接続およびSFU接続については[コチラ](https://webrtc.ecl.ntt.com/sfu.html)を確認ください。
+メッシュ接続のルーム、またはSFU接続のルームに参加します。
+メッシュ接続およびSFU接続については[コチラ](https://webrtc.ecl.ntt.com/sfu.html)を確認ください。
 
 #### Parameters
 
 | Name        | Type                                        | Rquired | Default | Description                            |
 | ----------- | ------------------------------------------- | ------- | ------- | -------------------------------------- |
 | roomName    | string                                      | ✔       |         | 参加先のルームの名前です。             |
-| roomOptions | [room options object](#room-options-object) |         | {}      | 接続時に選択・付与するオプションです。 |
+| roomOptions | [room options object](#room-options-object) |         | `{}`    | 接続時に選択・付与するオプションです。 |
 
 ##### room options object
 
-| Name                | Type        | Required | Default | Description                                                          |
-| ------------------- | ----------- | -------- | ------- | -------------------------------------------------------------------- |
-| mode                | string      |          | 'mesh'  | 'sfu'または'mesh'を指定します。                                      |
-| stream              | MediaStream |          |         | ユーザーが送信するメディアストリームです。                           |
-| videoBandwidth      | number      |          |         | 映像の最大帯域幅(kbps)です。メッシュ接続のみ使用可能です。           |
-| audioBandwidth      | number      |          |         | 音声の最大帯域幅(kbps)です。 メッシュ接続のみ使用可能です。          |
-| videoCodec          | string      |          |         | 'H264'などの映像コーデックです。 メッシュ接続のみ使用可能です。      |
-| audioCodec          | string      |          |         | 'PCMU'などの音声コーデックです。メッシュ接続のみ使用可能です。       |
-| videoReceiveEnabled | boolean     |          |         | 映像を受信のみで使う場合のフラグです。メッシュ接続のみ使用可能です。 |
-| audioReceiveEnabled | boolean     |          |         | 音声を受信のみで使う場合のフラグです。メッシュ接続のみ使用可能です。 |
+| Name                | Type        | Required | Default  | Description                                                          |
+| ------------------- | ----------- | -------- | -------- | -------------------------------------------------------------------- |
+| mode                | string      |          | `'mesh'` | `'sfu'`または`'mesh'`を指定します。                                  |
+| stream              | MediaStream |          |          | ユーザーが送信するメディアストリームです。                           |
+| videoBandwidth      | number      |          |          | 映像の最大帯域幅(kbps)です。メッシュ接続のみ使用可能です。           |
+| audioBandwidth      | number      |          |          | 音声の最大帯域幅(kbps)です。 メッシュ接続のみ使用可能です。          |
+| videoCodec          | string      |          |          | `'H264'`などの映像コーデックです。 メッシュ接続のみ使用可能です。    |
+| audioCodec          | string      |          |          | `'PCMU'`などの音声コーデックです。メッシュ接続のみ使用可能です。     |
+| videoReceiveEnabled | boolean     |          |          | 映像を受信のみで使う場合のフラグです。メッシュ接続のみ使用可能です。 |
+| audioReceiveEnabled | boolean     |          |          | 音声を受信のみで使う場合のフラグです。メッシュ接続のみ使用可能です。 |
 
 #### Return value
 
@@ -274,7 +278,7 @@ const room = peer.joinRoom('roomName', {
 
 ### listAllPeers()
 
-REST APIを利用して、APIキーに紐づくPeerID一覧を取得します。
+REST APIを利用して、APIキーに紐づくPeer ID一覧を取得します。
 
 #### Parameters
 
@@ -333,7 +337,7 @@ peer.on('open', () => {});
 peer.on(Peer.EVENTS.open, () => {});
 ```
 
-### Event: open
+### Event: `'open'`
 
 シグナリングサーバへ正常に接続できたときのイベントです。
 
@@ -347,7 +351,7 @@ peer.on('open', id => {
 });
 ```
 
-### Event: call
+### Event: `'call'`
 
 接続先のPeerからメディアチャネル(音声・映像)の接続を受信したときのイベントです。
 
@@ -361,7 +365,7 @@ peer.on('call', call => {
 });
 ```
 
-### Event: close
+### Event: `'close'`
 
 Peerに対する全ての接続を終了したときのイベントです。
 
@@ -371,7 +375,7 @@ peer.on('close', () => {
 });
 ```
 
-### Event: connection
+### Event: `'connection'`
 
 接続先のPeerからDataChannelの接続を受信したときのイベントです。
 
@@ -386,7 +390,7 @@ peer.on('connection', conn => {
 });
 ```
 
-### Event: disconnected
+### Event: `'disconnected'`
 
 シグナリングサーバから切断したときのイベントです。
 
@@ -400,7 +404,7 @@ peer.on('disconnected', id => {
 });
 ```
 
-### Event: expiresin
+### Event: `'expiresin'`
 
 クレデンシャルが失効する前に発生するイベントです。
 
@@ -414,7 +418,7 @@ peer.on('expiresin', sec => {
 });
 ```
 
-### Event: error
+### Event: `'error'`
 
 エラーが発生した場合のイベントです。
 

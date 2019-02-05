@@ -21,10 +21,10 @@ peer.on('connection', dataConnection => {
 
 | Name     | Type    | Description                                                                                                                                                                                                                   |
 |----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| metadata | Object  | [`Peer#connect()`](../peer/#connect) で指定した `metadata` です。着信側には、シグナリングサーバを経由して送信されます。                                                                                                       |
+| metadata | Object  | [`Peer#connect()`](../peer/#connect) で指定した`metadata`です。着信側には、シグナリングサーバを経由して送信されます。                                                                                                         |
 | open     | boolean | コネクションがオープンしているかどうかを示します。[`Peer#connect()`](#../peer/#connect)が呼び出された際にオープンし、[`DataConnection#close()`](#close)が呼び出されたまたはデータチャネル接続が切断された際にクローズします。 |
-| remoteId | string  | 接続先PeerのPeerIDです。                                                                                                                                                                                                      |
-| peer     | string  | *(deprecated)* 接続先PeerのPeerIDです。remoteIdを使ってください。                                                                                                                                                             |
+| remoteId | string  | 接続先PeerのPeer IDです。                                                                                                                                                                                                     |
+| peer     | string  | **Deprecated!** 接続先PeerのPeer IDです。remoteIdを使ってください。                                                                                                                                                           |
 
 ## Methods
 
