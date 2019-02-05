@@ -100,11 +100,15 @@ None
 
 MediaStreamを受信したときに発生します。
 
-#### Parameter
+```js
+mediaConnection.on('stream', stream => {
+  // ...
+});
+```
 
-| Type          | Description                     |
-|---------------|---------------------------------|
-| [MediaStream] | MediaStreamのインスタンスです。 |
+| Name   | Type          | Description                     |
+|--------|---------------|---------------------------------|
+| stream | [MediaStream] | MediaStreamのインスタンスです。 |
 
 ### Event: `'removeStream'` <small>*(deprecated)*</small>
 
@@ -112,18 +116,25 @@ MediaStreamを受信したときに発生します。
 
 相手のMediaStreamが接続中のMediaConnectionから削除されたときに発生します。
 
-#### Parameter
+```js
+mediaConnection.on('removeStream', stream => {
+  // ...
+});
+```
 
-| Type          | Description                     |
-|---------------|---------------------------------|
-| [MediaStream] | MediaStreamのインスタンスです。 |
+| Name   | Type          | Description                     |
+|--------|---------------|---------------------------------|
+| stream | [MediaStream] | MediaStreamのインスタンスです。 |
 
 ### Event: `'close'`
 
 [`MediaConnection#close()`](#close)が呼ばれたとき、または接続先Peerとのメディアチャネル接続が切断されたときに発生します。
 
-#### Parameter
-None
+```js
+mediaConnection.on('close', () => {
+  // ...
+});
+```
 
 
 [MediaStream]: https://w3c.github.io/mediacapture-main/#mediastream
