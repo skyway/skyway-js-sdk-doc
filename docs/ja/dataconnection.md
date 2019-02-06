@@ -19,12 +19,12 @@ peer.on('connection', dataConnection => {
 
 ## Members
 
-| Name     | Type    | Description                                                                                                                                                                                                                   |
-|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| metadata | Object  | [`Peer#connect()`](../peer/#connect) で指定した`metadata`です。着信側には、シグナリングサーバを経由して送信されます。                                                                                                         |
-| open     | boolean | コネクションがオープンしているかどうかを示します。[`Peer#connect()`](#../peer/#connect)が呼び出された際にオープンし、[`DataConnection#close()`](#close)が呼び出されたまたはデータチャネル接続が切断された際にクローズします。 |
-| remoteId | string  | 接続先PeerのPeer IDです。                                                                                                                                                                                                     |
-| peer     | string  | **Deprecated!** 接続先PeerのPeer IDです。remoteIdを使ってください。                                                                                                                                                           |
+| Name     | Type    | Description                                                                                                                                                                                                                               |
+|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| metadata | Object  | [`Peer#connect()`](../peer/#connect) で指定した`metadata`です。着信側には、シグナリングサーバを経由して送信されます。                                                                                                                     |
+| open     | boolean | コネクションがオープンしているかどうかを示します。[`DataConnection`](./)の[`open`イベント](#event-open)が発生した際にオープンし、[`DataConnection#close()`](#close)が呼び出されたまたはデータチャネル接続が切断された際にクローズします。 |
+| remoteId | string  | 接続先PeerのPeer IDです。                                                                                                                                                                                                                 |
+| peer     | string  | **Deprecated!** 接続先PeerのPeer IDです。remoteIdを使ってください。                                                                                                                                                                       |
 
 ## Methods
 
@@ -72,6 +72,16 @@ None
 `undefined`
 
 ## Events
+
+### Event: `'open'`
+
+データチャネルが接続されたときに発生します。
+
+```js
+dataConnection.on('open', () => {
+  // ...
+});
+```
 
 ### Event: `'data'`
 
