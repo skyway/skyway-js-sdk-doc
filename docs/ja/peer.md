@@ -1,7 +1,7 @@
 P2P接続およびルーム接続機能を操作するためのクラスです。
 SkyWayを利用するために、最初にPeerインスタンス生成が必要です。
 
-## Constructor
+## `Constructor(id, options)`
 
 新規にPeerインスタンスを生成します。
 `new Peer()` により、SkyWayのシグナリングサーバと接続します。
@@ -82,7 +82,7 @@ const defaultConfig = {
 
 ## Methods
 
-### call()
+### `call(peerId, stream, options)`
 
 指定したPeerにメディアチャネル(音声・映像)で接続して、[MediaConnection](../mediaconnection)を作成します。 オプションを指定することで、帯域幅・コーデックなどを指定できます。
 
@@ -142,7 +142,7 @@ const call = peer.call('peerID', null, {
 });
 ```
 
-### connect()
+### `connect(peerId, options)`
 
 指定したPeerにデータチャネルで接続して、[DataConnection](../dataconnection)インスタンスを生成します。
 
@@ -193,43 +193,31 @@ peer.connect('peerId', {
 });
 ```
 
-### destroy()
+### `destroy()`
 
 全てのコネクションを閉じ、シグナリングサーバへの接続を切断します。
 
-#### Parameters
-
-None
-
 #### Return value
 
 `undefined`
 
-### disconnect()
+### `disconnect()`
 
 シグナリングサーバへの接続を閉じ、disconnectedイベントを送出します。
 
-#### Parameters
-
-None
-
 #### Return value
 
 `undefined`
 
-### reconnect()
+### `reconnect()`
 
 シグナリングサーバへ再接続をします。
 
-#### Parameters
-
-None
-
 #### Return value
 
 `undefined`
 
-### joinRoom()
+### `joinRoom(roomName, roomOptions)`
 
 メッシュ接続のルーム、またはSFU接続のルームに参加します。
 メッシュ接続およびSFU接続については[コチラ](https://webrtc.ecl.ntt.com/sfu.html)を確認ください。
@@ -276,13 +264,15 @@ const room = peer.joinRoom('roomName', {
 });
 ```
 
-### listAllPeers()
+### `listAllPeers(callback)`
 
 REST APIを利用して、APIキーに紐づくPeer ID一覧を取得します。
 
 #### Parameters
 
-Peer ID一覧を受け取る関数を指定します。
+| Name     | Type     | Required | Default | Description                     |
+| -------- | -------- | -------- | ------- | ------------------------------- |
+| callback | Function | ✔        |         | Peer ID一覧を受け取る関数です。 |
 
 #### Return value
 
@@ -297,7 +287,7 @@ peer.listAllPeers(peers => {
 });
 ```
 
-### getConnection()
+### `getConnection(peerId, connectionId)`
 
 作成したMediaConnectionおよびDataConnectionを取得します。
 
@@ -312,7 +302,7 @@ peer.listAllPeers(peers => {
 
 [MediaConnection](../mediaconnection)のインスタンス、または[DataConnection](../dataconnection)のインスタンス、または`null`
 
-### updateCredential()
+### `updateCredential(mode)`
 
 Peer認証のクレデンシャルのTTLを延長するための更新リクエストの送付します。
 Peer認証については、[コチラ](https://github.com/skyway/skyway-peer-authentication-samples)をご確認ください。

@@ -1,6 +1,6 @@
 接続先Peerへのデータチャネル接続を管理するクラスです。
 
-## Constructor
+## `Constructor`
 
 SDK内部の利用のみで、コンストラクタは通常利用しません。
 `DataConnection`インスタンスは、[`Peer#connect()`](../peer/#connect) および[`Peer`](../peer/)の[`connection`イベント](../peer/#event-connection) で生成されます。
@@ -28,7 +28,7 @@ peer.on('connection', dataConnection => {
 
 ## Methods
 
-### send()
+### `send(data)`
 
 接続先Peerにデータを送信します。シリアライズ方法が`'binary'`である場合は、送信前に分割します。
 
@@ -59,13 +59,9 @@ dataConnection.on('data', { name, msg } => {
 });
 ```
 
-### close()
+### `close()`
 
 接続先PeerとのDataConnectionの接続を切断します。
-
-#### Parameters
-
-None
 
 #### Return value
 
