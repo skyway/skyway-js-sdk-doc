@@ -41,7 +41,7 @@ const peer = new Peer({
 | debug      | number                                  |          | `0`                                                                 | ログレベルは NONE: `0`, ERROR: `1`, WARN: `2`, FULL: `3` から選択できます。                                               |
 | turn       | boolean                                 |          | `true`                                                              | SkyWayで提供するTURNを使うかどうかのフラグです。TURN利用が有効の場合のみ使えます。                                        |
 | credential | [credential object](#credential-object) |          |                                                                     | Peerを認証するためのクレデンシャルです。認証機能が有効の場合のみ使えます。                                                |
-| config     | [RTCConfiguration]                      |          | [Default RTCConfiguration object](#default-rtcconfiguration-object) | `RTCPeerConnection`に渡される[RTCConfiguration]です。発展的なオプションのため、内容を理解している場合のみご利用ください。 |
+| config     | [RTCConfiguration]                      |          | [Default RTCConfiguration object](#default-rtcconfiguration-object) | `RTCPeerConnection`に渡されるRTCConfigurationです。発展的なオプションのため、内容を理解している場合のみご利用ください。 |
 
 #### credential object
 

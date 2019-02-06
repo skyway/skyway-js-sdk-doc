@@ -3,7 +3,7 @@
 ## Constructor
 
 SDK内部の利用のみで、コンストラクタは通常利用しません。
-`MediaConnection`インスタンスは、[`Peer#call()`](../peer/#call) および[`Peer`](../peer/)の[`call`イベント](../peer/#call_1) で生成されます。
+`MediaConnection`インスタンスは、[`Peer#call()`](../peer/#call) および[`Peer`](../peer/)の[`call`イベント](../peer/#event-call) で生成されます。
 
 ### Sample
 
@@ -23,7 +23,7 @@ peer.on('call', mediaConnection => {
 | Name     | Type    | Description                                                                                                                                                                                                                                                                                            |
 |----------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | metadata | Object  | [`Peer#call()`](../peer/#call) で指定した`metadata`です。着信側には、シグナリングサーバを経由して送信されます。                                                                                                                                                                                        |
-| open     | boolean | コネクションがオープンしているかどうかを示します。[`Peer#call()`](../peer/#call) または [`MediaConnection#answer()`](#answer) が呼び出された際にオープンし、 [`MediaConnection#close()`](#close)が呼び出されたまたは[`MediaConnection`](./)の[`close`イベント](#close_1)が発生した際にクローズします。 |
+| open     | boolean | コネクションがオープンしているかどうかを示します。[`MediaConnection`](./)の[`stream`イベント](#event-stream)または [`MediaConnection#answer()`](#answer) が呼び出された際にオープンし、 [`MediaConnection#close()`](#close)が呼び出されたまたは[`MediaConnection`](./)の[`close`イベント](#event-close)が発生した際にクローズします。 |
 | remoteId | string  | 接続先PeerのPeer IDです。                                                                                                                                                                                                                                                                               |
 | peer     | string  | **Deprecated!** 接続先PeerのPeer IDです。remoteIdを使ってください。                                                                                                                                                                                                                                      |
 
@@ -35,10 +35,10 @@ peer.on('call', mediaConnection => {
 
 #### Parameters
 
-| Name    | Type                                            | Required | Default | Description                                       |
-|---------|-------------------------------------------------|----------|---------|---------------------------------------------------|
-| stream  | [MediaStream]                                   | ✔        |         | 発信側のPeerへ送る[MediaStream]オブジェクトです。 |
-| options | [answer options object](#answer-options-object) |          |         | 応答時に付与するオプションです。                  |
+| Name    | Type                                            | Required | Default | Description                                     |
+|---------|-------------------------------------------------|----------|---------|-------------------------------------------------|
+| stream  | [MediaStream]                                   | ✔        |         | 発信側のPeerへ送るMediaStreamオブジェクトです。 |
+| options | [answer options object](#answer-options-object) |          |         | 応答時に付与するオプションです。                |
 
 ##### answer options object
 
