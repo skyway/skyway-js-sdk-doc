@@ -1,7 +1,7 @@
 接続先Peerへのデータチャネル接続を管理するクラスです。
 
 SDK内部の利用のみで、コンストラクタは通常利用しません。
-`DataConnection`インスタンスは、[`Peer#connect()`](../peer/#connect) および[`Peer`](../peer/)の[`connection`イベント](../peer/#event-connection) で生成されます。
+`DataConnection`インスタンスは、[`Peer#connect()`](../peer/#connectpeerid-options) および[`Peer`](../peer/)の[`connection`イベント](../peer/#event-connection) で生成されます。
 
 ### Sample
 
@@ -19,7 +19,7 @@ peer.on('connection', dataConnection => {
 
 | Name     | Type    | Description                                                                                                                                                                                                                               |
 |----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| metadata | Object  | [`Peer#connect()`](../peer/#connect) で指定した`metadata`です。着信側には、シグナリングサーバを経由して送信されます。                                                                                                                     |
+| metadata | Object  | [`Peer#connect()`](../peer/#connectpeerid-options) で指定した`metadata`です。着信側には、シグナリングサーバを経由して送信されます。                                                                                                       |
 | open     | boolean | コネクションがオープンしているかどうかを示します。[`DataConnection`](./)の[`open`イベント](#event-open)が発生した際にオープンし、[`DataConnection#close()`](#close)が呼び出されたまたはデータチャネル接続が切断された際にクローズします。 |
 | remoteId | string  | 接続先PeerのPeer IDです。                                                                                                                                                                                                                 |
 | peer     | string  | **Deprecated!** 接続先PeerのPeer IDです。remoteIdを使ってください。                                                                                                                                                                       |

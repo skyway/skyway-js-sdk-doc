@@ -80,7 +80,7 @@ const defaultConfig = {
 | open        | boolean | シグナリングサーバへの接続状況を保持します。                                               |
 | connections | Object  | 全てのコネクションを保持するオブジェクトです。                                             |
 | rooms       | Object  | 全てのルームを保持するオブジェクトです。                                                   |
-| options     | Object  | [`Constructor()`](#constructor)での指定と、SDKのデフォルト設定を反映したオブジェクトです。 |
+| options     | Object  | [`Constructor()`](#constructorid-options)での指定と、SDKのデフォルト設定を反映したオブジェクトです。 |
 
 ## Methods
 

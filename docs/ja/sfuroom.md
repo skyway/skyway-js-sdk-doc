@@ -1,7 +1,7 @@
 SFU接続でのルームを管理するクラスです。
 
 SDK内部の利用のみで、コンストラクタは通常利用しません。
-SFURoomのインスタンスは、[`Peer#joinRoom()`](../peer#joinroom) で生成されます。
+SFURoomのインスタンスは、[`Peer#joinRoom()`](../peer#joinroomroomname-roomoptions) で生成されます。
 
 ### Sample
 
