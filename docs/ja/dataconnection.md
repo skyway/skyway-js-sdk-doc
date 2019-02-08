@@ -1,7 +1,5 @@
 接続先Peerへのデータチャネル接続を管理するクラスです。
 
-## `Constructor`
-
 SDK内部の利用のみで、コンストラクタは通常利用しません。
 `DataConnection`インスタンスは、[`Peer#connect()`](../peer/#connect) および[`Peer`](../peer/)の[`connection`イベント](../peer/#event-connection) で生成されます。
 

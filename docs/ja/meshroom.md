@@ -1,7 +1,5 @@
 メッシュ接続でのルームを管理するクラスです。
 
-## `Constructor`
-
 SDK内部の利用のみで、コンストラクタは通常利用しません。
 MeshRoomのインスタンスは、[`Peer#joinRoom()`](../peer#joinroom) で生成されます。
 

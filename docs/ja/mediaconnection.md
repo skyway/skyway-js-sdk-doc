@@ -1,7 +1,5 @@
 接続先Peerへのメディアチャネル接続を管理するクラスです。
 
-## `Constructor`
-
 SDK内部の利用のみで、コンストラクタは通常利用しません。
 `MediaConnection`インスタンスは、[`Peer#call()`](../peer/#call) および[`Peer`](../peer/)の[`call`イベント](../peer/#event-call) で生成されます。
 
