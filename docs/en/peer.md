@@ -1,12 +1,12 @@
 It is a entry point for P2P connection and room connection.
-In order to use SkyWay, Peer instance is necessary.
+In order to use ECLWebRTC, Peer instance is necessary.
 
 ## `Constructor(id, options)`
 
 ## `Constructor(options)`
 
 Create new Peer instance.
-`new Peer()` starts connection to SkyWay's signaling server.
+`new Peer()` starts connection to ECLWebRTC's signaling server.
 
 ### Sample
 
