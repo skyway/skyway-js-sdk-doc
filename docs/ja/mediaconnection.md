@@ -1,7 +1,5 @@
 接続先Peerへのメディアチャネル接続を管理するクラスです。
 
-## Constructor
-
 SDK内部の利用のみで、コンストラクタは通常利用しません。
 `MediaConnection`インスタンスは、[`Peer#call()`](../peer/#call) および[`Peer`](../peer/)の[`call`イベント](../peer/#event-call) で生成されます。
 
@@ -29,7 +27,7 @@ peer.on('call', mediaConnection => {
 
 ## Methods
 
-### answer()
+### `answer(stream[, options])`
 
 発信側からのメディアチャネル接続の接続要求に対して応答します。
 
@@ -67,19 +65,15 @@ peer.on('call', mediaConnection => {
 });
 ```
 
-### close()
+### `close()`
 
 接続先PeerとのMediaConnectionの接続を切断します。
-
-#### Parameters
-
-None
 
 #### Return value
 
 `undefined`
 
-### replaceStream()
+### `replaceStream(stream)`
 
 送信しているMediaStreamを更新します。
 受信のみモードでメディアチャネル接続を行なっている状態で、

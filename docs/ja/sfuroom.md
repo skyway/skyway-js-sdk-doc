@@ -1,7 +1,5 @@
 SFU接続でのルームを管理するクラスです。
 
-## Constructor
-
 SDK内部の利用のみで、コンストラクタは通常利用しません。
 SFURoomのインスタンスは、[`Peer#joinRoom()`](../peer#joinroom) で生成されます。
 
@@ -25,26 +23,18 @@ sfuRoom.on('open', () => {});
 
 ## Methods
 
-### close()
+### `close()`
 
 ルームを退出し、SFUとサーバーのコネクションを切断します。
-
-#### Parameters
-
-None
 
 #### Return value
 
 `undefined`
 
-### getLog()
+### `getLog()`
 
 シグナリングサーバにルームのログ取得を要求します。
 シグナリングサーバからログを受信すると、[`log`イベント](#event-log)が発火します。
-
-#### Parameters
-
-None
 
 #### Return value
 
@@ -59,7 +49,7 @@ room.once('log', log => {
 room.getLog();
 ```
 
-### replaceStream()
+### `replaceStream(stream)`
 
 送信しているMediaStreamを更新します。
 受信のみモードでメディアチャネル接続を行なっている状態で、
@@ -75,7 +65,7 @@ room.getLog();
 
 `undefined`
 
-### send()
+### `send(data)`
 
 WebSocketを使用してルーム内の全てのユーザーにデータを送信します。
 
