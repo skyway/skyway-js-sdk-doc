@@ -111,11 +111,11 @@ mediaConnection.on('stream', stream => {
 });
 ```
 
-### Event: `'removeStream'` **Deprecated!**
+### Event: `'removeStream'`
 
-*!!! このイベントは現在非推奨です。 !!!*
-
-相手のMediaStreamが接続中のMediaConnectionから削除されたときに発生します。
+接続先PeerのMediaStreamが接続中のMediaConnectionから削除されたときに発生します。
+このイベントは、MediaConnectionがクローズしたときには発生しないので注意してください。
+MediaConnectionのクローズを検知する場合、代わりに[`close`イベント](#event-close)を利用してください。
 
 | Name   | Type          | Description                     |
 |--------|---------------|---------------------------------|

@@ -97,7 +97,7 @@ const defaultConfig = {
 ##### call options object
 
 | Name                | Type    | Required | Default | Description                                                                                                                      |
-| ------------------- | ------- | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------- |
+|---------------------|---------|----------|---------|----------------------------------------------------------------------------------------------------------------------------------|
 | metadata            | Object  |          |         | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。                                                       |
 | videoBandwidth      | number  |          |         | 接続先から受信する映像の最大帯域幅(kbps)です。                                                                                   |
 | audioBandwidth      | number  |          |         | 接続先から受信する音声の最大帯域幅(kbps)です。                                                                                   |
@@ -106,7 +106,7 @@ const defaultConfig = {
 | videoReceiveEnabled | boolean |          | `true`  | 映像を受信のみで使う場合のフラグです。この値が`true`かつ`stream`に映像トラックが含まれない場合、受信のみで映像の通信を行います。 |
 | audioReceiveEnabled | boolean |          | `true`  | 音声を受信のみで使う場合のフラグです。この値が`true`かつ`stream`に音声トラックが含まれない場合、受信のみで音声の通信を行います。 |
 | connectionId        | string  |          |         | コネクションを識別するIDです。                                                                                                   |
-| label               | string  |          |         | **Deprecated!** 接続先のPeer IDを識別するのに利用するラベルです。                                                                |
+| label               | string  |          |         | **Deprecated!** コネクションを識別するのに利用するラベルです。代わりに`connectionId`を使用してください。                         |
 
 #### Return value
 
@@ -155,13 +155,13 @@ const call = peer.call('peerID', null, {
 
 ##### connect options object
 
-| Name          | Type                 | Required | Default    | Description                                                                                                                                                                           |
-| ------------- | -------------------- | -------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| metadata      | Object               |          |            | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。                                                                                                            |
-| serialization | string               |          | `'binary'` | 送信時のシリアライズ方法を指定します。`'binary'`, `'json'`, `'none'`のいずれかとなります。                                                                                            |
-| dcInit        | [RTCDataChannelInit] |          | `{}`       | DataChannel利用時に信頼性の有無を指定するためのオプションです。デフォルトでは信頼性有で動作します。なお、Chromeは、`maxPacketLifetime`の代わりに、`maxRetransmitTime`を利用します。   |
-| connectionId  | string               |          |            | コネクションを識別するIDです。                                                                                                                                                        |
-| label         | string               |          |            | **Deprecated!** 接続先のPeer IDを識別するのに利用するラベルです。                                                                                                                     |
+| Name          | Type                 | Required | Default    | Description                                                                                                                                                                         |
+|---------------|----------------------|----------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| metadata      | Object               |          |            | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。                                                                                                          |
+| serialization | string               |          | `'binary'` | 送信時のシリアライズ方法を指定します。`'binary'`, `'json'`, `'none'`のいずれかとなります。                                                                                          |
+| dcInit        | [RTCDataChannelInit] |          | `{}`       | DataChannel利用時に信頼性の有無を指定するためのオプションです。デフォルトでは信頼性有で動作します。なお、Chromeは、`maxPacketLifetime`の代わりに、`maxRetransmitTime`を利用します。 |
+| connectionId  | string               |          |            | コネクションを識別するIDです。                                                                                                                                                      |
+| label         | string               |          |            | **Deprecated!** コネクションを識別するのに利用するラベルです。代わりに`connectionId`を使用してください。                                                                            |
 
 #### Return value
 

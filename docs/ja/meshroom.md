@@ -191,11 +191,11 @@ room.on('close', () => {
 });
 ```
 
-### Event: `'removeStream'` **Deprecated!**
-
-*!!! このイベントは現在非推奨です。 !!!*
+### Event: `'removeStream'`
 
 MediaStreamがルーム内の接続中のMediaConnectionから削除されたときに発生します。
+このイベントは、Peerがルームから退室したときには発生しないので注意してください。
+Peerの退室を検知する場合、代わりに[`peerLeave`イベント](#event-peerleave)を利用してください。
 
 | Name   | Type        | Description                     |
 | ------ | ----------- | ------------------------------- |
