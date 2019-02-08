@@ -1,8 +1,9 @@
 P2P接続およびルーム接続機能を操作するためのクラスです。
 SkyWayを利用するために、最初にPeerインスタンス生成が必要です。
 
-## `Constructor(options)`
 ## `Constructor(id, options)`
+
+## `Constructor(options)`
 
 新規にPeerインスタンスを生成します。
 `new Peer()` により、SkyWayのシグナリングサーバと接続します。
