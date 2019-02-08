@@ -13,9 +13,9 @@ A list of the classes described in this document.
 
 ## About `EventEmitter`
 
-All classes above inherits [`EventEmitter`](https://nodejs.org/api/events.html#events_class_eventemitter).
+All classes above inherit [`EventEmitter`](https://nodejs.org/api/events.html#events_class_eventemitter).
 
-Therefore, methods such as `on ()`, `off ()`, and `emit ()` are available.
+Therefore, methods such as `on()`, `off()`, and `emit()` are available.
 
 ```js
 function onOpen() {
