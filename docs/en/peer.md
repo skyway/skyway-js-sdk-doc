@@ -268,7 +268,7 @@ const room = peer.joinRoom('roomName', {
 
 ### `listAllPeers(callback)`
 
-Call REST API to get the list of peer IDs associated with API key.
+Call REST API to get the list of Peer IDs associated with API key.
 
 #### Parameters
 
@@ -295,10 +295,10 @@ Query the created MediaConnection or DataConnection.
 
 #### Parameters
 
-| Name         | Type   | Required | Default | Description            |
-| ------------ | ------ | -------- | ------- | ---------------------- |
-| peerId       | string | ✔        |         | Peer IDです。          |
-| connectionId | string | ✔        |         | コネクションのIDです。 |
+| Name         | Type   | Required | Default | Description        |
+| ------------ | ------ | -------- | ------- | ------------------ |
+| peerId       | string | ✔        |         | The Peer ID.       | 
+| connectionId | string | ✔        |         | The connection ID. |
 
 #### Return value
 
@@ -335,7 +335,7 @@ Connected to the signaling server successfully.
 
 | Name | Type   | Description |
 | ---- | ------ | ----------- |
-| id   | string | Peer ID.    |
+| id   | string | The Peer ID.    |
 
 ```js
 peer.on('open', id => {
@@ -387,7 +387,7 @@ Disconnected from the signaling server.
 
 | Name | Type   | Description |
 | ---- | ------ | ----------- |
-| id   | string | Peer ID.    |
+| id   | string | The Peer ID.    |
 
 ```js
 peer.on('disconnected', id => {
