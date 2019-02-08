@@ -29,7 +29,7 @@ peer.on('call', mediaConnection => {
 
 ## Methods
 
-### `answer(stream, options)`
+### `answer(stream[, options])`
 
 発信側からのメディアチャネル接続の接続要求に対して応答します。
 

@@ -1,6 +1,7 @@
 P2P接続およびルーム接続機能を操作するためのクラスです。
 SkyWayを利用するために、最初にPeerインスタンス生成が必要です。
 
+## `Constructor(options)`
 ## `Constructor(id, options)`
 
 新規にPeerインスタンスを生成します。
@@ -82,7 +83,7 @@ const defaultConfig = {
 
 ## Methods
 
-### `call(peerId, stream, options)`
+### `call(peerId[, stream][, options])`
 
 指定したPeerにメディアチャネル(音声・映像)で接続して、[MediaConnection](../mediaconnection)を作成します。 オプションを指定することで、帯域幅・コーデックなどを指定できます。
 
@@ -142,7 +143,7 @@ const call = peer.call('peerID', null, {
 });
 ```
 
-### `connect(peerId, options)`
+### `connect(peerId[, options])`
 
 指定したPeerにデータチャネルで接続して、[DataConnection](../dataconnection)インスタンスを生成します。
 
@@ -217,7 +218,7 @@ peer.connect('peerId', {
 
 `undefined`
 
-### `joinRoom(roomName, roomOptions)`
+### `joinRoom(roomName[, roomOptions])`
 
 メッシュ接続のルーム、またはSFU接続のルームに参加します。
 メッシュ接続およびSFU接続については[コチラ](https://webrtc.ecl.ntt.com/sfu.html)を確認ください。
