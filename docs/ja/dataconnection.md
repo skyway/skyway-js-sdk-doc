@@ -51,7 +51,7 @@ const data = {
 dataConnection.send(data);
 
 // データを受信する
-dataConnection.on('data', { name, msg } => {
+dataConnection.on('data', ({ name, msg }) => {
   console.log(`${name}: ${msg}`);
   // => 'SkyWay: Hello, World!'
 });
