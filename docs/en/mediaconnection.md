@@ -36,7 +36,7 @@ Create and send an answer for the media connection offer.
 
 | Name    | Type                                            | Required | Default | Description                                               |
 |---------|-------------------------------------------------|----------|---------|-----------------------------------------------------------|
-| stream  | [MediaStream]                                   | ✔        |         | MediaStream object that send to the calling party.        |
+| stream  | [MediaStream]                                   | ✔        |         | A MediaStream that send to the calling party.             |
 | options | [answer options object](#answer-options-object) |          |         | Object which contains options which customize the answer. |
 
 ##### answer options object
@@ -82,9 +82,9 @@ receive mode even if the former connection was in receive only mode.
 
 #### Parameters
 
-| Name   | Type          | Required | Default | Description                          |
-|--------|---------------|----------|---------|--------------------------------------|
-| stream | [MediaStream] | ✔        |         | A MediaStream object to be replaced. |
+| Name   | Type          | Required | Default | Description                   |
+|--------|---------------|----------|---------|-------------------------------|
+| stream | [MediaStream] | ✔        |         | A MediaStream to be replaced. |
 
 #### Return value
 
@@ -96,9 +96,9 @@ receive mode even if the former connection was in receive only mode.
 
 Fired when received a stream.
 
-| Name   | Type          | Description                                          |
-|--------|---------------|------------------------------------------------------|
-| stream | [MediaStream] | A MediaStream object that received from remote peer. |
+| Name   | Type          | Description                                   |
+|--------|---------------|-----------------------------------------------|
+| stream | [MediaStream] | A MediaStream that received from remote peer. |
 
 ```js
 mediaConnection.on('stream', stream => {
