@@ -184,7 +184,7 @@ room.on('close', () => {
 
 ### Event: `'removeStream'`
 
-MediaStream has removed from MediaConnection in this room.
+MediaStream has removed from a media connection of this room.
 
 This event does not fired when remote peer left the room.
 In this case, use [`peerLeave` event](#event-peerleave) instead.
