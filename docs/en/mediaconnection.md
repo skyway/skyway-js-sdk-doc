@@ -1,4 +1,4 @@
-The `MediaConnection` is a class that manages media connections to another peer.
+The `MediaConnection` is a class that manages a media connection to another peer.
 
 The constructor should not be used other than used inside the ECLWebRTC SDK.
 A `MediaConnection` instance will be given as a return value of [`Peer#call()`](../peer/#callpeerid-stream-options)
@@ -30,7 +30,7 @@ peer.on('call', mediaConnection => {
 
 ### `answer(stream[, options])`
 
-Create and send an answer of the media connection request.
+Create and send an answer for the media connection offer.
 
 #### Parameters
 
@@ -43,12 +43,12 @@ Create and send an answer of the media connection request.
 
 | Name                | Type    | Required | Default | Description                                                                                                   |
 |---------------------|---------|----------|---------|---------------------------------------------------------------------------------------------------------------|
-| videoBandwidth      | number  |          |         | Max bandwidth of the video track receiving from the connected peer. (kbps)                                    |
-| audioBandwidth      | number  |          |         | Max bandwidth of the audio track receiving from the connected peer. (kbps)                                    |
-| videoCodec          | string  |          |         | A video codec such as `'H264'`.                                                                               |
-| audioCodec          | string  |          |         | A audio codec such as `'PCMU'`.                                                                               |
-| videoReceiveEnabled | boolean |          |         | Set to `true` to make a video connection in receive only mode when the `stream` does not include video track. |
-| audioReceiveEnabled | boolean |          |         | Set to `true` to make a audio connection in receive only mode when the `stream` does not include audio track. |
+| videoBandwidth      | number  |          |         | A max video bandwidth(kbps).                                                                     |
+| audioBandwidth      | number  |          |         | A max audio bandwidth(kbps).                                                                     |
+| videoCodec          | string  |          |         | A video codec like `'H264'`.                                                                     |
+| audioCodec          | string  |          |         | A audio codec like `'PCMU'`.                                                                     |
+| videoReceiveEnabled | boolean |          |         | Set to `true` and your stream does not include video track, you will be video receive only mode. |
+| audioReceiveEnabled | boolean |          |         | Set to `true` and your stream does not include audio track, you will be audio receive only mode. |
 
 #### Return value
 
@@ -112,9 +112,9 @@ Fired when the remote stream has removed from an existing MediaConnection.
 Note that the MediaConnection will not fire this event when remote peer has closed a MediaConnection.
 Use [`close` event](#event-close) if you want to catch a closing of the MediaConnection.
 
-| Name   | Type          | Description                                                 |
-|--------|---------------|-------------------------------------------------------------|
-| stream | [MediaStream] | A MediaStream object that removed from the MediaConnection. |
+| Name   | Type          | Description                                          |
+|--------|---------------|------------------------------------------------------|
+| stream | [MediaStream] | A MediaStream that removed from the MediaConnection. |
 
 ```js
 mediaConnection.on('removeStream', stream => {
