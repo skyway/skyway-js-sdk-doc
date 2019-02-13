@@ -1,106 +1,107 @@
-Class that manages data connections to other peers.
+The `DataConnection` is a class that manages a data connection to another peer.
 
-## Constructor
-
-Constructor should not be used. Instead, it is used used in only SDK.
-MediaConnection instance can be created `connect` and `peer.on('connection')`.
+The constructor should not be used other than used inside the ECLWebRTC SDK.
+A `DataConnection` instance will be given as a return value of [`Peer#connect()`](../peer/#connectpeerid-options)
+and as an input of [`connection` event](../peer/#event-connection) of the [`Peer`](../peer/).
 
 ### Sample
 
 ```js
 // Calling party
-dataConnection = peer.connect('peerID');
+const dataConnection = peer.connect('peerID');
 
 // Called party
-peer.on('connection', connection => {
-  console.log(connection);
+peer.on('connection', dataConnection => {
+  // ...
 });
 ```
 
 ## Members
 
-|Name|Type|Description|
-|----|----|----|
-|metadata|object|Any additional information to send to the peer.|
-|open|boolean|Whether the Connection has been opened or not.|
-|remoteId|string|PeerId of the peer this connection is connected to.|
-|peer|string|*Deprecated* The remote peerId. use `remoteId` instead.|
-
-#### Sample
-
-```js
-peer.on('connection', connection => {
-  console.log(connection.metadata);
-  // => Show metadata which calling party added
-});
-```
+| Name     | Type    | Description                                                                                                                                                                                                                                                                  |
+|----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| metadata | Object  | User-defined `metadata` object specified in [`Peer#connect()`](../peer/#connectpeerid-options). The calling party sends this data via signaling server at calling.                                                                                                           |
+| open     | boolean | Boolean that is True if the connection is opened. The [`open` event](#event-open) of [`DataConnection`](./) can open the connection, and it will be closed when the [`close` event](#event-close) of [`DataConnection`](./) is fired or the data connection is disconnected. |
+| remoteId | string  | Peer ID of the peer this connection connect to.                                                                                                                                                                                                                              |
+| peer     | string  | **Deprecated** Peer ID of the peer this connection connect to. Use `remoteId` instead.                                                                                                                                                                                       |
 
 ## Methods
 
-### send
+### `send(data)`
 
-Send data to peer. If serialization is 'binary', it will chunk it before sending.
+Send data to the remote peer. If serialization is 'binary', it will chunk it
+before sending.
 
 #### Parameters
 
-| Name | Type | Required | Default | Description |
-| --- | --- | --- | --- | --- |
-| data | * | ✔ | | The data to send to the peer. |
+| Name | Type | Required | Default | Description                   |
+|------|------|----------|---------|-------------------------------|
+| data | *    | ✔        |         | The data to send to the peer. |
 
-#### Return value 
+#### Return value
 
 `undefined`
 
 #### Sample
 
 ```js
-// Send 'hello world' string.
-dataConnection.send('hello world');
+// Send data
+const data = {
+  name: 'SkyWay',
+  msg: 'Hello, World!'
+};
+dataConnection.send(data);
 
-// 'data' events fires on received side
-dataConnection.on('data', data => {
-  console.log('hello world');
-  // => 'hello world'
+// Receive data
+dataConnection.on('data', ({ name, msg }) => {
+  console.log(`${name}: ${msg}`);
+  // => 'SkyWay: Hello, World!'
 });
 ```
 
-### close
+### `close()`
 
-Disconnect from remote peer.
+Close the DataConnection between the remote peer.
 
-#### Parameters
-
-None
-
-#### Return value 
+#### Return value
 
 `undefined`
-
-#### Sample
-
-```js
-call.close();
-```
 
 ## Events
 
-### data
+### Event: `'open'`
 
-Received data event.
-
-| Type | Description |
-| --- | --- | 
-| * | Received data |
-
-#### Sample
+Fired when the data connection is opened.
 
 ```js
-dataConnection.on('data', data => {
-  console.log('hello world');
-  // => 'hello world'
+dataConnection.on('open', () => {
+  // ...
 });
 ```
 
-### close
+### Event: `'data'`
 
-Connection closed event.
+Fired when received data from the remote peer.
+If serialization is 'binary', this event is fired when received all the chunked
+data and completed to unchunk.
+
+| Name | Type | Description            |
+|------|------|------------------------|
+| data | *    | The data that received |
+
+```js
+dataConnection.on('data', data => {
+  // ...
+});
+```
+
+### Event: `'close'`
+
+Fired when call [`DataConnection#close()`](#close), or the data connection is
+closed.
+
+```js
+dataConnection.on('close', () => {
+  // ...
+});
+```
