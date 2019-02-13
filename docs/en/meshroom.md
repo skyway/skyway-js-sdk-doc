@@ -139,7 +139,6 @@ room.once('log', logs => {
 Received MediaStream from remote peer in the room.
 The Peer ID of stream origin can be obtained via `stream.peerId`.
 
-
 | Name   | Type          | Description           |
 | ------ | ------------- | --------------------- |
 | stream | [MediaStream] | MediaStream instance. |
@@ -190,7 +189,7 @@ In this case, use [`peerLeave` event](#event-peerleave) instead.
 
 | Name   | Type          | Description           |
 | ------ | ------------- | --------------------- |
-| stream | [MediaStream] | MediaStream instance. | 
+| stream | [MediaStream] | MediaStream instance. |
 
 ```js
 room.on('removeStream', stream => {

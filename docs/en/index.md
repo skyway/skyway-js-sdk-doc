@@ -1,4 +1,4 @@
-This document is ECLWebRTC JavaScript SDK API Reference. 
+This document is ECLWebRTC JavaScript SDK API Reference.
 See [Communication model of ECLWebRTC](https://webrtc.ecl.ntt.com/en/communication-model.html) if this is the first time for you to develop applciation with ECLWebRTC.
 
 ## About class

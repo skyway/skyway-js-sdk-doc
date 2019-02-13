@@ -30,7 +30,7 @@
   "scripts": {
     "test": "npm run test:text & npm run test:markdown",
     "test:text": "textlint docs/ja/",
-    "test:markdown": "markdownlint docs/ja/"
+    "test:markdown": "markdownlint docs/"
   },
   "repository": {
     "type": "git",

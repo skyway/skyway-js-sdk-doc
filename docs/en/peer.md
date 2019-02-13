@@ -47,7 +47,7 @@ const peer = new Peer({
 
 #### credential object
 
-See [Peer authentication example]((https://github.com/skyway/skyway-peer-authentication-samples) for details.
+See [Peer authentication example](https://github.com/skyway/skyway-peer-authentication-samples) for details.
 
 <!-- textlint-disable -->
 
@@ -297,7 +297,7 @@ Query the created MediaConnection or DataConnection.
 
 | Name         | Type   | Required | Default | Description        |
 | ------------ | ------ | -------- | ------- | ------------------ |
-| peerId       | string | ✔        |         | The Peer ID.       | 
+| peerId       | string | ✔        |         | The Peer ID.       |
 | connectionId | string | ✔        |         | The connection ID. |
 
 #### Return value
@@ -307,7 +307,7 @@ Query the created MediaConnection or DataConnection.
 ### `updateCredential(mode)`
 
 Update credential to extend TTL of authentication.
-See [Peer authentication example]((https://github.com/skyway/skyway-peer-authentication-samples) for details.
+See [Peer authentication example](https://github.com/skyway/skyway-peer-authentication-samples) for details.
 
 #### Parameters
 
@@ -398,7 +398,6 @@ peer.on('disconnected', id => {
 ### Event: `'expiresin'`
 
 Occurs before credential expired.
-
 
 | Name | Type   | Description                           |
 | ---- | ------ | ------------------------------------- |

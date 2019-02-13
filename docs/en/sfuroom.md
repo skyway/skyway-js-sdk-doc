@@ -18,7 +18,7 @@ sfuRoom.on('open', () => {});
 | ------------- | -------- | ----------------------------------- |
 | name          | string   | The room name.                      |
 | remoteStreams | Object   | Object contains all remote streams. |
-| members       | string[] | Array of the Peer ID in this room.  | 
+| members       | string[] | Array of the Peer ID in this room.  |
 
 ## Methods
 
@@ -139,7 +139,6 @@ room.once('log', logs => {
 
 Received MediaStream from remote peer in the room.
 The Peer ID of stream origin can be obtained via `stream.peerId`.
-
 
 | Name   | Type          | Description           |
 | ------ | ------------- | --------------------- |
