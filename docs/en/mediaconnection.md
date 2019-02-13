@@ -1,144 +1,135 @@
-Class that manages media connections to other peers.
+The `MediaConnection` is a class that manages a media connection to another peer.
 
-## Constructor
-
-Constructor should not be used. Instead, it is used used in only SDK.
-MediaConnection instance can be created `call` and `peer.on('call')`.
+The constructor should not be used other than used inside the ECLWebRTC SDK.
+A `MediaConnection` instance will be given as a return value of [`Peer#call()`](../peer/#callpeerid-stream-options)
+and as an input of [`call` event](../peer/#event-call) of the [`Peer`](../peer/).
 
 ### Sample
 
 ```js
 // Calling party
-mediaConnection = peer1.call('peerID', mediaStream);
+const mediaConnection = peer.call('peerID', mediaStream);
 
 // Called party
-peer2.on('call', call => {
+peer.on('call', mediaConnection => {
   // answer with called party's media stream.
-  call.answer(mediaStream2)
+  mediaConnection.answer(mediaStream);
 });
 ```
 
 ## Members
 
-|Name|Type|Description|
-|----|----|----|
-|metadata|object|Any additional information to send to the peer.|
-|open|boolean|Whether the Connection has been opened or not.|
-|remoteId|string|PeerId of the peer this connection is connected to.|
-|peer|string|*Deprecated* The remote peerId. Use `remoteId` instead.|
-
-#### Sample
-
-```js
-// When calling party set `metadata: { foo: 'bar' }`
-peer.on('call', call => {
-  console.log(call.metadata);
-  // => {foo: "bar"}
-});
-```
+| Name     | Type    | Description                                                                                                                                                                                                                                                                                                                          |
+|----------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| metadata | Object  | User-defined `metadata` object specified in [`Peer#call()`](../peer/#callpeerid-stream-options). The calling party sends this data via signaling server at calling.                                                                                                                                                                  |
+| open     | boolean | Boolean that is True if the connection is opened. The [`stream` event](#event-stream) of [`MediaConnection`](./) and [`MediaConnection#answer()`](#answerstream-options) could open the connection, the [`close` event](#event-close) of [`MediaConnection`](./) and [`MediaConnection#close()`](#close) could close the connection. |
+| remoteId | string  | PeerId of the peer this connection connect to.                                                                                                                                                                                                                                                                                       |
+| peer     | string  | **Deprecated** PeerId of the peer this connection connect to. Use `remoteId` instead.                                                                                                                                                                                                                                                |
 
 ## Methods
 
-### answer
+### `answer(stream[, options])`
 
-Create and send an answer message.
+Create and send an answer for the media connection offer.
 
 #### Parameters
 
-| Name | Type | Require | Default | Description |
-| --- | --- | --- | --- | --- |
-| stream | MediaStream | ★ | | The stream to send to the peer. |
-| options | [answer options object](#answer-options-object) | | | Optional arguments for the connection. |
+| Name    | Type                                            | Required | Default | Description                                               |
+|---------|-------------------------------------------------|----------|---------|-----------------------------------------------------------|
+| stream  | [MediaStream]                                   | ✔        |         | A MediaStream that send to the calling party.             |
+| options | [answer options object](#answer-options-object) |          |         | Object which contains options which customize the answer. |
 
 ##### answer options object
 
-| Name | Type | Required | Default | Description |
-| --- | --- | --- | --- | --- |
-| videoBandwidth | number | | | A max video bandwidth(kbps) |
-| audioBandwidth | number | | | A max audio bandwidth(kbps) |
-| videoCodec | string | | | A video codec like 'H264' |
-| audioCodec | string | | | A video codec like 'PCMU' |
+| Name                | Type    | Required | Default | Description                                                                                                   |
+|---------------------|---------|----------|---------|---------------------------------------------------------------------------------------------------------------|
+| videoBandwidth      | number  |          |         | A max video bandwidth(kbps).                                                                     |
+| audioBandwidth      | number  |          |         | A max audio bandwidth(kbps).                                                                     |
+| videoCodec          | string  |          |         | A video codec like `'H264'`.                                                                     |
+| audioCodec          | string  |          |         | A audio codec like `'PCMU'`.                                                                     |
+| videoReceiveEnabled | boolean |          |         | Set to `true` and your stream does not include video track, you will be video receive only mode. |
+| audioReceiveEnabled | boolean |          |         | Set to `true` and your stream does not include audio track, you will be audio receive only mode. |
 
-#### Return value 
+#### Return value
 
 `undefined`
 
 #### Sample
 
 ```js
-peer.on('call', call => {
-  call.answer(mediaStream);
+peer.on('call', mediaConnection => {
+  const recvonlyOption = {
+    videoReceiveEnabled: false,
+  };
+
+  mediaConnection.answer(mediaStream, recvonlyOption);
 });
 ```
 
-### close
+### `close()`
 
-Disconnect from remote peer.
+Close the MediaConnection between remote peer.
 
-#### Parameters
-
-None
-
-#### Return value 
+#### Return value
 
 `undefined`
 
-#### Sample
+### `replaceStream(stream)`
 
-```js
-call.close();
-```
-
-### replaceStream
-
-Replace the stream being sent with a new one.
-The new one can be audio only stream, or both audio and video stream.
+Replace the MediaStream being sent with a new one.
+When a new MediaStream has a media track, the media connection will be in send /
+receive mode even if the former connection was in receive only mode.
 
 #### Parameters
 
-| Name | Type | Optional | Default | Description |
-| --- | --- | --- | --- | --- |
-| stream | MediaStream | | | The stream to replace the old stream with. |
+| Name   | Type          | Required | Default | Description                   |
+|--------|---------------|----------|---------|-------------------------------|
+| stream | [MediaStream] | ✔        |         | A MediaStream to be replaced. |
 
-#### Return value 
+#### Return value
 
 `undefined`
-
-#### Sample
-
-```js
-// newStream
-call.replaceStream(newStream);
-```
 
 ## Events
 
-### stream 
+### Event: `'stream'`
 
-MediaStream received from peer.
+Fired when received a stream.
 
-|Type|Description|
-|----|----|
-|MediaStream|MediaStream instance|
-
-#### Sample
+| Name   | Type          | Description                                   |
+|--------|---------------|-----------------------------------------------|
+| stream | [MediaStream] | A MediaStream that received from remote peer. |
 
 ```js
-call.on('stream', stream => {
-  console.log(stream);
+mediaConnection.on('stream', stream => {
+  // ...
 });
 ```
 
-### close
+### Event: `'removeStream'`
 
-Connection closed event.
+Fired when the remote stream is removed from an existing MediaConnection.
+Note that the MediaConnection will not fire this event when remote peer has closed a MediaConnection.
+Use [`close` event](#event-close) if you want to catch a closing of the MediaConnection.
 
-### removeStream
+| Name   | Type          | Description                                          |
+|--------|---------------|------------------------------------------------------|
+| stream | [MediaStream] | A MediaStream that removed from the MediaConnection. |
 
-[MediaStream](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream) from peer was removed.
+```js
+mediaConnection.on('removeStream', stream => {
+  // ...
+});
+```
 
+### Event: `'close'`
 
-|Type|Description|
-|----|----|
-|MediaStream|MediaStream instance|
+Fired when call [`MediaConnection#close()`](#close), or the media connection is closed.
 
+```js
+mediaConnection.on('close', () => {
+  // ...
+});
+```
+
+[MediaStream]: https://w3c.github.io/mediacapture-main/#mediastream
