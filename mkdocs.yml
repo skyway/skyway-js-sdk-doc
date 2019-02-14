@@ -13,6 +13,7 @@ pages:
           - DataConnection: ja/dataconnection.md
           - MeshRoom: ja/meshroom.md
           - SFURoom: ja/sfuroom.md
+        - FAQ: ja/faq.md
     - English:
         - Introduction: en/index.md
         - API References:
