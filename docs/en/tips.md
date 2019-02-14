@@ -81,7 +81,6 @@ By using `navigator.mediaDevices.enumerateDevices()`, you can get the list of av
 
 Then select one in the list, and pass its `deviceId` to `getUserMedia()`, you can specify input source.
 
-
 ## Mute a `MediaStream`
 
 If you want to mute your video and/or audio temporarily, set `enabled` property of `MediaStreamTrack`.
