@@ -23,6 +23,7 @@ peer.on('connection', dataConnection => {
 | open     | boolean | コネクションがオープンしているかどうかを示します。[`DataConnection`](./)の[`open`イベント](#event-open)が発生した際にオープンし、[`DataConnection#close()`](#close)が呼び出されたまたはデータチャネル接続が切断された際にクローズします。 |
 | remoteId | string  | 接続先PeerのPeer IDです。                                                                                                                                                                                                                 |
 | peer     | string  | **Deprecated!** 接続先PeerのPeer IDです。remoteIdを使ってください。                                                                                                                                                                       |
+| id       | string  | コネクションを識別するIDです。                                                                                                                                                                                                            |
 
 ## Methods
 

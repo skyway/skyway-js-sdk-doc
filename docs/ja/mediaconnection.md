@@ -24,6 +24,7 @@ peer.on('call', mediaConnection => {
 | open     | boolean | コネクションがオープンしているかどうかを示します。[`MediaConnection`](./)の[`stream`イベント](#event-stream)または [`MediaConnection#answer()`](#answerstream-options) が呼び出された際にオープンし、 [`MediaConnection#close()`](#close)が呼び出されたまたは[`MediaConnection`](./)の[`close`イベント](#event-close)が発生した際にクローズします。 |
 | remoteId | string  | 接続先PeerのPeer IDです。                                                                                                                                                                                                                                                                                                                           |
 | peer     | string  | **Deprecated!** 接続先PeerのPeer IDです。remoteIdを使ってください。                                                                                                                                                                                                                                                                                 |
+| id       | string  | コネクションを識別するIDです。                                                                                                                                                                                                                                                                                                                      |
 
 ## Methods
 

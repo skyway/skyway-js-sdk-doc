@@ -1,11 +1,11 @@
-It is a entry point for P2P connection and room connection.
+The `Peer` class is a entry point for P2P connection and room connection.
 In order to use ECLWebRTC, Peer instance is necessary.
 
 ## `Constructor(id, options)`
 
 ## `Constructor(options)`
 
-Create new Peer instance.
+Create a new Peer instance.
 `new Peer()` starts connection to ECLWebRTC's signaling server.
 
 ### Sample
@@ -86,7 +86,7 @@ const defaultConfig = {
 
 ### `call(peerId[, stream][, options])`
 
-Create new [MediaConnection](../mediaconnection) with Peer ID.
+Create a new [MediaConnection](../mediaconnection) with Peer ID.
 With option, bandwidth or/and codec can be specified.
 
 #### Parameters
@@ -104,16 +104,16 @@ With option, bandwidth or/and codec can be specified.
 | metadata            | Object  |          |         | Any additional data to send to the remote peer.                                                  |
 | videoBandwidth      | number  |          |         | A max video bandwidth(kbps).                                                                     |
 | audioBandwidth      | number  |          |         | A max audio bandwidth(kbps).                                                                     |
-| videoCodec          | string  |          |         | A video codec like `'H264'`.                                                                     |
-| audioCodec          | string  |          |         | A audio codec like `'PCMU'`.                                                                     |
+| videoCodec          | string  |          |         | A video codec such as `'H264'`.                                                                     |
+| audioCodec          | string  |          |         | A audio codec such as `'PCMU'`.                                                                     |
 | videoReceiveEnabled | boolean |          |         | Set to `true` and your stream does not include video track, you will be video receive only mode. |
 | audioReceiveEnabled | boolean |          |         | Set to `true` and your stream does not include audio track, you will be audio receive only mode. |
-| connectionId        | string  |          |         | ID to identify each connection.                                                                  |
-| label               | string  |          |         | **Deprecated!** Label to identify each connection. Use `connectionId` instead.                   |
+| connectionId        | string  |          |         | The ID to identify each connection.                                                                  |
+| label               | string  |          |         | **Deprecated!** The Label to identify each connection. Use `connectionId` instead.                   |
 
 #### Return value
 
-[MediaConnection](../mediaconnection) instance.
+A [MediaConnection](../mediaconnection) instance.
 
 #### Sample
 
@@ -147,7 +147,7 @@ const call = peer.call('peerID', null, {
 
 ### `connect(peerId[, options])`
 
-Create new [DataConnection](../dataconnection) with Peer ID.
+Create a new [DataConnection](../dataconnection) with Peer ID.
 
 #### Parameters
 
@@ -162,13 +162,13 @@ Create new [DataConnection](../dataconnection) with Peer ID.
 | ------------- | -------------------- | -------- | ---------- | ---------------------------------------------------------------------------------- |
 | metadata      | Object               |          |            | Any additional data to send to the remote peer.                                    |
 | serialization | string               |          | `'binary'` | Serialization for data when sending. One of `'binary'`, `'json'`, or `'none'`.     |
-| dcInit        | [RTCDataChannelInit] |          | `{}`       | RTCDataChannelInit object passed into `createDataChannel()` to change reliability. |
-| connectionId  | string               |          |            | ID to identify each connection.                                                    |
-| label         | string               |          |            | **Deprecated!** Label to identify each connection. Use `connectionId` instead.     |
+| dcInit        | [RTCDataChannelInit] |          | `{}`       | RTCDataChannelInit object passed into `createDataChannel()` to change reliability. It is defaulting to `true`. Note that Google Chrome uses `maxRetransmitTime` instead of `maxPacketLifetime`. |
+| connectionId  | string               |          |            | The ID to identify each connection.                                                    |
+| label         | string               |          |            | **Deprecated!** The Label to identify each connection. Use `connectionId` instead.     |
 
 #### Return value
 
-[DataConnection](../dataconnection) instance.
+A [DataConnection](../dataconnection) instance.
 
 #### Sample
 
@@ -236,17 +236,17 @@ See this [page](https://webrtc.ecl.ntt.com/sfu.html) for the difference between 
 | Name                | Type        | Required | Default  | Description                                                                                                                            |
 | ------------------- | ----------- | -------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | mode                | string      |          | `'mesh'` | One of `'sfu'` or `'mesh'`.                                                                                                            |
-| stream              | MediaStream |          |          | MediaStream you want to emit.                                                                                                          |
+| stream              | MediaStream |          |          | The MediaStream you want to emit.                                                                                                          |
 | videoBandwidth      | number      |          |          | A max video bandwidth(kbps). Only available when mode is `'mesh'`.                                                                     |
 | audioBandwidth      | number      |          |          | A max audio bandwidth(kbps). Only available when mode is `'mesh'`.                                                                     |
-| videoCodec          | string      |          |          | A video codec like `'H264'`. Only available when mode is `'mesh'`.                                                                     |
-| audioCodec          | string      |          |          | A audio codec like `'PCMU'`. Only available when mode is `'mesh'`.                                                                     |
+| videoCodec          | string      |          |          | A video codec such as `'H264'`. Only available when mode is `'mesh'`.                                                                     |
+| audioCodec          | string      |          |          | A audio codec such as `'PCMU'`. Only available when mode is `'mesh'`.                                                                     |
 | videoReceiveEnabled | boolean     |          |          | Set to `true` and your stream does not include video track, you will be video receive only mode. Only available when mode is `'mesh'`. |
 | audioReceiveEnabled | boolean     |          |          | Set to `true` and your stream does not include audio track, you will be audio receive only mode. Only available when mode is `'mesh'`. |
 
 #### Return value
 
-[SFURoom](../sfuroom) instance or [MeshRoom](../meshroom) instance.
+An [SFURoom](../sfuroom) instance or a [MeshRoom](../meshroom) instance.
 
 #### Sample
 
@@ -274,7 +274,7 @@ Call REST API to get the list of Peer IDs associated with API key.
 
 | Name     | Type     | Required | Default | Description                        |
 | -------- | -------- | -------- | ------- | ---------------------------------- |
-| callback | Function | ✔        |         | Callback function to get Peer IDs. |
+| callback | Function | ✔        |         | The callback function to get Peer IDs. |
 
 #### Return value
 
@@ -313,7 +313,7 @@ See [Peer authentication example](https://github.com/skyway/skyway-peer-authenti
 
 | Name | Type                                    | Required | Default | Description                       |
 | ---- | --------------------------------------- | -------- | ------- | --------------------------------- |
-| mode | [credential object](#credential-object) | ✔        |         | New credential generated by user. |
+| mode | [credential object](#credential-object) | ✔        |         | A new credential generated by user. |
 
 #### Return value
 
@@ -331,7 +331,7 @@ peer.on(Peer.EVENTS.open, () => {});
 
 ### Event: `'open'`
 
-Connected to the signaling server successfully.
+Fired when connected to the signaling server successfully.
 
 | Name | Type   | Description |
 | ---- | ------ | ----------- |
@@ -345,11 +345,11 @@ peer.on('open', id => {
 
 ### Event: `'call'`
 
-Received a media call from remote peer.
+Fired when received a media call from remote peer.
 
 | Name | Type                                  | Description                                     |
 | ---- | ------------------------------------- | ----------------------------------------------- |
-| call | [MediaConnection](../mediaconnection) | [MediaConnection](../mediaconnection) instance. |
+| call | [MediaConnection](../mediaconnection) | A [MediaConnection](../mediaconnection) instance. |
 
 ```js
 peer.on('call', call => {
@@ -359,7 +359,7 @@ peer.on('call', call => {
 
 ### Event: `'close'`
 
-Finished closing all connections.
+Fired when finished closing all connections.
 
 ```js
 peer.on('close', () => {
@@ -369,11 +369,11 @@ peer.on('close', () => {
 
 ### Event: `'connection'`
 
-Received a data connection from remote peer.
+Fired when received a data connection from remote peer.
 
 | Name | Type                                | Description                                   |
 | ---- | ----------------------------------- | --------------------------------------------- |
-| conn | [DataConnection](../dataconnection) | [DataConnection](../dataconnection) instance. |
+| conn | [DataConnection](../dataconnection) | A [DataConnection](../dataconnection) instance. |
 
 ```js
 peer.on('connection', conn => {
@@ -383,7 +383,7 @@ peer.on('connection', conn => {
 
 ### Event: `'disconnected'`
 
-Disconnected from the signaling server.
+Fired when disconnected from the signaling server.
 
 | Name | Type   | Description |
 | ---- | ------ | ----------- |
@@ -397,7 +397,7 @@ peer.on('disconnected', id => {
 
 ### Event: `'expiresin'`
 
-Occurs before credential expired.
+Fired when the former credential expired.
 
 | Name | Type   | Description                           |
 | ---- | ------ | ------------------------------------- |
@@ -411,11 +411,11 @@ peer.on('expiresin', sec => {
 
 ### Event: `'error'`
 
-Occurred some error.
+Fired upon some error.
 
 | Name  | Type  | Description              |
 | ----- | ----- | ------------------------ |
-| error | Error | Error object. |
+| error | Error | An error object. |
 
 Error object has `type` property to know its details.
 

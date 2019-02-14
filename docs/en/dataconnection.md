@@ -1,4 +1,4 @@
-The `DataConnection` is a class that manages a data connection to another peer.
+The `DataConnection` is a class which manages a data connection to another peer.
 
 The constructor should not be used other than used inside the ECLWebRTC SDK.
 A `DataConnection` instance will be given as a return value of [`Peer#connect()`](../peer/#connectpeerid-options)
@@ -22,8 +22,9 @@ peer.on('connection', dataConnection => {
 |----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | metadata | Object  | User-defined `metadata` object specified in [`Peer#connect()`](../peer/#connectpeerid-options). The calling party sends this data via signaling server at calling.                                                                                                           |
 | open     | boolean | Boolean that is True if the connection is opened. The [`open` event](#event-open) of [`DataConnection`](./) can open the connection, and it will be closed when the [`close` event](#event-close) of [`DataConnection`](./) is fired or the data connection is disconnected. |
-| remoteId | string  | Peer ID of the peer this connection connect to.                                                                                                                                                                                                                              |
-| peer     | string  | **Deprecated** Peer ID of the peer this connection connect to. Use `remoteId` instead.                                                                                                                                                                                       |
+| remoteId | string  | The Peer ID of the peer this connection connect to.                                                                                                                                                                                                                              |
+| peer     | string  | **Deprecated** The Peer ID of the peer this connection connect to. Use `remoteId` instead.                                                                                                                                                                                       |
+| id       | string  | The ID to identify each connection.                                                                                                                                                                                                                                                                                                      |
 
 ## Methods
 
@@ -82,12 +83,12 @@ dataConnection.on('open', () => {
 ### Event: `'data'`
 
 Fired when received data from the remote peer.
-If serialization is 'binary', this event is fired when received all the chunked
+If serialization is `'binary'`, this event is fired when received all the chunked
 data and completed to unchunk.
 
 | Name | Type | Description            |
 |------|------|------------------------|
-| data | *    | The data that received |
+| data | *    | The data which received. |
 
 ```js
 dataConnection.on('data', data => {

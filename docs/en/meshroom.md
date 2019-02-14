@@ -1,6 +1,7 @@
-Class manages full-mesh type room.
+The `MeshRoom` is a class which manages a full-mesh type room.
 
-Constructor is used by only SDK, you can get instance by [`Peer#joinRoom()`](../peer#joinroomroomname-roomoptions).
+The constructor should not be used other than used inside the ECLWebRTC SDK.
+A `MeshRoom` instance will be given as a return value of [`Peer#joinRoom()`](../peer#joinroomroomname-roomoptions).
 
 ### Sample
 
@@ -50,14 +51,15 @@ room.getLog();
 ### `replaceStream(stream)`
 
 Replace the stream being sent on all MediaConnections with a new one.
-You may change receive only mode to both send and receive mode.
-Also, changing audio only stream to both audio and video stream is supported.
+When a new MediaStream has an enabled audio and/or video, the media connection
+will be in send and receive mode even if the former connection was in receive
+only mode.
 
 #### Parameters
 
 | Name   | Type          | Required | Default | Description                        |
 | ------ | ------------- | -------- | ------- | ---------------------------------- |
-| stream | [MediaStream] | ✔        |         | The stream to replace the old one. |
+| stream | [MediaStream] | ✔        |         | The stream to be replaced. |
 
 #### Return value
 
@@ -81,7 +83,7 @@ Send data to all members in the room with WebSocket.
 
 ### Event: `'open'`
 
-Room is ready and you joined the room successfully.
+Fired when the room is ready and you joined the room successfully.
 
 ```js
 room.on('open', () => {
@@ -91,11 +93,11 @@ room.on('open', () => {
 
 ### Event: `'peerJoin'`
 
-New remote peer has joined.
+Fired when a new remote peer has joined.
 
 | Name   | Type   | Description         |
 | ------ | ------ | ------------------- |
-| peerId | string | The Peer ID joined. |
+| peerId | string | The Peer ID of joined peer. |
 
 ```js
 room.on('peerJoin', peerId => {
@@ -105,11 +107,11 @@ room.on('peerJoin', peerId => {
 
 ### Event: `'peerLeave'`
 
-Remote peer has left.
+Fired when a remote peer has left.
 
 | Name   | Type   | Description       |
 | ------ | ------ | ----------------- |
-| peerId | string | The Peer ID left. |
+| peerId | string | The Peer ID of left peer. |
 
 ```js
 room.on('peerLeave', peerId => {
@@ -119,7 +121,7 @@ room.on('peerLeave', peerId => {
 
 ### Event: `'log'`
 
-Received the room log.
+Fired when received the room log.
 
 | Name | Type     | Description                  |
 | ---- | -------- | ---------------------------- |
@@ -136,12 +138,12 @@ room.once('log', logs => {
 
 ### Event: `'stream'`
 
-Received MediaStream from remote peer in the room.
+Fired when received a MediaStream from remote peer in the room.
 The Peer ID of stream origin can be obtained via `stream.peerId`.
 
 | Name   | Type          | Description           |
 | ------ | ------------- | --------------------- |
-| stream | [MediaStream] | MediaStream instance. |
+| stream | [MediaStream] | A MediaStream instance. |
 
 ```js
 room.on('stream', stream => {
@@ -151,7 +153,7 @@ room.on('stream', stream => {
 
 ### Event: `'data'`
 
-Received the data from remote peer in the room.
+Fired when received the data from a remote peer in the room.
 
 | Name | Type   | Description                                         |
 | ---- | ------ | --------------------------------------------------- |
@@ -172,7 +174,7 @@ room.on('data', ({ src, data }) => {
 
 ### Event: `'close'`
 
-Room has closed.
+Fired when the room is closed.
 
 ```js
 room.on('close', () => {
@@ -182,14 +184,14 @@ room.on('close', () => {
 
 ### Event: `'removeStream'`
 
-MediaStream is removed from MediaConnection in this room.
+Fired when a MediaStream is removed from a media connection of this room.
 
-This event does not fired when remote peer left the room.
-In this case, use [`peerLeave` event](#event-peerleave) instead.
+Note that the `MeshRoom` will not fire this event when remote peer has left from an MeshRoom.
+Use [`peerLeave` event](#event-peerleave) if you want to catch a leaving of a remote peer.
 
 | Name   | Type          | Description           |
 | ------ | ------------- | --------------------- |
-| stream | [MediaStream] | MediaStream instance. |
+| stream | [MediaStream] | A MediaStream which removed. |
 
 ```js
 room.on('removeStream', stream => {
