@@ -13,6 +13,7 @@ pages:
           - DataConnection: ja/dataconnection.md
           - MeshRoom: ja/meshroom.md
           - SFURoom: ja/sfuroom.md
+        - Tips: ja/tips.md
     - English:
         - Introduction: en/index.md
         - API References:
@@ -21,6 +22,7 @@ pages:
           - DataConnection: en/dataconnection.md
           - MeshRoom: en/meshroom.md
           - SFURoom: en/sfuroom.md
+        - Tips: en/tips.md
 theme:
     name: 'material'
     language: 'en'
