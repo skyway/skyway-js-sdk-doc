@@ -1,3 +1,7 @@
+ここでは、SkyWayを利用したWebRTCアプリケーション開発に関するTipsを紹介します。
+
+このページの内容はその動作を保証するものではありません。ブラウザの実装によっては動作しない・挙動が違うなどの可能性があります。
+
 ## MediaStreamの取得
 
 [`Peer#call()`](../peer#callpeerid-stream-options)や[`Peer#joinRoom()`](../peer#joinroomroomname-roomoptions)には、引数として`MediaStream`を渡せますが、SkyWayではその`MediaStream`の取得方法を規定していません。
