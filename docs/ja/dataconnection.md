@@ -17,13 +17,16 @@ peer.on('connection', dataConnection => {
 
 ## Members
 
-| Name     | Type    | Description                                                                                                                                                                                                                               |
-|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| metadata | Object  | [`Peer#connect()`](../peer/#connectpeerid-options) で指定した`metadata`です。着信側には、シグナリングサーバを経由して送信されます。                                                                                                       |
-| open     | boolean | コネクションがオープンしているかどうかを示します。[`DataConnection`](./)の[`open`イベント](#event-open)が発生した際にオープンし、[`DataConnection#close()`](#close)が呼び出されたまたはデータチャネル接続が切断された際にクローズします。 |
-| remoteId | string  | 接続先PeerのPeer IDです。                                                                                                                                                                                                                 |
-| peer     | string  | **Deprecated!** 接続先PeerのPeer IDです。remoteIdを使ってください。                                                                                                                                                                       |
-| id       | string  | コネクションを識別するIDです。                                                                                                                                                                                                            |
+| Name          | Type                 | Description                                                                                                                                                                                                                               |
+|---------------|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| type          | string               | コネクションタイプを示す文字列です。DataConnectionでは、この値は`'data'` です。                                                                                                                                                           |
+| metadata      | Object               | [`Peer#connect()`](../peer/#connectpeerid-options) で指定した`metadata`です。着信側には、シグナリングサーバを経由して送信されます。                                                                                                       |
+| serialization | string               | [`Peer#connect()`](../peer/#connectpeerid-options) で指定した `serialization` です。着信側には、シグナリングサーバを経由して送信されます。                                                                                                |
+| dcInit        | [RTCDataChannelInit] | [`Peer#connect()`](../peer/#connectpeerid-options) で指定した `dcInit` です。着信側には、シグナリングサーバを経由して送信されます。                                                                                                       |
+| open          | boolean              | コネクションがオープンしているかどうかを示します。[`DataConnection`](./)の[`open`イベント](#event-open)が発生した際にオープンし、[`DataConnection#close()`](#close)が呼び出されたまたはデータチャネル接続が切断された際にクローズします。 |
+| remoteId      | string               | 接続先PeerのPeer IDです。                                                                                                                                                                                                                 |
+| peer          | string               | **Deprecated!** 接続先PeerのPeer IDです。remoteIdを使ってください。                                                                                                                                                                       |
+| id            | string               | コネクションを識別するIDです。                                                                                                                                                                                                            |
 
 ## Methods
 
@@ -102,3 +105,5 @@ dataConnection.on('close', () => {
   // ...
 });
 ```
+
+[RTCDataChannelInit]: https://w3c.github.io/webrtc-pc/#dom-rtcdatachannelinit

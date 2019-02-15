@@ -18,13 +18,16 @@ peer.on('connection', dataConnection => {
 
 ## Members
 
-| Name     | Type    | Description                                                                                                                                                                                                                                                                  |
-|----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| metadata | Object  | User-defined `metadata` object specified in [`Peer#connect()`](../peer/#connectpeerid-options). The calling party sends this data via signaling server at calling.                                                                                                           |
-| open     | boolean | Boolean that is True if the connection is opened. The [`open` event](#event-open) of [`DataConnection`](./) can open the connection, and it will be closed when the [`close` event](#event-close) of [`DataConnection`](./) is fired or the data connection is disconnected. |
-| remoteId | string  | The Peer ID of the peer this connection connect to.                                                                                                                                                                                                                              |
-| peer     | string  | **Deprecated** The Peer ID of the peer this connection connect to. Use `remoteId` instead.                                                                                                                                                                                       |
-| id       | string  | The ID to identify each connection.                                                                                                                                                                                                                                                                                                      |
+| Name          | Type                 | Description                                                                                                                                                                                                                                                                  |
+|---------------|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| type          | string               | String which describes the connection type. In DataConnection, the value is `'data'`.                                                                                                                                                                                        |
+| metadata      | Object               | User-defined `metadata` object given in [`Peer#connect()`](../peer/#connectpeerid-options). The calling party sends this data via signaling server at calling.                                                                                                               |
+| serialization | string               | The serialization type given in [`Peer#connect()`](../peer/#connectpeerid-options). The calling party sends this data via signaling server at calling.                                                                                                                       |
+| dcInit        | [RTCDataChannelInit] | RTCDataChannelInit object given in [`Peer#connect()`](../peer/#connectpeerid-options). The calling party sends this data via signaling server at calling.                                                                                                                    |
+| open          | boolean              | Boolean that is True if the connection is opened. The [`open` event](#event-open) of [`DataConnection`](./) can open the connection, and it will be closed when the [`close` event](#event-close) of [`DataConnection`](./) is fired or the data connection is disconnected. |
+| remoteId      | string               | The Peer ID of the peer this connection connect to.                                                                                                                                                                                                                          |
+| peer          | string               | **Deprecated** The Peer ID of the peer this connection connect to. Use `remoteId` instead.                                                                                                                                                                                   |
+| id            | string               | The ID to identify each connection.                                                                                                                                                                                                                                          |
 
 ## Methods
 
@@ -106,3 +109,5 @@ dataConnection.on('close', () => {
   // ...
 });
 ```
+
+[RTCDataChannelInit]: https://w3c.github.io/webrtc-pc/#dom-rtcdatachannelinit
