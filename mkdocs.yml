@@ -3,7 +3,7 @@ site_description: Document for SkyWay/ECLWebRTC JavaScript SDK
 site_author: NTT Communications
 site_url: 'https://webrtc.ecl.ntt.com/'
 copyright: '© NTT Communications Corporation All Rights Reserved.'
-pages:
+nav:
     - Home: index.md
     - 日本語:
         - Introduction: ja/index.md
