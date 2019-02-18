@@ -38,4 +38,4 @@ For API details, see the document of [`EventEmitter`](https://nodejs.org/api/eve
 
 For events details, see the document of each class.
 
-Set a listener for `'error'` event is always recommended.
+Set a listener for `'error'` event is always recommended to avoid unexpected behavior.
