@@ -37,3 +37,5 @@ peer.emit('myev', 3);
 For API details, see the document of [`EventEmitter`](https://nodejs.org/api/events.html#events_class_eventemitter).
 
 For events details, see the document of each class.
+
+Set a listener for `'error'` event is always recommended to avoid unexpected behavior.

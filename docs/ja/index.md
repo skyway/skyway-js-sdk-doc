@@ -34,6 +34,6 @@ peer.on('myev', val => {
 peer.emit('myev', 3);
 ```
 
-メソッドの詳細については、[`EventEmitter`](https://nodejs.org/api/events.html#events_class_eventemitter)のドキュメントを参照してください。
+メソッドの詳細については、[`EventEmitter`](https://nodejs.org/api/events.html#events_class_eventemitter)のドキュメントを、クラスごとの発生するイベントの詳細については、各クラスのドキュメントを参照してください。
 
-クラスごとの発生するイベントの詳細については、各クラスのドキュメントを参照してください。
+各クラスからの`'error'`イベントは、必ず`on('error', listener)`するようにしてください。そうしない場合、エラーが発生して予期せぬ挙動になることがあります。
