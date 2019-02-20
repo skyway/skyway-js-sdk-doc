@@ -55,7 +55,7 @@ dataConnection.on('open', () => {
     name: 'SkyWay',
     msg: 'Hello, World!'
   };
-  dataConnection.send(data);  
+  dataConnection.send(data);
 });
 
 // Receive data
@@ -121,6 +121,5 @@ dataConnection.on('error', () => {
   // ...
 });
 ```
-
 
 [RTCDataChannelInit]: https://w3c.github.io/webrtc-pc/#dom-rtcdatachannelinit
