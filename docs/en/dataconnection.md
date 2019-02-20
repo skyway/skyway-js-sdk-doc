@@ -50,11 +50,13 @@ before sending.
 
 ```js
 // Send data
-const data = {
-  name: 'SkyWay',
-  msg: 'Hello, World!'
-};
-dataConnection.send(data);
+dataConnection.on('open', () => {
+  const data = {
+    name: 'SkyWay',
+    msg: 'Hello, World!'
+  };
+  dataConnection.send(data);  
+});
 
 // Receive data
 dataConnection.on('data', ({ name, msg }) => {
