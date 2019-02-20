@@ -108,4 +108,14 @@ dataConnection.on('close', () => {
 });
 ```
 
+### Event: `'error'`
+
+[`DataConnection#send()`](#send)が呼ばれたが、まだデータチャネルが接続されていなかったときに発生します。
+
+```js
+dataConnection.on('error', () => {
+  // ...
+});
+```
+
 [RTCDataChannelInit]: https://w3c.github.io/webrtc-pc/#dom-rtcdatachannelinit

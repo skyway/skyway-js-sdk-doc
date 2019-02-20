@@ -112,4 +112,15 @@ dataConnection.on('close', () => {
 });
 ```
 
+### Event: `'error'`
+
+Fired when call [`DataConnection#send()`](#send), but the data connecion is not opened yet.
+
+```js
+dataConnection.on('error', () => {
+  // ...
+});
+```
+
+
 [RTCDataChannelInit]: https://w3c.github.io/webrtc-pc/#dom-rtcdatachannelinit
