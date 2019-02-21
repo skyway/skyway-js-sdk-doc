@@ -1,144 +1,137 @@
 接続先Peerへのメディアチャネル接続を管理するクラスです。
 
-## Constructor
-
-SDK内部の利用のみで、コンストラクタは通常利用しません。 
-MediaConnectionは、`call` および `peer.on('call')` で生成されます。
+SDK内部の利用のみで、コンストラクタは通常利用しません。
+`MediaConnection`インスタンスは、[`Peer#call()`](../peer/#callpeerid-stream-options) および[`Peer`](../peer/)の[`call`イベント](../peer/#event-call) で生成されます。
 
 ### Sample
 
 ```js
 // 発信側
-mediaConnection = peer1.call('peerID', mediaStream);
+const mediaConnection = peer.call('peerID', mediaStream);
 
 // 着信側
-peer2.on('call', call => {
-  // peer2の持つメディアストリームで応答する
-  call.answer(mediaStream2)
+peer.on('call', mediaConnection => {
+  // MediaStreamで応答する
+  mediaConnection.answer(mediaStream);
 });
 ```
 
 ## Members
 
-|Name|Type|Description|
-|----|----|----|
-|metadata|object|任意の情報を格納するオブジェクトです。|
-|open|boolean|コネクションがオープンしているかどうかを示します。|
-|remoteId|string|接続先のPeerIDです。|
-|peer|string|*Deprecated* 接続先のPeerIDです。remoteIdを使ってください。|
-
-#### Sample
-
-```js
-// 接続元が metadata: { foo: 'bar' } を設定した場合
-peer.on('call', call => {
-  console.log(call.metadata);
-  // => {foo: "bar"}
-});
-```
+| Name        | Type          | Description                                                                                                                                                                                                                                                                                                                                         |
+|-------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| type        | string        | コネクションタイプを示す文字列です。MediaConnectionでは、この値は`'media'` です。                                                                                                                                                                                                                                                                   |
+| metadata    | Object        | 発信側が[`Peer#call()`](../peer/#callpeerid-stream-options)実行時に指定した`metadata`です。着信側では、発信側が指定した値になります。                                                                                                                                                                                                               |
+| localStream | [MediaStream] | [`Peer#call()`](../peer/#callpeerid-stream-options)あるいは[`MediaConnection#answer()`](#answerstream-options)で指定した自身のMediaStreamです。                                                                                                                                                                                                     |
+| open        | boolean       | コネクションがオープンしているかどうかを示します。[`MediaConnection`](./)の[`stream`イベント](#event-stream)または [`MediaConnection#answer()`](#answerstream-options) が呼び出された際にオープンし、 [`MediaConnection#close()`](#close)が呼び出されたまたは[`MediaConnection`](./)の[`close`イベント](#event-close)が発生した際にクローズします。 |
+| remoteId    | string        | 接続先PeerのPeer IDです。                                                                                                                                                                                                                                                                                                                           |
+| peer        | string        | **Deprecated!** 接続先PeerのPeer IDです。remoteIdを使ってください。                                                                                                                                                                                                                                                                                 |
+| id          | string        | コネクションを識別するIDです。                                                                                                                                                                                                                                                                                                                      |
 
 ## Methods
 
-### answer
+### `answer(stream[, options])`
 
-接続相手からの接続要求に対して応答します。
+発信側からのメディアチャネル接続の接続要求に対して応答します。
 
 #### Parameters
 
-| Name | Type | Require | Default | Description |
-| --- | --- | --- | --- | --- |
-| stream | MediaStream | ★ | | リモートのPeerへ送るメディアストリームです。|
-| options | [answer options object](#answer-options-object) | | |応答時に付与するオプションです。帯域幅・コーデックを指定します。 |
+| Name    | Type                                            | Required | Default | Description                                     |
+|---------|-------------------------------------------------|----------|---------|-------------------------------------------------|
+| stream  | [MediaStream]                                   | ✔        |         | 発信側のPeerへ送るMediaStreamオブジェクトです。 |
+| options | [answer options object](#answer-options-object) |          |         | 応答時に付与するオプションです。                |
 
 ##### answer options object
 
-| Name | Type | Required | Default | Description |
-| --- | --- | --- | --- | --- |
-| videoBandwidth | number | | | 接続先から受信する映像の最大帯域幅(kbps)です。 |
-| audioBandwidth | number | | | 接続先から受信する音声の最大帯域幅(kbps)です。 |
-| videoCodec | string | | | 'H264'などの映像コーデックです。 |
-| audioCodec | string | | | 'PCMU'などの音声コーデックです。 |
+| Name                | Type    | Required | Default | Description                                                                                                                                |
+|---------------------|---------|----------|---------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| videoBandwidth      | number  |          |         | 接続先Peerから受信する映像の最大帯域幅(kbps)です。                                                                                         |
+| audioBandwidth      | number  |          |         | 接続先Peerから受信する音声の最大帯域幅(kbps)です。                                                                                         |
+| videoCodec          | string  |          |         | `'H264'`などの映像コーデックです。                                                                                                         |
+| audioCodec          | string  |          |         | `'PCMU'`などの音声コーデックです。                                                                                                         |
+| videoReceiveEnabled | boolean |          | `true`  | 映像を受信のみで使う場合のフラグです。この値が`true`かつ応答する`stream`に映像トラックが含まれない場合、受信のみで映像の通信を行います。   |
+| audioReceiveEnabled | boolean |          | `true`  | 音声を受信のみで使う場合のフラグです。この値が`true`かつ応答する`stream`に音声トラックが含まれない場合、受信のみで音声の通信を行います。   |
 
-#### Return value 
+#### Return value
 
 `undefined`
 
 #### Sample
 
 ```js
-// 相手から発信を受けて
-peer.on('call', call => {
-  call.answer(mediaStream);
+peer.on('call', mediaConnection => {
+  const recvonlyOption = {
+    videoReceiveEnabled: false,
+  };
+
+  mediaConnection.answer(mediaStream, recvonlyOption);
 });
 ```
 
-### close
+### `close()`
 
-接続先PeerとのMediaConnectionを接続を切断します。
+接続先PeerとのMediaConnectionの接続を切断します。
 
-#### Parameters
-
-None
-
-#### Return value 
+#### Return value
 
 `undefined`
 
-#### Sample
+### `replaceStream(stream)`
 
-```js
-call.close();
-```
-
-### replaceStream
-
-送信しているMediaStreamを更新します。受信のみモードから双方向に切り替えできます。
-また、音声のみのストリームから、音声＋映像のストリームへの変更もできます。
+送信しているMediaStreamを更新します。
+受信のみモードでメディアチャネル接続を行なっている状態で、
+新しいMediaStreamがメディアトラックを持つ場合、自動的に送受信モードに切り替わります。
 
 #### Parameters
 
-| Name | Type | Optional | Default | Description |
-| --- | --- | --- | --- | --- |
-| stream | MediaStream | | | 交換対象となる新しいMediaStreamです。 |
+| Name   | Type          | Required | Default | Description                             |
+|--------|---------------|----------|---------|-----------------------------------------|
+| stream | [MediaStream] | ✔        |         | 更新対象となる新しいMediaStreamです。 |
 
-#### Return value 
+#### Return value
 
 `undefined`
-
-#### Sample
-
-```js
-// newStream
-call.replaceStream(newStream);
-```
 
 ## Events
 
-### stream 
+### Event: `'stream'`
 
 MediaStreamを受信したときに発生します。
 
-|Type|Description|
-|----|----|
-|MediaStream|MediaStreamのインスタンスです。|
-
-#### Sample
+| Name   | Type          | Description                       |
+|--------|---------------|-----------------------------------|
+| stream | [MediaStream] | MediaStreamのインスタンスです。 |
 
 ```js
-call.on('stream', stream => {
-  console.log(stream);
+mediaConnection.on('stream', stream => {
+  // ...
 });
 ```
 
-### close
+### Event: `'removeStream'`
 
-MediaConnectionが切断されたときに発生します。
+接続先PeerのMediaStreamが接続中のMediaConnectionから削除されたときに発生します。
+このイベントは、MediaConnectionがクローズしたときには発生しないので注意してください。
+MediaConnectionのクローズを検知する場合、代わりに[`close`イベント](#event-close)を利用してください。
 
-### removeStream
+| Name   | Type          | Description                     |
+|--------|---------------|---------------------------------|
+| stream | [MediaStream] | MediaStreamのインスタンスです。 |
 
-[MediaStream](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream)が削除されたときに発生します。
+```js
+mediaConnection.on('removeStream', stream => {
+  // ...
+});
+```
 
-|Type|Description|
-|----|----|
-|MediaStream|MediaStreamのインスタンスです。|
+### Event: `'close'`
 
+[`MediaConnection#close()`](#close)が呼ばれたとき、または接続先Peerとのメディアチャネル接続が切断されたときに発生します。
+
+```js
+mediaConnection.on('close', () => {
+  // ...
+});
+```
+
+[MediaStream]: https://w3c.github.io/mediacapture-main/#mediastream

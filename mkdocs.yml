@@ -3,26 +3,31 @@ site_description: Document for SkyWay/ECLWebRTC JavaScript SDK
 site_author: NTT Communications
 site_url: 'https://webrtc.ecl.ntt.com/'
 copyright: '© NTT Communications Corporation All Rights Reserved.'
-pages:
+nav:
     - Home: index.md
     - 日本語:
         - Introduction: ja/index.md
-        - Peer: ja/peer.md
-        - MediaConnection: ja/mediaconnection.md
-        - DataConnection: ja/dataconnection.md
-        - MeshRoom: ja/meshroom.md
-        - SFURoom: ja/sfuroom.md
+        - API References:
+          - Peer: ja/peer.md
+          - MediaConnection: ja/mediaconnection.md
+          - DataConnection: ja/dataconnection.md
+          - MeshRoom: ja/meshroom.md
+          - SFURoom: ja/sfuroom.md
+        - Tips: ja/tips.md
     - English:
         - Introduction: en/index.md
-        - Peer: en/peer.md
-        - MediaConnection: en/mediaconnection.md
-        - DataConnection: en/dataconnection.md
-        - MeshRoom: en/meshroom.md
-        - SFURoom: en/sfuroom.md
+        - API References:
+          - Peer: en/peer.md
+          - MediaConnection: en/mediaconnection.md
+          - DataConnection: en/dataconnection.md
+          - MeshRoom: en/meshroom.md
+          - SFURoom: en/sfuroom.md
+        - Tips: en/tips.md
 theme:
     name: 'material'
     language: 'en'
     logo: 'images/skyway-symbol.svg'
+    favicon: 'images/favicon.png'
 extra:
     search:
         language: 'ja'
