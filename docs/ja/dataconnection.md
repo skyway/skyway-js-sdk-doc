@@ -48,11 +48,13 @@ peer.on('connection', dataConnection => {
 
 ```js
 // データを送信する
-const data = {
-  name: 'SkyWay',
-  msg: 'Hello, World!'
-};
-dataConnection.send(data);
+dataConnection.on('open', () => {
+  const data = {
+    name: 'SkyWay',
+    msg: 'Hello, World!'
+  };
+  dataConnection.send(data);
+});
 
 // データを受信する
 dataConnection.on('data', ({ name, msg }) => {
@@ -102,6 +104,16 @@ dataConnection.on('data', data => {
 
 ```js
 dataConnection.on('close', () => {
+  // ...
+});
+```
+
+### Event: `'error'`
+
+[`DataConnection#send()`](#send)が呼ばれたが、まだデータチャネルが接続されていなかったときに発生します。
+
+```js
+dataConnection.on('error', () => {
   // ...
 });
 ```

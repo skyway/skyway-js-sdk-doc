@@ -50,11 +50,13 @@ before sending.
 
 ```js
 // Send data
-const data = {
-  name: 'SkyWay',
-  msg: 'Hello, World!'
-};
-dataConnection.send(data);
+dataConnection.on('open', () => {
+  const data = {
+    name: 'SkyWay',
+    msg: 'Hello, World!'
+  };
+  dataConnection.send(data);
+});
 
 // Receive data
 dataConnection.on('data', ({ name, msg }) => {
@@ -106,6 +108,16 @@ closed.
 
 ```js
 dataConnection.on('close', () => {
+  // ...
+});
+```
+
+### Event: `'error'`
+
+Fired when call [`DataConnection#send()`](#send), but the data connecion is not opened yet.
+
+```js
+dataConnection.on('error', () => {
   // ...
 });
 ```
