@@ -182,20 +182,4 @@ room.on('close', () => {
 });
 ```
 
-### Event: `'removeStream'`
-
-MediaStreamがルーム内のメディアチャネル接続から削除されたときに発生します。
-このイベントは、Peerがルームから退室したときには発生しないので注意してください。
-Peerの退室を検知する場合、代わりに[`peerLeave`イベント](#event-peerleave)を利用してください。
-
-| Name   | Type        | Description                     |
-| ------ | ----------- | ------------------------------- |
-| stream | [MediaStream] | MediaStreamのインスタンスです。 |
-
-```js
-room.on('removeStream', stream => {
-  // ...
-});
-```
-
 [MediaStream]: https://w3c.github.io/mediacapture-main/#mediastream

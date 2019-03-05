@@ -182,21 +182,4 @@ room.on('close', () => {
 });
 ```
 
-### Event: `'removeStream'`
-
-Fired when a MediaStream is removed from a media connection of this room.
-
-Note that the `MeshRoom` will not fire this event when remote peer has left from an MeshRoom.
-Use [`peerLeave` event](#event-peerleave) if you want to catch a leaving of a remote peer.
-
-| Name   | Type          | Description           |
-| ------ | ------------- | --------------------- |
-| stream | [MediaStream] | A MediaStream which removed. |
-
-```js
-room.on('removeStream', stream => {
-  // ...
-});
-```
-
 [MediaStream]: https://w3c.github.io/mediacapture-main/#mediastream
