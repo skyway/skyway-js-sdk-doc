@@ -114,4 +114,4 @@ On your application code, you can do it by preparing multiple [`MediaConnection`
 
 You can pass `RTCConfiguration` for the `RTCPeerConnection` via [Peer](../peer/#options-object) constructor.
 
-But we always use the value `plan-b` for the `sdpSemantics` property.
+But we always use the value `unified-plan` for the `sdpSemantics` property.
