@@ -431,7 +431,6 @@ peer.on('expiresin', sec => {
 | list-error     | APIキーのREST APIが許可されてません。                                                       |
 | disconnected   | SkyWayのシグナリングサーバに接続されていません。                                            |
 | socket-error   | SkyWayのシグナリングサーバとの接続が失われました。                                          |
-| invalid-id     | IDが不正です。                                                                              |
 | invalid-key    | APIキーが無効です。                                                                         |
 | server-error   | SkyWayのシグナリングサーバからPeer一覧を取得できませんでした。                              |
 
