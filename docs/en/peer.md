@@ -431,7 +431,7 @@ Error object has `type` property to know its details.
 | list-error     | Look like you have permission to list peers IDs. Please enable the ECLWebRTC REST API on dashboard.                                                                    |
 | disconnected   | Cannot connect to new Peer before connecting to ECLWebRTC server or after disconnecting from the server.                                                               |
 | socket-error   | Lost connection to server                                                                                                                                              |
-| invalid-key    | API is invalid                                                                                                                                                         |
+| invalid-key    | API key is invalid                                                                                                                                                     |
 | server-error   | Could not get peers from the server.                                                                                                                                   |
 
 ```js
