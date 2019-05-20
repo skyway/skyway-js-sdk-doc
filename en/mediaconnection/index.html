@@ -485,12 +485,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#close" title="close()" class="md-nav__link">
-    close()
+  <a href="#closeforceclose" title="close(forceClose)" class="md-nav__link">
+    close(forceClose)
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#return-value_1" title="Return value" class="md-nav__link">
@@ -513,7 +520,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#parameters_1" title="Parameters" class="md-nav__link">
+  <a href="#parameters_2" title="Parameters" class="md-nav__link">
     Parameters
   </a>
   
@@ -727,12 +734,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#close" title="close()" class="md-nav__link">
-    close()
+  <a href="#closeforceclose" title="close(forceClose)" class="md-nav__link">
+    close(forceClose)
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#return-value_1" title="Return value" class="md-nav__link">
@@ -755,7 +769,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#parameters_1" title="Parameters" class="md-nav__link">
+  <a href="#parameters_2" title="Parameters" class="md-nav__link">
     Parameters
   </a>
   
@@ -994,15 +1008,36 @@ and as an input of <a href="../peer/#event-call"><code>call</code> event</a> of 
 </pre></div>
 
 
-<h3 id="close"><code>close()</code><a class="headerlink" href="#close" title="Permanent link">&para;</a></h3>
+<h3 id="closeforceclose"><code>close(forceClose)</code><a class="headerlink" href="#closeforceclose" title="Permanent link">&para;</a></h3>
 <p>Close the MediaConnection between remote peer.</p>
+<h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>forceClose</td>
+<td>boolean</td>
+<td></td>
+<td>false</td>
+<td>Set to <code>true</code> and the connection on remote peer will close immediately. When set to <code>false</code>, the connection on remote peer will close after the end of the ICE reconnect by the browser.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="return-value_1">Return value<a class="headerlink" href="#return-value_1" title="Permanent link">&para;</a></h4>
 <p><code>undefined</code></p>
 <h3 id="replacestreamstream"><code>replaceStream(stream)</code><a class="headerlink" href="#replacestreamstream" title="Permanent link">&para;</a></h3>
 <p>Replace the MediaStream being sent with a new one.
 When a new MediaStream has a media track, the media connection will be in send
 and receive mode even if the former connection was in receive only mode.</p>
-<h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
+<h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
