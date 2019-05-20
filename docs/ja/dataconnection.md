@@ -63,9 +63,15 @@ dataConnection.on('data', ({ name, msg }) => {
 });
 ```
 
-### `close()`
+### `close(forceClose)`
 
 接続先PeerとのDataConnectionの接続を切断します。
+
+#### Parameters
+
+| Name       | Type    | Required | Default | Description                                                                                                                                          |
+|------------|---------|----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| forceClose | boolean |          | false   | この値が`true`の場合、相手のDataConnectionも即座にcloseします。`false`の場合相手は、ブラウザによるice再接続が失敗してからコネクションをcloseします。 |
 
 #### Return value
 

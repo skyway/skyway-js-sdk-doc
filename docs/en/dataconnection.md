@@ -65,9 +65,15 @@ dataConnection.on('data', ({ name, msg }) => {
 });
 ```
 
-### `close()`
+### `close(forceClose)`
 
 Close the DataConnection between the remote peer.
+
+#### Parameters
+
+| Name       | Type    | Required | Default | Description                                                                                                                                                                               |
+|------------|---------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| forceClose | boolean |          | false   | Set to `true` and the connection on remote peer will close immediately. When set to `false`, the connection on remote peer will close after the end of the ICE reconnect by the browser. |
 
 #### Return value
 
