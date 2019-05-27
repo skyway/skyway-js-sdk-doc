@@ -103,7 +103,7 @@ peer.on('call', mediaConnection => {
 接続先のPeer間とのWebRTCコネクションである `RTCPeerConnection` を取得します。
 
 !!! 注意
-  取得したRTCPeerConnectionを誤ってカスタマイズした場合、SDKが正しく動作しなくなる可能性があります。
+  取得したRTCPeerConnectionを誤って操作すると、SDKが正しく動作しなくなる可能性があります。
 
 #### Return value
 

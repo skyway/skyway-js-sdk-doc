@@ -106,7 +106,7 @@ and receive mode even if the former connection was in receive only mode.
 Get `RTCPeerConnection` which is WebRTC connection between remote peer.
 
 !!! Notice
-  If RTCPeerConnection is customized by mistake、there is a risk that SDK does not work.
+  If RTCPeerConnection is handled by mistake、there is a risk that SDK does not work.
 
 #### Return value
 
