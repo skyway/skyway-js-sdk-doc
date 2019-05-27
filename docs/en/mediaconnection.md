@@ -101,6 +101,25 @@ and receive mode even if the former connection was in receive only mode.
 
 ## Events
 
+### `getPeerConnection()`
+
+!!! This method is provided for active users.
+
+Get `RTCPeerConnection` which is WebRTC connection between remote peer.
+
+#### Return value
+
+[RTCPeerConnection](https://developer.mozilla.org/en/docs/Web/API/RTCPeerConnection) instance
+
+#### Sample
+
+```js
+const mc = peer.call('peerID', mediaStream);
+const pc = mc.getPeerConnection();
+// ...
+});
+```
+
 ### Event: `'stream'`
 
 Fired when received a stream.

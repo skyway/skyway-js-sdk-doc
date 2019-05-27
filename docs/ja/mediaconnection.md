@@ -98,6 +98,25 @@ peer.on('call', mediaConnection => {
 
 `undefined`
 
+### `getPeerConnection()`
+
+!!! このメソッドは上級者ユーザ向け機能です。"
+
+接続先のPeer間とのWebRTCコネクションである `RTCPeerConnection` を取得します。
+
+#### Return value
+
+A [RTCPeerConnection](https://developer.mozilla.org/ja/docs/Web/API/RTCPeerConnection) instance
+
+#### Sample
+
+```js
+const mc = peer.call('peerID', mediaStream);
+const pc = mc.getPeerConnection();
+// ...
+});
+```
+
 ## Events
 
 ### Event: `'stream'`
