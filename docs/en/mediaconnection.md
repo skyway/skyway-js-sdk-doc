@@ -103,13 +103,14 @@ and receive mode even if the former connection was in receive only mode.
 
 ### `getPeerConnection()`
 
-!!! This method is provided for active users.
-
 Get `RTCPeerConnection` which is WebRTC connection between remote peer.
+
+!!! Notice
+  If RTCPeerConnection is customized by mistake、there is a risk that SDK does not work.
 
 #### Return value
 
-[RTCPeerConnection](https://developer.mozilla.org/en/docs/Web/API/RTCPeerConnection) instance
+[RTCPeerConnection] instance
 
 #### Sample
 
@@ -162,3 +163,4 @@ mediaConnection.on('close', () => {
 ```
 
 [MediaStream]: https://w3c.github.io/mediacapture-main/#mediastream
+[RTCPeerConnection]: https://developer.mozilla.org/en/docs/Web/API/RTCPeerConnection

@@ -100,13 +100,14 @@ peer.on('call', mediaConnection => {
 
 ### `getPeerConnection()`
 
-!!! このメソッドは上級者ユーザ向け機能です。"
-
 接続先のPeer間とのWebRTCコネクションである `RTCPeerConnection` を取得します。
+
+!!! 注意
+  取得したRTCPeerConnectionを誤ってカスタマイズした場合、SDKが正しく動作しなくなる可能性があります。
 
 #### Return value
 
-A [RTCPeerConnection](https://developer.mozilla.org/ja/docs/Web/API/RTCPeerConnection) instance
+[RTCPeerConnection] のインスタンス
 
 #### Sample
 
@@ -160,3 +161,4 @@ mediaConnection.on('close', () => {
 ```
 
 [MediaStream]: https://w3c.github.io/mediacapture-main/#mediastream
+[RTCPeerConnection]: https://developer.mozilla.org/en/docs/Web/API/RTCPeerConnection
