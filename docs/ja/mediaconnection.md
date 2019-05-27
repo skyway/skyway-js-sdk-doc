@@ -161,4 +161,4 @@ mediaConnection.on('close', () => {
 ```
 
 [MediaStream]: https://w3c.github.io/mediacapture-main/#mediastream
-[RTCPeerConnection]: https://developer.mozilla.org/en/docs/Web/API/RTCPeerConnection
+[RTCPeerConnection]: https://w3c.github.io/webrtc-pc
