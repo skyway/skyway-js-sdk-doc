@@ -100,22 +100,24 @@ peer.on('call', mediaConnection => {
 
 ### `getPeerConnection()`
 
-接続先のPeer間とのWebRTCコネクションである `RTCPeerConnection` を取得します。
+接続先PeerとのMediaConnectionが内部的に使用している `RTCPeerConnection` を取得します。
+コネクションの`open`プロパティが`false`の場合は、 `null` が返ります。
 
 !!! 注意
-  取得したRTCPeerConnectionを誤って操作すると、SDKが正しく動作しなくなる可能性があります。
+  `RTCPeerConnection`を直接操作すると、SDKが正しく動作しなくなる可能性があります。
 
 #### Return value
 
-[RTCPeerConnection] のインスタンス
+[RTCPeerConnection] のインスタンス または `null`
 
 #### Sample
 
 ```js
-const mc = peer.call('peerID', mediaStream);
-const pc = mc.getPeerConnection();
-// ...
-});
+if (mediaConnection.open) {
+  const pc = mediaConnection.getPeerConnection();
+
+  // ...
+}
 ```
 
 ## Events
@@ -161,4 +163,4 @@ mediaConnection.on('close', () => {
 ```
 
 [MediaStream]: https://w3c.github.io/mediacapture-main/#mediastream
-[RTCPeerConnection]: https://w3c.github.io/webrtc-pc
+[RTCPeerConnection]: https://w3c.github.io/webrtc-pc/#rtcpeerconnection-interface

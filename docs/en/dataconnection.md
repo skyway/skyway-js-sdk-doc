@@ -65,6 +65,28 @@ dataConnection.on('data', ({ name, msg }) => {
 });
 ```
 
+### `getPeerConnection()`
+
+Get `RTCPeerConnection` instance which used internally in the DataConnection between remote peer.
+If `open` property is `false`, it returns `null` instead.
+
+!!! Notice
+  Note that if you operate `RTCPeerConnection` directly, the ECLWebRTC SDK may not work properly.
+
+#### Return value
+
+A [RTCPeerConnection] instance or `null`.
+
+#### Sample
+
+```js
+if (dataConnection.open) {
+  const pc = dataConnection.getPeerConnection();
+
+  // ...
+}
+```
+
 ### `close(forceClose)`
 
 Close the DataConnection between the remote peer.

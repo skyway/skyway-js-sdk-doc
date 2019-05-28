@@ -63,6 +63,28 @@ dataConnection.on('data', ({ name, msg }) => {
 });
 ```
 
+### `getPeerConnection()`
+
+接続先PeerとのDataConnectionが内部的に使用している `RTCPeerConnection` を取得します。
+コネクションの`open`プロパティが`false`の場合は、 `null` が返ります。
+
+!!! 注意
+  `RTCPeerConnection`を直接操作すると、SDKが正しく動作しなくなる可能性があります。
+
+#### Return value
+
+[RTCPeerConnection] のインスタンス または `null`
+
+#### Sample
+
+```js
+if (dataConnection.open) {
+  const pc = dataConnection.getPeerConnection();
+
+  // ...
+}
+```
+
 ### `close(forceClose)`
 
 接続先PeerとのDataConnectionの接続を切断します。
@@ -125,3 +147,4 @@ dataConnection.on('error', () => {
 ```
 
 [RTCDataChannelInit]: https://w3c.github.io/webrtc-pc/#dom-rtcdatachannelinit
+[RTCPeerConnection]: https://w3c.github.io/webrtc-pc/#rtcpeerconnection-interface
