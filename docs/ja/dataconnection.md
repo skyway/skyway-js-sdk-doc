@@ -69,7 +69,7 @@ dataConnection.on('data', ({ name, msg }) => {
 コネクションの`open`プロパティが`false`の場合は、 `null` が返ります。
 
 !!! 注意
-  `RTCPeerConnection`を直接操作すると、SDKが正しく動作しなくなる可能性があります。
+  `RTCPeerConnection`を直接操作すると、SDKは正しく動作しなくなる可能性があります。
 
 #### Return value
 
