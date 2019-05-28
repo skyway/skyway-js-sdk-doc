@@ -406,6 +406,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#getpeerconnection" title="getPeerConnection()" class="md-nav__link">
+    getPeerConnection()
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#return-value_3" title="Return value" class="md-nav__link">
+    Return value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample_2" title="Sample" class="md-nav__link">
+    Sample
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -787,6 +814,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#getpeerconnection" title="getPeerConnection()" class="md-nav__link">
+    getPeerConnection()
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#return-value_3" title="Return value" class="md-nav__link">
+    Return value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample_2" title="Sample" class="md-nav__link">
+    Sample
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1059,6 +1113,22 @@
 </table>
 <h4 id="return-value_2">Return value<a class="headerlink" href="#return-value_2" title="Permanent link">&para;</a></h4>
 <p><code>undefined</code></p>
+<h3 id="getpeerconnection"><code>getPeerConnection()</code><a class="headerlink" href="#getpeerconnection" title="Permanent link">&para;</a></h3>
+<p>接続先PeerとのMediaConnectionが内部的に使用している <code>RTCPeerConnection</code> を取得します。
+コネクションの<code>open</code>プロパティが<code>false</code>の場合は、 <code>null</code> が返ります。</p>
+<p>!!! 注意
+  <code>RTCPeerConnection</code>を直接操作すると、SDKは正しく動作しなくなる可能性があります。</p>
+<h4 id="return-value_3">Return value<a class="headerlink" href="#return-value_3" title="Permanent link">&para;</a></h4>
+<p><a href="https://w3c.github.io/webrtc-pc/#rtcpeerconnection-interface">RTCPeerConnection</a> のインスタンス または <code>null</code></p>
+<h4 id="sample_2">Sample<a class="headerlink" href="#sample_2" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nx">mediaConnection</span><span class="p">.</span><span class="nx">open</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">pc</span> <span class="o">=</span> <span class="nx">mediaConnection</span><span class="p">.</span><span class="nx">getPeerConnection</span><span class="p">();</span>
+
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+
+
 <h2 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h2>
 <h3 id="event-stream">Event: <code>'stream'</code><a class="headerlink" href="#event-stream" title="Permanent link">&para;</a></h3>
 <p>MediaStreamを受信したときに発生します。</p>
