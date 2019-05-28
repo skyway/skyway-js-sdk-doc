@@ -28,7 +28,7 @@
     "textlint-rule-web-plus-db": "^1.1.5"
   },
   "scripts": {
-    "test": "npm run test:text & npm run test:markdown",
+    "test": "npm run test:text && npm run test:markdown",
     "test:text": "textlint docs/ja/",
     "test:markdown": "markdownlint docs/"
   },

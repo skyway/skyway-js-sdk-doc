@@ -99,6 +99,28 @@ and receive mode even if the former connection was in receive only mode.
 
 `undefined`
 
+### `getPeerConnection()`
+
+Get `RTCPeerConnection` instance which used internally in the MediaConnection between remote peer.
+If `open` property is `false`, it returns `null` instead.
+
+!!! Notice
+  Note that if you operate `RTCPeerConnection` directly, the ECLWebRTC SDK may not work properly.
+
+#### Return value
+
+A [RTCPeerConnection] instance or `null`.
+
+#### Sample
+
+```js
+if (mediaConnection.open) {
+  const pc = mediaConnection.getPeerConnection();
+
+  // ...
+}
+```
+
 ## Events
 
 ### Event: `'stream'`
@@ -143,3 +165,4 @@ mediaConnection.on('close', () => {
 ```
 
 [MediaStream]: https://w3c.github.io/mediacapture-main/#mediastream
+[RTCPeerConnection]: https://w3c.github.io/webrtc-pc/#rtcpeerconnection-interface
