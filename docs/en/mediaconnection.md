@@ -137,23 +137,6 @@ mediaConnection.on('stream', stream => {
 });
 ```
 
-### Event: `'removeStream'`
-
-Fired when the remote stream is removed from an existing MediaConnection.
-
-Note that the MediaConnection will not fire this event when remote peer has closed a MediaConnection.
-Use [`close` event](#event-close) if you want to catch a closing of the MediaConnection.
-
-| Name   | Type          | Description                                          |
-|--------|---------------|------------------------------------------------------|
-| stream | [MediaStream] | A MediaStream which removed from the MediaConnection. |
-
-```js
-mediaConnection.on('removeStream', stream => {
-  // ...
-});
-```
-
 ### Event: `'close'`
 
 Fired when call [`MediaConnection#close()`](#close), or the media connection is closed.

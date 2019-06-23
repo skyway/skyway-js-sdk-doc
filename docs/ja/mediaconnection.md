@@ -136,22 +136,6 @@ mediaConnection.on('stream', stream => {
 });
 ```
 
-### Event: `'removeStream'`
-
-接続先PeerのMediaStreamが接続中のMediaConnectionから削除されたときに発生します。
-このイベントは、MediaConnectionがクローズしたときには発生しないので注意してください。
-MediaConnectionのクローズを検知する場合、代わりに[`close`イベント](#event-close)を利用してください。
-
-| Name   | Type          | Description                     |
-|--------|---------------|---------------------------------|
-| stream | [MediaStream] | MediaStreamのインスタンスです。 |
-
-```js
-mediaConnection.on('removeStream', stream => {
-  // ...
-});
-```
-
 ### Event: `'close'`
 
 [`MediaConnection#close()`](#close)が呼ばれたとき、または接続先Peerとのメディアチャネル接続が切断されたときに発生します。

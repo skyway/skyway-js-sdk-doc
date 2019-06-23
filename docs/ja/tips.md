@@ -111,4 +111,4 @@
 
 [Peer](../peer/#options-object)クラスのコンストラクタ引数として、`RTCPeerConnection`のコンストラクタに渡される`RTCConfiguration`を指定できます。
 
-Chromeでは`sdpSemantics`というプロパティを指定できますが、SkyWayでは常に`plan-b`を使用します。
+Chromeでは`sdpSemantics`というプロパティを指定できますが、SkyWayでは常に`unified-plan`を使用します。
