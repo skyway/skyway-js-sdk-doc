@@ -517,13 +517,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#event-removestream" title="Event: 'removeStream'" class="md-nav__link">
-    Event: 'removeStream'
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -910,13 +903,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#event-removestream" title="Event: 'removeStream'" class="md-nav__link">
-    Event: 'removeStream'
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1208,32 +1194,6 @@ SFURoomのインスタンスは、<a href="../peer#joinroomroomname-roomoptions"
 <h3 id="event-close">Event: <code>'close'</code><a class="headerlink" href="#event-close" title="Permanent link">&para;</a></h3>
 <p>ルームをcloseしたときに発生します。</p>
 <div class="codehilite"><pre><span></span><span class="nx">room</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// ...</span>
-<span class="p">});</span>
-</pre></div>
-
-
-<h3 id="event-removestream">Event: <code>'removeStream'</code><a class="headerlink" href="#event-removestream" title="Permanent link">&para;</a></h3>
-<p>MediaStreamがルーム内のメディアチャネル接続から削除されたときに発生します。
-このイベントは、Peerがルームから退室したときには発生しないので注意してください。
-Peerの退室を検知する場合、代わりに<a href="#event-peerleave"><code>peerLeave</code>イベント</a>を利用してください。</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>stream</td>
-<td><a href="https://w3c.github.io/mediacapture-main/#mediastream">MediaStream</a></td>
-<td>MediaStreamのインスタンスです。</td>
-</tr>
-</tbody>
-</table>
-<div class="codehilite"><pre><span></span><span class="nx">room</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;removeStream&#39;</span><span class="p">,</span> <span class="nx">stream</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="c1">// ...</span>
 <span class="p">});</span>
 </pre></div>
