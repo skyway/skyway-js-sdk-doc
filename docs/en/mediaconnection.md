@@ -50,8 +50,6 @@ Create and send an answer for the media connection offer.
 | audioBandwidth      | number  |          |         | A max audio bandwidth(kbps).                                                                     |
 | videoCodec          | string  |          |         | A video codec like `'H264'`.                                                                     |
 | audioCodec          | string  |          |         | A audio codec like `'PCMU'`.                                                                     |
-| videoReceiveEnabled | boolean |          |         | Set to `true` and your stream does not include video track, you will be video receive only mode. |
-| audioReceiveEnabled | boolean |          |         | Set to `true` and your stream does not include audio track, you will be audio receive only mode. |
 
 #### Return value
 
@@ -61,11 +59,11 @@ Create and send an answer for the media connection offer.
 
 ```js
 peer.on('call', mediaConnection => {
-  const recvonlyOption = {
-    videoReceiveEnabled: false,
+  const answerOption = {
+    videoCodec: 'H264',
   };
 
-  mediaConnection.answer(mediaStream, recvonlyOption);
+  mediaConnection.answer(mediaStream, answerOption);
 });
 ```
 

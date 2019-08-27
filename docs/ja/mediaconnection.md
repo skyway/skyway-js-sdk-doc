@@ -49,8 +49,6 @@ peer.on('call', mediaConnection => {
 | audioBandwidth      | number  |          |         | 接続先Peerから受信する音声の最大帯域幅(kbps)です。                                                                                         |
 | videoCodec          | string  |          |         | `'H264'`などの映像コーデックです。                                                                                                         |
 | audioCodec          | string  |          |         | `'PCMU'`などの音声コーデックです。                                                                                                         |
-| videoReceiveEnabled | boolean |          | `true`  | 映像を受信のみで使う場合のフラグです。この値が`true`かつ応答する`stream`に映像トラックが含まれない場合、受信のみで映像の通信を行います。   |
-| audioReceiveEnabled | boolean |          | `true`  | 音声を受信のみで使う場合のフラグです。この値が`true`かつ応答する`stream`に音声トラックが含まれない場合、受信のみで音声の通信を行います。   |
 
 #### Return value
 
@@ -60,11 +58,11 @@ peer.on('call', mediaConnection => {
 
 ```js
 peer.on('call', mediaConnection => {
-  const recvonlyOption = {
-    videoReceiveEnabled: false,
+  const answerOption = {
+    videoCodec: 'H264',
   };
 
-  mediaConnection.answer(mediaStream, recvonlyOption);
+  mediaConnection.answer(mediaStream, answerOption);
 });
 ```
 
