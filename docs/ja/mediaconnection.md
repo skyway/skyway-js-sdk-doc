@@ -58,11 +58,11 @@ peer.on('call', mediaConnection => {
 
 ```js
 peer.on('call', mediaConnection => {
-  const recvonlyOption = {
-    videoReceiveEnabled: false,
+  const answerOption = {
+    videoCodec: 'H264',
   };
 
-  mediaConnection.answer(mediaStream, recvonlyOption);
+  mediaConnection.answer(mediaStream, answerOption);
 });
 ```
 

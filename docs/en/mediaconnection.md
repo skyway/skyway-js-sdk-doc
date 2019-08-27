@@ -59,11 +59,11 @@ Create and send an answer for the media connection offer.
 
 ```js
 peer.on('call', mediaConnection => {
-  const recvonlyOption = {
-    videoReceiveEnabled: false,
+  const answerOption = {
+    videoCodec: 'H264',
   };
 
-  mediaConnection.answer(mediaStream, recvonlyOption);
+  mediaConnection.answer(mediaStream, answerOption);
 });
 ```
 
