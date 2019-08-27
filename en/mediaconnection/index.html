@@ -1019,31 +1019,17 @@ and as an input of <a href="../peer/#event-call"><code>call</code> event</a> of 
 <td></td>
 <td>A audio codec like <code>'PCMU'</code>.</td>
 </tr>
-<tr>
-<td>videoReceiveEnabled</td>
-<td>boolean</td>
-<td></td>
-<td></td>
-<td>Set to <code>true</code> and your stream does not include video track, you will be video receive only mode.</td>
-</tr>
-<tr>
-<td>audioReceiveEnabled</td>
-<td>boolean</td>
-<td></td>
-<td></td>
-<td>Set to <code>true</code> and your stream does not include audio track, you will be audio receive only mode.</td>
-</tr>
 </tbody>
 </table>
 <h4 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h4>
 <p><code>undefined</code></p>
 <h4 id="sample_1">Sample<a class="headerlink" href="#sample_1" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><span class="nx">peer</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;call&#39;</span><span class="p">,</span> <span class="nx">mediaConnection</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">recvonlyOption</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">videoReceiveEnabled</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="kr">const</span> <span class="nx">answerOption</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">videoCodec</span><span class="o">:</span> <span class="s1">&#39;H264&#39;</span><span class="p">,</span>
   <span class="p">};</span>
 
-  <span class="nx">mediaConnection</span><span class="p">.</span><span class="nx">answer</span><span class="p">(</span><span class="nx">mediaStream</span><span class="p">,</span> <span class="nx">recvonlyOption</span><span class="p">);</span>
+  <span class="nx">mediaConnection</span><span class="p">.</span><span class="nx">answer</span><span class="p">(</span><span class="nx">mediaStream</span><span class="p">,</span> <span class="nx">answerOption</span><span class="p">);</span>
 <span class="p">});</span>
 </pre></div>
 

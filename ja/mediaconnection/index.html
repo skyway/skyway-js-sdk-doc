@@ -1018,31 +1018,17 @@
 <td></td>
 <td><code>'PCMU'</code>などの音声コーデックです。</td>
 </tr>
-<tr>
-<td>videoReceiveEnabled</td>
-<td>boolean</td>
-<td></td>
-<td><code>true</code></td>
-<td>映像を受信のみで使う場合のフラグです。この値が<code>true</code>かつ応答する<code>stream</code>に映像トラックが含まれない場合、受信のみで映像の通信を行います。</td>
-</tr>
-<tr>
-<td>audioReceiveEnabled</td>
-<td>boolean</td>
-<td></td>
-<td><code>true</code></td>
-<td>音声を受信のみで使う場合のフラグです。この値が<code>true</code>かつ応答する<code>stream</code>に音声トラックが含まれない場合、受信のみで音声の通信を行います。</td>
-</tr>
 </tbody>
 </table>
 <h4 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h4>
 <p><code>undefined</code></p>
 <h4 id="sample_1">Sample<a class="headerlink" href="#sample_1" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><span class="nx">peer</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;call&#39;</span><span class="p">,</span> <span class="nx">mediaConnection</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">recvonlyOption</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">videoReceiveEnabled</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="kr">const</span> <span class="nx">answerOption</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">videoCodec</span><span class="o">:</span> <span class="s1">&#39;H264&#39;</span><span class="p">,</span>
   <span class="p">};</span>
 
-  <span class="nx">mediaConnection</span><span class="p">.</span><span class="nx">answer</span><span class="p">(</span><span class="nx">mediaStream</span><span class="p">,</span> <span class="nx">recvonlyOption</span><span class="p">);</span>
+  <span class="nx">mediaConnection</span><span class="p">.</span><span class="nx">answer</span><span class="p">(</span><span class="nx">mediaStream</span><span class="p">,</span> <span class="nx">answerOption</span><span class="p">);</span>
 <span class="p">});</span>
 </pre></div>
 
