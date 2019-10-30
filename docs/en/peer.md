@@ -68,7 +68,7 @@ const defaultConfig = {
     url:  'stun:stun.webrtc.ecl.ntt.com:3478',
   }],
   iceTransportPolicy: 'all',
-  sdpSemantics: 'plan-b',
+  sdpSemantics: 'unified-plan',
 };
 ```
 
