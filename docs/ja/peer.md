@@ -304,7 +304,7 @@ peer.listAllPeers(peers => {
 
 [MediaConnection](../mediaconnection)のインスタンス、または[DataConnection](../dataconnection)のインスタンス、または`null`
 
-### `updateCredential(mode)`
+### `updateCredential(credential)`
 
 Peer認証のクレデンシャルのTTLを延長するための更新リクエストの送付します。
 Peer認証については、[コチラ](https://github.com/skyway/skyway-peer-authentication-samples)をご確認ください。
@@ -313,7 +313,7 @@ Peer認証については、[コチラ](https://github.com/skyway/skyway-peer-au
 
 | Name | Type                                    | Required | Default | Description                                    |
 | ---- | --------------------------------------- | -------- | ------- | ---------------------------------------------- |
-| mode | [credential object](#credential-object) | ✔        |         | ユーザー側で作成する新しいクレデンシャルです。 |
+| credential | [credential object](#credential-object) | ✔        |         | ユーザー側で作成する新しいクレデンシャルです。 |
 
 #### Return value
 
