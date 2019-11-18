@@ -161,7 +161,7 @@ const call = peer.call('peerID', null, {
 |---------------|----------------------|----------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | metadata      | Object               |          |            | コネクションに関連付けされる任意のメタデータで、接続先のPeerに渡されます。                                                                                                          |
 | serialization | string               |          | `'binary'` | 送信時のシリアライズ方法を指定します。`'binary'`, `'json'`, `'none'`のいずれかとなります。                                                                                          |
-| dcInit        | [RTCDataChannelInit] |          | `{}`       | DataChannel利用時に信頼性の有無を指定するためのオプションです。デフォルトでは信頼性有で動作します。なお、Chromeは、`maxPacketLifetime`の代わりに、`maxRetransmitTime`を利用します。 |
+| dcInit        | [RTCDataChannelInit] |          | `{}`       | DataChannel利用時に信頼性の有無を指定するためのオプションです。デフォルトでは信頼性有で動作します。 |
 | connectionId  | string               |          |            | コネクションを識別するIDです。                                                                                                                                                      |
 | label         | string               |          |            | **Deprecated!** コネクションを識別するのに利用するラベルです。代わりに`connectionId`を使用してください。                                                                            |
 
