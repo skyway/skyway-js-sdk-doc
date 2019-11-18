@@ -162,7 +162,7 @@ Create a new [DataConnection](../dataconnection) with Peer ID.
 | ------------- | -------------------- | -------- | ---------- | ---------------------------------------------------------------------------------- |
 | metadata      | Object               |          |            | Any additional data to send to the remote peer.                                    |
 | serialization | string               |          | `'binary'` | Serialization for data when sending. One of `'binary'`, `'json'`, or `'none'`.     |
-| dcInit        | [RTCDataChannelInit] |          | `{}`       | RTCDataChannelInit object passed into `createDataChannel()` to change reliability. It is defaulting to `true`. Note that Google Chrome uses `maxRetransmitTime` instead of `maxPacketLifetime`. |
+| dcInit        | [RTCDataChannelInit] |          | `{}`       | RTCDataChannelInit object passed into `createDataChannel()` to change reliability. It is defaulting to `true`. |
 | connectionId  | string               |          |            | The ID to identify each connection.                                                    |
 | label         | string               |          |            | **Deprecated!** The Label to identify each connection. Use `connectionId` instead.     |
 
