@@ -15,11 +15,11 @@ sfuRoom.on('open', () => {});
 
 ## Members
 
-| Name          | Type     | Description                         |
-| ------------- | -------- | ----------------------------------- |
-| name          | string   | The room name.                      |
-| remoteStreams | Object   | Object contains all remote streams. |
-| members       | string[] | Array of the Peer ID in this room.  |
+| Name          | Type     | Description                                                      |
+| ------------- | -------- | ---------------------------------------------------------------- |
+| name          | string   | The room name.                                                   |
+| remoteStreams | Object   | Object contains all remote streams with [MediaStream].id as key. |
+| members       | string[] | Array of the Peer ID in this room.                               |
 
 ## Methods
 
