@@ -18,7 +18,7 @@ sfuRoom.on('open', () => {});
 | Name          | Type     | Description                                                                |
 | ------------- | -------- | -------------------------------------------------------------------------- |
 | name          | string   | ルーム名です。                                                             |
-| remoteStreams | Object   | [MediaStream].idをキーに、ルーム内のストリームを保持するオブジェクトです。 | 
+| remoteStreams | Object   | [MediaStream].idをキーに、ルーム内のストリームを保持するオブジェクトです。 |
 | members       | string[] | ルーム内に参加しているPeer IDの配列です。                                  |
 
 ## Methods
