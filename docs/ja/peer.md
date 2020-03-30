@@ -233,16 +233,16 @@ peer.connect('peerId', {
 
 ##### room options object
 
-| Name                | Type        | Required | Default  | Description                                                          |
-| ------------------- | ----------- | -------- | -------- | -------------------------------------------------------------------- |
-| mode                | string      |          | `'mesh'` | `'sfu'`または`'mesh'`を指定します。                                  |
-| stream              | MediaStream |          |          | ユーザーが送信するメディアストリームです。                           |
-| videoBandwidth      | number      |          |          | 映像の最大帯域幅(kbps)です。メッシュ接続のみ使用可能です。           |
-| audioBandwidth      | number      |          |          | 音声の最大帯域幅(kbps)です。 メッシュ接続のみ使用可能です。          |
-| videoCodec          | string      |          |          | `'H264'`などの映像コーデックです。 メッシュ接続のみ使用可能です。    |
-| audioCodec          | string      |          |          | `'PCMU'`などの音声コーデックです。メッシュ接続のみ使用可能です。     |
-| videoReceiveEnabled | boolean     |          |          | 映像を受信のみで使う場合のフラグです。メッシュ接続のみ使用可能です。 |
-| audioReceiveEnabled | boolean     |          |          | 音声を受信のみで使う場合のフラグです。メッシュ接続のみ使用可能です。 |
+| Name                | Type        | Required | Default  | Description                                                                     |
+| ------------------- | ----------- | -------- | -------- | ------------------------------------------------------------------------------- |
+| mode                | string      |          | `'mesh'` | `'sfu'`または`'mesh'`を指定します。                                                 |
+| stream              | MediaStream |          |          | 参加先のルームへ送るメディアストリームです。設定されていない場合は、受信のみモードで発信します。 |
+| videoBandwidth      | number      |          |          | 映像の最大帯域幅(kbps)です。メッシュ接続のみ使用可能です。                               |
+| audioBandwidth      | number      |          |          | 音声の最大帯域幅(kbps)です。 メッシュ接続のみ使用可能です。                              |
+| videoCodec          | string      |          |          | `'H264'`などの映像コーデックです。 メッシュ接続のみ使用可能です。                         |
+| audioCodec          | string      |          |          | `'PCMU'`などの音声コーデックです。メッシュ接続のみ使用可能です。                          |
+| videoReceiveEnabled | boolean     |          |          | 映像を受信のみで使う場合のフラグです。メッシュ接続のみ使用可能です。                        |
+| audioReceiveEnabled | boolean     |          |          | 音声を受信のみで使う場合のフラグです。メッシュ接続のみ使用可能です。                        |
 
 #### Return value
 

@@ -236,7 +236,7 @@ See this [page](https://webrtc.ecl.ntt.com/sfu.html) for the difference between 
 | Name                | Type        | Required | Default  | Description                                                                                                                            |
 | ------------------- | ----------- | -------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | mode                | string      |          | `'mesh'` | One of `'sfu'` or `'mesh'`.                                                                                                            |
-| stream              | MediaStream |          |          | The MediaStream you want to emit.                                                                                                          |
+| stream              | MediaStream |          |          | The MediaStream to send to the room you are joining. If not set, connection will behave as `recvonly`.                                     |
 | videoBandwidth      | number      |          |          | A max video bandwidth(kbps). Only available when mode is `'mesh'`.                                                                     |
 | audioBandwidth      | number      |          |          | A max audio bandwidth(kbps). Only available when mode is `'mesh'`.                                                                     |
 | videoCodec          | string      |          |          | A video codec such as `'H264'`. Only available when mode is `'mesh'`.                                                                     |
