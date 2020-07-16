@@ -60,10 +60,10 @@ If multiple cameras and microphones are available, you can select and use it.
     video: true,
   });
 
-  // デバイスの一覧を取得
+  // Get a list of devices
   const devices = await navigator.mediaDevices.enumerateDevices();
 
-  // 任意のデバイスを指定
+  // Specify any device
   const newVideoInputDevice = devices.find(
     device => device.kind === 'videoinput'
   );
