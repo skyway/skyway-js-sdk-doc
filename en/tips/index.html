@@ -651,10 +651,10 @@ It always depends on the browser implementation.</p>
     <span class="nx">video</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="p">});</span>
 
-  <span class="c1">// デバイスの一覧を取得</span>
+  <span class="c1">// Get a list of devices</span>
   <span class="kr">const</span> <span class="nx">devices</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">navigator</span><span class="p">.</span><span class="nx">mediaDevices</span><span class="p">.</span><span class="nx">enumerateDevices</span><span class="p">();</span>
 
-  <span class="c1">// 任意のデバイスを指定</span>
+  <span class="c1">// Specify any device</span>
   <span class="kr">const</span> <span class="nx">newVideoInputDevice</span> <span class="o">=</span> <span class="nx">devices</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span>
     <span class="nx">device</span> <span class="p">=&gt;</span> <span class="nx">device</span><span class="p">.</span><span class="nx">kind</span> <span class="o">===</span> <span class="s1">&#39;videoinput&#39;</span>
   <span class="p">);</span>
